@@ -1,10 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
-
+//    client/index.js     client/index.js    /Users/michaelharfenist/RFE5_ImmersiveWork/project-catwalk1/client/index.js
 const config = {
-  entry: './src/index.js',
+  entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './client/dist'),
     filename: 'bundle.js'
   },
   module: {
