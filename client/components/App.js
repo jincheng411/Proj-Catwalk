@@ -1,5 +1,6 @@
 
 import React from "react";
+import ProductDetail from './ProductDetail/ProductDetail';
 
 class App extends React.Component {
   render() {
@@ -9,6 +10,7 @@ class App extends React.Component {
         <h1>
           Hello {name}
         </h1>
+        <ProductDetail />
       </>
     );
   }
