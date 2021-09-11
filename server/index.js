@@ -20,6 +20,16 @@ app.get('/api/products/:id', (req, res) => {
   })
 })
 
+app.get('/api/products', (req, res) => {
+  const {id} = req.params;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products`,
+  {headers: {Authorization: TOKEN}})
+  .then(({data}) => {
+    console.log(data)
+    res.json(data);
+  })
+})
+
 app.get('/api/products/:id/styles', (req, res) => {
   const {id} = req.params;
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}/styles`,
