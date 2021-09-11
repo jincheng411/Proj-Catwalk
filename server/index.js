@@ -18,6 +18,9 @@ app.get('/api/products/:id', (req, res) => {
     console.log(data)
     res.json(data);
   })
+  .catch(err => {
+    res.send(err)
+  })
 })
 
 app.get('/api/products/:id/styles', (req, res) => {
@@ -27,6 +30,22 @@ app.get('/api/products/:id/styles', (req, res) => {
   .then(({data}) => {
     console.log(data)
     res.json(data);
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
+
+app.get('/api/products/:id/related', (req, res) => {
+  const {id} = req.params;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}/related`,
+  {headers: {Authorization: TOKEN}})
+  .then(({data}) => {
+    console.log(data)
+    res.json(data);
+  })
+  .catch(err => {
+    res.send(err)
   })
 })
 
