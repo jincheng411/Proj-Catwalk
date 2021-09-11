@@ -18,6 +18,9 @@ app.get('/api/products/:id', (req, res) => {
     console.log(data)
     res.json(data);
   })
+  .catch(err => {
+    res.send(err)
+  })
 })
 
 app.get('/api/products/:id/styles', (req, res) => {
@@ -27,6 +30,9 @@ app.get('/api/products/:id/styles', (req, res) => {
   .then(({data}) => {
     console.log(data)
     res.json(data);
+  })
+  .catch(err => {
+    res.send(err)
   })
 })
 
