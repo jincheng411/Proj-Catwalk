@@ -15,7 +15,14 @@ app.get('/api/products/:id', (req, res) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}`,
   {headers: {Authorization: TOKEN}})
   .then(({data}) => {
-    console.log(data)
+    res.json(data);
+  })
+})
+
+app.get('/api/products', (req, res) => {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products`,
+  {headers: {Authorization: TOKEN}})
+  .then(({data}) => {
     res.json(data);
   })
   .catch(err => {
@@ -28,7 +35,6 @@ app.get('/api/products/:id/styles', (req, res) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}/styles`,
   {headers: {Authorization: TOKEN}})
   .then(({data}) => {
-    console.log(data)
     res.json(data);
   })
   .catch(err => {
