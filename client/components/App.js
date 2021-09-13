@@ -1,6 +1,6 @@
 
 import React from "react";
-import ProductDetail from './ProductDetail/ProductDetail';
+import ProductDetail from './ProductDetail';
 import axios from 'axios';
 
 class App extends React.Component {
