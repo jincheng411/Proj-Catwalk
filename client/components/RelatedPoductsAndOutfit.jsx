@@ -7,13 +7,13 @@ class RelatedProductsAndOutfits extends React.Component {
     this.state ={
       relatedProducts: [],
       currentProductId: this.props.currentProductId,
-      allProducts: this.props.allProducts
+      allProducts: this.props.products
     }
   }
   componentDidMount() {
     this.setState({
       currentProductId: this.props.currentProductId,
-      allProducts: this.props.allProducts
+      allProducts: this.props.products
     })
   }
 
