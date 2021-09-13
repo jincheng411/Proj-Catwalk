@@ -24,7 +24,7 @@ class App extends React.Component {
     })
     axios.get('/api/products').then(({data}) => {
       this.setState({
-        products: data
+        allProducts: data
       })
     })
   }
@@ -37,6 +37,7 @@ class App extends React.Component {
     //console.log(this.state)
     const { name } = this.props;
     const { currentProduct } = this.state;
+    const {currentProductId} = this.state;
     const {allProducts} = this.state;
     return (
       <>
@@ -45,7 +46,7 @@ class App extends React.Component {
         </h1>
         <ProductDetail currentProduct={currentProduct} />
         <br></br>
-        <RelatedProductsAndOutfits currentProduct={currentProduct} allProducts={allProducts} />
+        <RelatedProductsAndOutfits currentProduct={currentProduct} allProducts={allProducts} currentProductId={currentProductId}/>
       </>
     );
   }
