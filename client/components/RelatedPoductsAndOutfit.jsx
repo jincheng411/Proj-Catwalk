@@ -6,19 +6,19 @@ class RelatedProductsAndOutfits extends React.Component {
     super(props);
     this.state ={
       relatedProducts: [],
-      currentProductId: this.props.currentProductId,
-      allProducts: this.props.products
     }
   }
   componentDidMount() {
-    this.setState({
-      currentProductId: this.props.currentProductId,
-      allProducts: this.props.products
-    })
+    console.log('yeah yup')
   }
 
   getAndSetRelated() {
-    axios.get(`/api/products/${this.state.currentProductId}/related`)
+    if (this.props.currentProductId !== null) {
+      axios.get(`/api/products/${this.props.currentProductId}/related`)
+      .then(({ data }) => {
+        console.log(data)
+      })
+    }
   }
 
   render () {
