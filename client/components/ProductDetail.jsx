@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import ImageGallery from './ProductDetail/ImageGallery';
+import ProductOverview from './ProductDetail/ProductOverview';
+import Description from './ProductDetail/Description';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -13,9 +16,9 @@ class ProductDetail extends React.Component {
       if (this.props.currentProduct) {
         const { id } = this.props.currentProduct
         console.log(id)
-        axios(`/api/products/${id}/styles`).then(({data}) => {
+        axios(`/api/products/${id}/styles`).then(({ data }) => {
           this.setState({
-            styles: data
+            styles: data.results
           })
         })
       }
@@ -23,11 +26,15 @@ class ProductDetail extends React.Component {
   }
   render() {
     const { currentProduct } = this.props;
+    const { styles } = this.state;
     console.log(currentProduct)
     return (
       <div>
-        <p>{currentProduct ? currentProduct.id : 'aaa'}</p>
-      </div>
+        <ImageGallery styles={styles} />
+        <ProductOverview product={currentProduct} />
+        <Description product={currentProduct} />
+        < p > {currentProduct ? currentProduct.id : 'aaa'}</p>
+      </div >
     )
   }
 }
