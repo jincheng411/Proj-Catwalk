@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allProducts: [],
+      products: [],
       currentProduct: {},
       currentProductId: null
     }
@@ -36,8 +36,8 @@ class App extends React.Component {
   render() {
     //console.log(this.state)
     const { name } = this.props;
-    const { currentProduct } = this.state;
-    const {allProducts} = this.state;
+    const {currentProduct, currentProductId, products} = this.state;
+
     return (
       <>
         <h1>
@@ -45,7 +45,7 @@ class App extends React.Component {
         </h1>
         <ProductDetail currentProduct={currentProduct} />
         <br></br>
-        <RelatedProductsAndOutfits currentProduct={currentProduct} allProducts={allProducts} />
+        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId}/>
       </>
     );
   }
