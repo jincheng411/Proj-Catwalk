@@ -3,6 +3,7 @@ import axios from 'axios';
 import ImageGallery from './ProductDetail/ImageGallery';
 import ProductOverview from './ProductDetail/ProductOverview';
 import Description from './ProductDetail/Description';
+import './ProductDetail.css'
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -28,10 +29,12 @@ class ProductDetail extends React.Component {
     const { currentProduct } = this.props;
     const { styles } = this.state;
     return (
-      <div>
-        <ImageGallery styles={styles} />
-        <ProductOverview product={currentProduct} styles={styles}/>
-        <Description product={currentProduct} features={currentProduct.features}/>
+      <div className="product-detail">
+        <div className="product-detail-row">
+          <ImageGallery styles={styles} />
+          <ProductOverview product={currentProduct} styles={styles} />
+        </div>
+        <Description product={currentProduct} features={currentProduct.features} />
       </div >
     )
   }

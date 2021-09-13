@@ -2,7 +2,7 @@ import React from 'react';
 
 function ProductOverview({product, styles}) {
   return (
-    <div>
+    <div className="product-overview">
       <p>{product.category}</p>
       <h2>{product.name}</h2>
       <p>$ {product.default_price}</p>
