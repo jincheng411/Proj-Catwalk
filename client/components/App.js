@@ -1,6 +1,6 @@
 
 import React from "react";
-import ProductDetail from './ProductDetail/ProductDetail';
+import ProductDetail from './ProductDetail';
 import RelatedProductsAndOutfits from './RelatedPoductsAndOutfit.jsx'
 import axios from 'axios';
 
