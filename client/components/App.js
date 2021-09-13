@@ -7,7 +7,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProduct: {}
+      products: [],
+      currentProduct: {},
+      currentProductId: null
     }
   }
 
@@ -15,11 +17,23 @@ class App extends React.Component {
     let productId = '37313';
     axios.get(`/api/products/${productId}`).then(({ data }) => {
       this.setState({
-        currentProduct: data
+        currentProduct: data,
+        currentProductId: data.id
+      })
+    })
+    axios.get('/api/products').then(({data}) => {
+      this.setState({
+        products: data
       })
     })
   }
+
+  setProduct(req) {
+    // well.. this will be more of an event handler. Can pinpoint to a an aleady existing product from our state, rather than continuously 'getting'
+  }
+
   render() {
+    //console.log(this.state)
     const { name } = this.props;
     const { currentProduct } = this.state;
     return (
@@ -34,3 +48,4 @@ class App extends React.Component {
 }
 
 export default App;
+
