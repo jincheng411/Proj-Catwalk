@@ -12,16 +12,12 @@ class App extends React.Component {
       currentProduct: {},
       currentProductId: null
     }
+    this.setProduct = this.setProduct.bind(this)
   }
 
   componentDidMount() {
-    let productId = '37313';
-    axios.get(`/api/products/${productId}`).then(({ data }) => {
-      this.setState({
-        currentProduct: data,
-        currentProductId: data.id
-      })
-    })
+
+    this.setProduct('37313');
     axios.get('/api/products').then(({data}) => {
       this.setState({
         products: data
@@ -29,8 +25,13 @@ class App extends React.Component {
     })
   }
 
-  setProduct(req) {
-    // well.. this will be more of an event handler. Can pinpoint to a an aleady existing product from our state, rather than continuously 'getting'
+  setProduct(productId) {
+    axios.get(`/api/products/${productId}`).then(({ data }) => {
+      this.setState({
+        currentProduct: data,
+        currentProductId: data.id
+      })
+    })
   }
 
   render() {
