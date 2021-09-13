@@ -12,7 +12,7 @@ class ProductDetail extends React.Component {
     }
   }
   componentDidUpdate() {
-    if (this.state.styles.length !== 0) {
+    if (this.state.styles.length === 0) {
       if (this.props.currentProduct) {
         const { id } = this.props.currentProduct
         console.log(id)
@@ -27,13 +27,11 @@ class ProductDetail extends React.Component {
   render() {
     const { currentProduct } = this.props;
     const { styles } = this.state;
-    console.log(currentProduct)
     return (
       <div>
         <ImageGallery styles={styles} />
-        <ProductOverview product={currentProduct} />
-        <Description product={currentProduct} />
-        < p > {currentProduct ? currentProduct.id : 'aaa'}</p>
+        <ProductOverview product={currentProduct} styles={styles}/>
+        <Description product={currentProduct} features={currentProduct.features}/>
       </div >
     )
   }

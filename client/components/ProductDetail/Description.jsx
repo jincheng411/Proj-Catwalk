@@ -1,9 +1,13 @@
 import React from 'react';
 
-function Description() {
+function Description({ product, features }) {
   return (
     <div>
-      description
+      <h4>{product.slogan}</h4>
+      <p>{product.description}</p>
+      {features && features.map((feature) => {
+      return <p>{feature.value}</p>
+    })}
     </div>
   )
 }
