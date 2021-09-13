@@ -10,16 +10,21 @@ class RelatedProductsAndOutfits extends React.Component {
   }
   componentDidMount() {
     console.log('yeah yup')
+    this.getAndSetRelated()
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentProductId !== this.props.currentProductId && this.props.currentProductId !== null) {
+      this.getAndSetRelated()
+    }
   }
 
   getAndSetRelated() {
-    if (this.props.currentProductId !== null) {
       axios.get(`/api/products/${this.props.currentProductId}/related`)
       .then(({ data }) => {
-        console.log(data)
+        console.log('id' , this.props.currentProductId)
+        this.setState({relatedProducts: data})
       })
     }
-  }
 
   render () {
     console.log('PROPS --> ', this.props)
