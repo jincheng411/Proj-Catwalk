@@ -1,13 +1,14 @@
 
 import React from "react";
 import ProductDetail from './ProductDetail/ProductDetail';
+import RelatedProductsAndOutfits from './RelatedPoductsAndOutfit.jsx'
 import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      allProducts: [],
       currentProduct: {},
       currentProductId: null
     }
@@ -36,12 +37,15 @@ class App extends React.Component {
     //console.log(this.state)
     const { name } = this.props;
     const { currentProduct } = this.state;
+    const {allProducts} = this.state;
     return (
       <>
         <h1>
           Hello {name}
         </h1>
         <ProductDetail currentProduct={currentProduct} />
+        <br></br>
+        <RelatedProductsAndOutfits currentProduct={currentProduct} allProducts={allProducts} />
       </>
     );
   }
