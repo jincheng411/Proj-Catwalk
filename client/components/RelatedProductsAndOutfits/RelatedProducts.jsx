@@ -21,8 +21,8 @@ componentDidUpdate(prevProps) {
 }
 setProductsShown() {
   this.setState({
-    productsShown: this.props.relatedProducts.slice(0, 5),
-    hiddenRight: this.props.relatedProducts.slice(5)
+    productsShown: this.props.relatedProducts.slice(0, 4),
+    hiddenRight: this.props.relatedProducts.slice(4)
   })
 }
 
@@ -35,7 +35,7 @@ render() {
     <div className = "related-products-car">
       <h2> Related sub</h2>
       <>
-      {productsShown.map(relatedProduct => <Product relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct}/>)}
+      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
      </>
 
     </div>
