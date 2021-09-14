@@ -47,6 +47,7 @@ console.log(updatedHiddenLeft, updatedHiddenRight)
   alert('No more Related Products')
 }
 }
+
 handleClickLeft() {
   if(this.state.hiddenLeft.length !== 0) {
   var updatedProductsShown = this.state.productsShown;
@@ -54,7 +55,7 @@ handleClickLeft() {
   var updatedHiddenLeft = this.state.hiddenLeft;
   var productToShow = updatedHiddenLeft.pop();
   var updatedHiddenRight = this.state.hiddenRight;
-  updatedHiddenRight.push(productToHide);
+  updatedHiddenRight.unshift(productToHide);
   updatedProductsShown.unshift(productToShow); //? push appends to end. Want it at front
 console.log( updatedProductsShown , productToHide, updatedHiddenLeft, productToShow)
   this.setState({
