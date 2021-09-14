@@ -42,7 +42,7 @@ class ProductDetail extends React.Component {
       <div className="product-detail">
         <div className="product-detail-row">
           <ImageGallery style={currentStyle}/>
-          <ProductOverview product={currentProduct} styles={styles} passToImageGallery={this.passToImageGallery}/>
+          <ProductOverview product={currentProduct} currentStyle={currentStyle} styles={styles} passToImageGallery={this.passToImageGallery}/>
         </div>
         <Description product={currentProduct} features={currentProduct.features} />
       </div >
