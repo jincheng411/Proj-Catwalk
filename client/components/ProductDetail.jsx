@@ -18,7 +18,6 @@ class ProductDetail extends React.Component {
     if (this.state.styles.length === 0) {
       if (this.props.currentProduct) {
         const { id } = this.props.currentProduct
-        console.log(id)
         axios.get(`/api/products/${id}/styles`).then(({ data }) => {
           this.setState({
             styles: data.results,
@@ -42,7 +41,7 @@ class ProductDetail extends React.Component {
       <div className="product-detail">
         <div className="product-detail-row">
           <ImageGallery style={currentStyle}/>
-          <ProductOverview product={currentProduct} styles={styles} passToImageGallery={this.passToImageGallery}/>
+          <ProductOverview product={currentProduct} currentStyle={currentStyle} styles={styles} passToImageGallery={this.passToImageGallery}/>
         </div>
         <Description product={currentProduct} features={currentProduct.features} />
       </div >
