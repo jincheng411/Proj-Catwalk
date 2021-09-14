@@ -31,6 +31,7 @@ class RelatedProductsAndOutfits extends React.Component {
     // console.log('STATE--> ', this.state)
     const {currentProduct, currentProductId, products} = this.props;
     const {relatedProducts} = this.state;
+
     return (
       <div className="related-products">
         <h1 className="related-products-header">Related Products Main Component</h1>
@@ -38,6 +39,7 @@ class RelatedProductsAndOutfits extends React.Component {
       </div>
     )
   }
+
 }
 
 export default RelatedProductsAndOutfits;

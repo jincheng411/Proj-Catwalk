@@ -6,7 +6,6 @@ class Product extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      image: null,
       name: null,
     }
   }
@@ -18,8 +17,7 @@ class Product extends React.Component {
   }
 
   render() {
-    console.log('PRODUCT state', this.props)
-
+    //console.log('PRODUCT state', this.props)
     return (
       <div className='product-card'>
         <h3>{this.state.name}</h3>

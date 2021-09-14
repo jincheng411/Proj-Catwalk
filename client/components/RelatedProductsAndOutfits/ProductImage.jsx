@@ -5,7 +5,6 @@ class ProductImage extends React.Component {
     super(props)
     this.state = {
       image: null,
-      name: null,
     }
   }
   componentDidMount() {
@@ -18,8 +17,6 @@ class ProductImage extends React.Component {
       dataResults.forEach(style => {
         if (style['default?'] === true ) {
           image = style.photos[0].thumbnail_url;
-          //break;
-          // image is no longer null. set state.
         }
         if (image === null) {
           image = style.photos[0].url;
@@ -30,7 +27,7 @@ class ProductImage extends React.Component {
   }
 
   render() {
-    console.log('PRODUCT state', this.props)
+    //console.log('PRODUCT state', this.props)
 
     return (
       <div className='product-card-image-full'>
