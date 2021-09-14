@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import RelatedProducts from './RelatedProductsAndOutfits/RelatedProducts.jsx'
 class RelatedProductsAndOutfits extends React.Component {
   constructor(props) {
     super(props);
@@ -27,11 +27,14 @@ class RelatedProductsAndOutfits extends React.Component {
     }
 
   render () {
-    console.log('PROPS --> ', this.props)
-    console.log('STATE--> ', this.state)
+    // console.log('PROPS --> ', this.props)
+    // console.log('STATE--> ', this.state)
+    const {currentProduct, currentProductId, products} = this.props;
+    const {relatedProducts} = this.state;
     return (
-      <div>
-        <h1>Related Products Main Component</h1>
+      <div className="related-products">
+        <h1 className="related-products-header">Related Products Main Component</h1>
+        <RelatedProducts relatedProducts={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />
       </div>
     )
   }
