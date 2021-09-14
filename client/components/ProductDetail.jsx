@@ -9,8 +9,10 @@ class ProductDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      styles: []
+      styles: [],
+      currentStyle: {}
     }
+    this.passToImageGallery = this.passToImageGallery.bind(this);
   }
   componentDidUpdate() {
     if (this.state.styles.length === 0) {
@@ -19,20 +21,28 @@ class ProductDetail extends React.Component {
         console.log(id)
         axios.get(`/api/products/${id}/styles`).then(({ data }) => {
           this.setState({
-            styles: data.results
+            styles: data.results,
+            currentStyle: data.results[0]
           })
         })
       }
     }
   }
+
+  passToImageGallery(style) {
+    this.setState({
+      currentStyle: style
+    })
+  }
+
   render() {
     const { currentProduct } = this.props;
-    const { styles } = this.state;
+    const { styles, currentStyle } = this.state;
     return (
       <div className="product-detail">
         <div className="product-detail-row">
-          <ImageGallery styles={styles} />
-          <ProductOverview product={currentProduct} styles={styles} />
+          <ImageGallery style={currentStyle}/>
+          <ProductOverview product={currentProduct} styles={styles} passToImageGallery={this.passToImageGallery}/>
         </div>
         <Description product={currentProduct} features={currentProduct.features} />
       </div >

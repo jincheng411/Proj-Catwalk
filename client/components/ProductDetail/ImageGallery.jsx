@@ -1,9 +1,11 @@
 import React from 'react';
 
-function ImageGallery({ styles }) {
+function ImageGallery({ style }) {
+  console.log(style)
+  console.log(style.name)
   return (
     <div className="image-gallery">
-      {styles[0] && <img src={styles[0].photos[0].url}/>}
+      {style.name && <img src={style.photos[0].url}/>}
     </div>
   )
 }
