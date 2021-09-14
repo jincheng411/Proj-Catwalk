@@ -5,10 +5,9 @@ import _ from 'underscore';
 
 
 function ProductOverview({product, styles, passToImageGallery, currentStyle}) {
-  // const [currentStyle, setCurrentStyle] = useState(styles[0]);
 
   function handleChangeStyle(style) {
-    // setCurrentStyle(style);
+
     passToImageGallery(style);
   }
   return (

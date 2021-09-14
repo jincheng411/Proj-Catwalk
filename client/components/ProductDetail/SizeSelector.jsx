@@ -6,8 +6,8 @@ function SizeSelector({ style }) {
     <div className="selector">
       <select>
         <option value="disabled">SIZE</option>
-        {!_.isEmpty(style) && _.map(style.skus, (key, value) => {
-          return <option>{key.size}</option>
+        {!_.isEmpty(style) && _.map(style.skus, (value, key, sku) => {
+          return <option key={key}>{value.size}</option>
         })
         }
       </select>

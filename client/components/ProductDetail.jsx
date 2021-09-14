@@ -18,7 +18,6 @@ class ProductDetail extends React.Component {
     if (this.state.styles.length === 0) {
       if (this.props.currentProduct) {
         const { id } = this.props.currentProduct
-        console.log(id)
         axios.get(`/api/products/${id}/styles`).then(({ data }) => {
           this.setState({
             styles: data.results,

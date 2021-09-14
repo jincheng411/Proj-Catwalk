@@ -7,7 +7,7 @@ function StyleSelector({styles, changeStyle}) {
   return (
     <div className="style-selector">
       {styles && styles.map((style) => {
-        return <p onClick={(()=>{handleOnClick(style)})}>{style.name}</p>
+        return <p key={style.style_id} onClick={(()=>{handleOnClick(style)})}>{style.name}</p>
       })}
     </div>
   )
