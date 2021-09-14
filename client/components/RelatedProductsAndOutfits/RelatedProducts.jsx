@@ -11,16 +11,33 @@ constructor(props) {
     left: false,
     right: true
   }
+  this.setProductsShown = this.setProductsShown.bind(this)
+}
+
+componentDidUpdate(prevProps) {
+  if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
+    this.setProductsShown();
+  }
+}
+setProductsShown() {
+  this.setState({
+    productsShown: this.props.relatedProducts.slice(0, 5),
+    hiddenRight: this.props.relatedProducts.slice(5)
+  })
 }
 
 render() {
   const {currentProduct, currentProductId, products, relatedProducts} = this.props;
+  const {productsShown} = this.state;
 
-  //console.log(this.props)
+  console.log('STATE--> ', this.state, 'PROPS -->', this.props)
   return (
     <div className = "related-products-car">
       <h2> Related sub</h2>
-      <Product relatedProducts={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct}></Product>
+      <>
+      {productsShown.map(relatedProduct => <Product relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct}/>)}
+     </>
+
     </div>
   )
 }
