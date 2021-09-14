@@ -3,6 +3,7 @@ import axios from 'axios';
 import ImageGallery from './ProductDetail/ImageGallery/ImageGallery';
 import ProductOverview from './ProductDetail/ProductOverview/ProductOverview';
 import Description from './ProductDetail/Description/Description';
+import Cart from './ProductDetail/Cart/Cart';
 import './ProductDetail.css'
 
 class ProductDetail extends React.Component {
@@ -21,7 +22,8 @@ class ProductDetail extends React.Component {
         axios.get(`/api/products/${id}/styles`).then(({ data }) => {
           this.setState({
             styles: data.results,
-            currentStyle: data.results[0]
+            currentStyle: data.results[0],
+            cart: []
           })
         })
       }
@@ -34,14 +36,25 @@ class ProductDetail extends React.Component {
     })
   }
 
+  updateBag(data) {
+    console.log(data)
+  }
+
   render() {
     const { currentProduct } = this.props;
     const { styles, currentStyle } = this.state;
     return (
       <div className="product-detail">
         <div className="product-detail-row">
-          <ImageGallery style={currentStyle}/>
-          <ProductOverview product={currentProduct} currentStyle={currentStyle} styles={styles} passToImageGallery={this.passToImageGallery}/>
+          <ImageGallery style={currentStyle} />
+          <ProductOverview
+            product={currentProduct}
+            currentStyle={currentStyle}
+            styles={styles}
+            passToImageGallery={this.passToImageGallery}
+            updateBag={this.updateBag}
+          />
+          <Cart />
         </div>
         <Description product={currentProduct} features={currentProduct.features} />
       </div >

@@ -5,10 +5,13 @@ import PriceTag from './PriceTag';
 import _ from 'underscore';
 
 
-function ProductOverview({product, styles, passToImageGallery, currentStyle}) {
+function ProductOverview({product, styles, passToImageGallery, currentStyle, updateBag}) {
 
   function handleChangeStyle(style) {
     passToImageGallery(style);
+  }
+  function addToBag(data) {
+    updateBag({...data, productName: product.name})
   }
   return (
     <div className="product-overview">
@@ -16,7 +19,7 @@ function ProductOverview({product, styles, passToImageGallery, currentStyle}) {
       <h2>{product.name}</h2>
       <PriceTag defaultPrice={product.default_price} style={currentStyle}/>
       <StyleSelector styles={styles} changeStyle={handleChangeStyle}/>
-      <SizeQuantitySelector style={currentStyle}/>
+      <SizeQuantitySelector style={currentStyle} addToBag={addToBag}/>
     </div>
   )
 }
