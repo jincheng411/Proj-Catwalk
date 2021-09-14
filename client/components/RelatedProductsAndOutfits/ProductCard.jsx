@@ -19,9 +19,9 @@ class Product extends React.Component {
           image = style.photos[0].url;
         }
         this.setState({image: image})
-    })
+       })
     });
-    }
+  }
 
   render() {
     console.log('PRODUCT props', this.state)
