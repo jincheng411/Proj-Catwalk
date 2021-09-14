@@ -55,6 +55,18 @@ app.get('/api/products/:id/related', (req, res) => {
   })
 })
 
+app.get('/api/products/:id/reviews', (req, res) => {
+  const {id} = req.params;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}/reviews`,
+  {headers: {Authorization: TOKEN}})
+  .then(({data}) => {
+    res.json(data);
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
+
 const port = 3456
 app.listen(port, function() {
   console.log(`There's a Party on Port ${port}`);
