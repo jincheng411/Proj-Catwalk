@@ -10,6 +10,7 @@ function SizeSelector({ style, updateInventory }) {
       <select onChange={getInventory} >
         <option value="disabled">SIZE</option>
         {!_.isEmpty(style) && _.map(style.skus, (value, key, sku) => {
+          {console.log(style)}
           return <option key={key} value={[value.size, value.quantity]}>{value.size}</option>
         })
         }
