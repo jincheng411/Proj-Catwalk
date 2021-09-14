@@ -79,8 +79,6 @@ render() {
       <button onClick={this.handleClickRight}>Next</button>
       <button onClick={this.handleClickLeft}>PREV</button>
       {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
-
-
     </div>
   )
 }
