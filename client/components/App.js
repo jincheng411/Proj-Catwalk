@@ -50,7 +50,7 @@ class App extends React.Component {
         </h1>
         <ProductDetail currentProduct={currentProduct} />
         <br></br>
-        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId}/>
+        {/* <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId}/> */}
       </>
     );
   }
