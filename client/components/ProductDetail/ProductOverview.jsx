@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import StyleSelector from './StyleSelector';
-import SizeSelector from './SizeSelector';
+import SizeQuantitySelector from './SizeQuantitySelector';
 import _ from 'underscore';
 
 
@@ -18,7 +18,7 @@ function ProductOverview({product, styles, passToImageGallery, currentStyle}) {
       {!_.isEmpty(currentStyle) ? <p>$ {currentStyle.name}</p> : <p>$ {product.default_price}</p>}
 
       <StyleSelector styles={styles} changeStyle={handleChangeStyle}/>
-      <SizeSelector style={currentStyle}/>
+      <SizeQuantitySelector style={currentStyle}/>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import _ from 'underscore';
 
 function SizeSelector({ style }) {
   return (
-    <div className="size-selector">
+    <div className="selector">
       <select>
         <option value="disabled">SIZE</option>
         {!_.isEmpty(style) && _.map(style.skus, (key, value) => {
