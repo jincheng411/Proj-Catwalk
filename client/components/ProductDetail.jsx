@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import ImageGallery from './ProductDetail/ImageGallery';
-import ProductOverview from './ProductDetail/ProductOverview';
-import Description from './ProductDetail/Description';
+import ImageGallery from './ProductDetail/ImageGallery/ImageGallery';
+import ProductOverview from './ProductDetail/ProductOverview/ProductOverview';
+import Description from './ProductDetail/Description/Description';
 import './ProductDetail.css'
 
 class ProductDetail extends React.Component {
