@@ -12,7 +12,6 @@ function QuantitySelector({ inventory, updateQuantity }) {
   return (
     <div className="selector">
       <select onChange={getQuantity}>
-        {/* <option selected>11</option> */}
         {qArr.map((num) => {
           return <option key={num}>{num}</option>
         })}
