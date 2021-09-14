@@ -4,16 +4,19 @@ import ImageGallery from './ProductDetail/ImageGallery/ImageGallery';
 import ProductOverview from './ProductDetail/ProductOverview/ProductOverview';
 import Description from './ProductDetail/Description/Description';
 import Cart from './ProductDetail/Cart/Cart';
-import './ProductDetail.css'
+import './ProductDetail.css';
+import _ from 'underscore';
 
 class ProductDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       styles: [],
-      currentStyle: {}
+      currentStyle: {},
+      cart: []
     }
     this.passToImageGallery = this.passToImageGallery.bind(this);
+    this.updateBag = this.updateBag.bind(this);
   }
   componentDidUpdate() {
     if (this.state.styles.length === 0) {
@@ -23,7 +26,6 @@ class ProductDetail extends React.Component {
           this.setState({
             styles: data.results,
             currentStyle: data.results[0],
-            cart: []
           })
         })
       }
@@ -37,12 +39,31 @@ class ProductDetail extends React.Component {
   }
 
   updateBag(data) {
-    console.log(data)
+    const { cart } = this.state;
+    const isExist = cart.filter(item => (
+      item.style.style_id === data.style.style_id &&
+      item.size === data.size
+    )).length > 0
+    if (_.isEmpty(cart) || !isExist) {
+      this.setState({
+        cart: cart.concat(data)
+      })
+    } else {
+      const newState = cart.map((item) => {
+        if (item.style.style_id === data.style.style_id && item.size === data.size) {
+          return { ...item, quantity: Number(item.quantity) + Number(data.quantity) }
+        } else {
+          return item;
+        }
+      });
+      this.setState({ cart: newState });
+    }
   }
+
 
   render() {
     const { currentProduct } = this.props;
-    const { styles, currentStyle } = this.state;
+    const { styles, currentStyle, cart } = this.state;
     return (
       <div className="product-detail">
         <div className="product-detail-row">
@@ -54,7 +75,7 @@ class ProductDetail extends React.Component {
             passToImageGallery={this.passToImageGallery}
             updateBag={this.updateBag}
           />
-          <Cart />
+          <Cart items={cart}/>
         </div>
         <Description product={currentProduct} features={currentProduct.features} />
       </div >
