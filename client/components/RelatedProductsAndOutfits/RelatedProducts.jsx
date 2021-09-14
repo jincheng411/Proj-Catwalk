@@ -13,6 +13,7 @@ constructor(props) {
   }
   this.setProductsShown = this.setProductsShown.bind(this)
   this.handleClickRight = this.handleClickRight.bind(this)
+  this.handleClickLeft = this.handleClickLeft.bind(this)
 }
 
 componentDidUpdate(prevProps) {
@@ -46,6 +47,25 @@ console.log(updatedHiddenLeft, updatedHiddenRight)
   alert('No more Related Products')
 }
 }
+handleClickLeft() {
+  if(this.state.hiddenLeft.length !== 0) {
+  var updatedProductsShown = this.state.productsShown;
+  var productToHide = updatedProductsShown.pop();
+  var updatedHiddenLeft = this.state.hiddenLeft;
+  var productToShow = updatedHiddenLeft.pop();
+  var updatedHiddenRight = this.state.hiddenRight;
+  updatedHiddenRight.push(productToHide);
+  updatedProductsShown.unshift(productToShow); //? push appends to end. Want it at front
+console.log( updatedProductsShown , productToHide, updatedHiddenLeft, productToShow)
+  this.setState({
+    productsShown: updatedProductsShown,
+    hiddenLeft: updatedHiddenLeft,
+    hiddenRight: updatedHiddenRight
+  })
+} else {
+  alert('No more Related Products')
+}
+}
 
 render() {
   const {currentProduct, currentProductId, products, relatedProducts} = this.props;
@@ -56,6 +76,7 @@ render() {
     <div className = "related-products-car">
       <h2> Related sub</h2>
       <button onClick={this.handleClickRight}>Next</button>
+      <button onClick={this.handleClickLeft}>PREV</button>
       {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
 
 
