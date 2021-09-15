@@ -4,14 +4,16 @@ import MainImg from './MainImg';
 import './ImageGallery.css'
 
 function ImageGallery({ style }) {
-  console.log(style.photos)
   const [currImg, setCurrImg] = useState(null);
+
+  function changeCurrImg(url) {
+    setCurrImg(url)
+  }
 
   return (
     <div className="image-gallery">
-      {/* {style.name && <img src={style.photos[0].url} />} */}
-      <MainImg img={currImg} defaultImg={style.name ? style.photos[0].url : ''}/>
-      <ThumbnailList list={style.photos}/>
+      <MainImg currImg={currImg} defaultImg={style.name ? style.photos[0].url : ''}/>
+      <ThumbnailList list={style.photos} changeCurrImg={changeCurrImg}/>
     </div>
   )
 }

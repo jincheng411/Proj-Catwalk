@@ -1,9 +1,10 @@
 import React from 'react';
 
-function MainImg({img, defaultImg}) {
+function MainImg({currImg, defaultImg}) {
   return (
     <div className="product-detail-main-img">
-      <img src={defaultImg} />}
+      <img src={currImg || defaultImg} />
+
     </div>
   )
 }
