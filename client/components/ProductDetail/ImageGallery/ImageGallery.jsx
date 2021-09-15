@@ -8,20 +8,20 @@ function ImageGallery({ style }) {
   const [imgIndex, setImgIndex] = useState(0);
 
   function changeCurrImg(index) {
-    setCurrImg(style.photos[index].url);
+    setImgIndex(index);
   }
 
   function changeIndex(num) {
-    setImgIndex(imgIndex + num);
+    const length = style.photos.length;
+    setImgIndex((imgIndex + num + length) % length);
   }
 
   return (
     <div className="image-gallery">
-      <MainImg currImg={currImg} defaultImg={style.name ? style.photos[0].url : ''}/>
+      <MainImg index={imgIndex} style={style} currImg={currImg} defaultImg={style.name ? style.photos[0].url : ''}/>
       <ThumbnailList list={style.photos} changeCurrImg={changeCurrImg}/>
       <button onClick={()=>changeIndex(-1)}>&lt; </button>
       <button onClick={()=>changeIndex(1)}>&gt; </button>
-      {/* <btn>></btn> */}
     </div>
   )
 }

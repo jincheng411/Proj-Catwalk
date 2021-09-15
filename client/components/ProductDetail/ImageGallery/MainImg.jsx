@@ -1,10 +1,9 @@
 import React from 'react';
 
-function MainImg({currImg, defaultImg}) {
+function MainImg({index, style}) {
   return (
     <div className="product-detail-main-img">
-      <img src={currImg || defaultImg} />
-
+      <img src={style.name? style.photos[index].url : ''} />
     </div>
   )
 }
