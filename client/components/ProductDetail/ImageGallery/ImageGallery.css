@@ -1,0 +1,10 @@
+.thumbnail-list>img{
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+}
+
+.product-detail-main-img>img{
+  width: 400px;
+  object-fit: cover;
+}

@@ -9,11 +9,3 @@
 .product-overview {
   margin-left: 20px;
 }
-.image-gallery {
-
-
-}
-.image-gallery>img{
-  width: 400px;
-  object-fit: cover;
-}
