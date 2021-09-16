@@ -19,7 +19,7 @@ function ProductOverview({product, styles, passToImageGallery, currentStyle, upd
       <h2>{product.name}</h2>
       <p>{currentStyle.name}</p>
       <PriceTag defaultPrice={product.default_price} style={currentStyle}/>
-      <StyleSelector styles={styles} changeStyle={handleChangeStyle}/>
+      <StyleSelector styles={styles} currentStyleId={currentStyle.style_id} changeStyle={handleChangeStyle}/>
       <SizeQuantitySelector style={currentStyle} addToBag={addToBag}/>
     </div>
   )

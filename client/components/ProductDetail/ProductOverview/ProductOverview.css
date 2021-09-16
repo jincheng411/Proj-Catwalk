@@ -2,6 +2,7 @@
   font-size: 2.5em;
   font-weight: 400;
   font-style: oblique;
+  margin-bottom: 7px;
 }
 
 .product-overview > p {
@@ -28,5 +29,43 @@
   color: #6d8194;
   font-weight: 300;
   text-decoration: line-through;
+}
+
+.style-selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.style-selector span {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 10px 0px;
+}
+
+.style-selector img {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.style-selector img:hover {
+  border: 2px black solid;
+  margin: -2px;
+  margin-right: 8px;
+}
+
+.style-selector .selected {
+  border: 2px black solid;
+  margin: -2px;
+  margin-right: 8px;
+  border-bottom: 5px solid black;
+  margin-bottom: -5px;
 }
 /*# sourceMappingURL=ProductOverview.css.map */
