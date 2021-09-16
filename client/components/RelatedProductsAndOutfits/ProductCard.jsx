@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import ProductImage from './ProductImage.jsx';
+import StarRating from "./StarRating.jsx";
 
 class Product extends React.Component {
   constructor(props) {
@@ -22,6 +23,19 @@ class Product extends React.Component {
       price: data.data.default_price
     })
     })
+    .catch(err => {
+      console.log(err)
+    })
+   this.getRatings();
+  }
+  getRatings() {
+    axios.get(`/api/reviews/${this.props.relatedProduct}`)
+    .then(data => {
+      console.log('RATINGS DATA --> ', data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 /**
  * Product Category
@@ -38,6 +52,7 @@ Star Rating (# of Reviews)
         <h3>{name}</h3>
         <p>{category}</p>
         <p>{price}</p>
+        <StarRating/>
         <ProductImage relatedProduct={this.props.relatedProduct}/>
       </div>
     )
