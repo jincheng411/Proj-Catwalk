@@ -60,24 +60,25 @@ class ProductDetail extends React.Component {
     }
   }
 
-
   render() {
     const { currentProduct } = this.props;
     const { styles, currentStyle, cart } = this.state;
     return (
       <div className="product-detail">
-        <div className="product-detail-row">
+        <div className="product-detail-col">
           <ImageGallery style={currentStyle} />
-          <ProductOverview
-            product={currentProduct}
-            currentStyle={currentStyle}
-            styles={styles}
-            passToImageGallery={this.passToImageGallery}
-            updateBag={this.updateBag}
-          />
-          <Cart items={cart}/>
+          <Description product={currentProduct} features={currentProduct.features} />
+          {/* <Cart items={cart}/> */}
         </div>
-        <Description product={currentProduct} features={currentProduct.features} />
+
+        <ProductOverview
+          product={currentProduct}
+          currentStyle={currentStyle}
+          styles={styles}
+          passToImageGallery={this.passToImageGallery}
+          updateBag={this.updateBag}
+        />
+
       </div >
     )
   }
