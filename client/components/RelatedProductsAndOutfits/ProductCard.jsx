@@ -16,7 +16,6 @@ class Product extends React.Component {
   componentDidMount() {
     axios.get(`/api/products/${this.props.relatedProduct}`)
     .then(data => {
-     // console.log('DATA-> ', data)
       this.setState({
       name: data.data.name,
       category: data.data.category,
@@ -38,7 +37,6 @@ class Product extends React.Component {
   getRatings() {
     axios.get(`/api/reviews/${this.props.relatedProduct}`)
     .then(data => {
-      console.log(data)
       if (data.data.results.length === 0) {
         this.setState({rating: 100})
       } else {
@@ -61,8 +59,6 @@ Star Rating (# of Reviews)
  */
   render() {
     const {name, category, price, rating} = this.state;
-    //console.log('!!!!!!!!!!!!!!!!!', this.props)
-
       return (
         <div className='product-card'>
         <h3>{name}</h3>

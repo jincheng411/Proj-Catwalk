@@ -17,11 +17,6 @@ constructor(props) {
   this.hideComponent = this.hideComponent.bind(this)
   this.handleShownButtons = this.handleShownButtons.bind(this)
 }
-// componentDidMount() {
-//   if(this.state.hiddenRight.length === 0) {
-//     this.setState({right: false})
-//   }
-// }
 
 componentDidUpdate(prevProps) {
   if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
@@ -74,7 +69,6 @@ handleClickRight() {
   var updatedHiddenLeft = this.state.hiddenLeft;
   updatedHiddenLeft.push(productToHide);
   updatedProductsShown.push(productToShow);
-console.log(updatedHiddenLeft, updatedHiddenRight)
   this.setState({
     productsShown: updatedProductsShown,
     hiddenLeft: updatedHiddenLeft,
@@ -91,8 +85,7 @@ handleClickLeft() {
   var productToShow = updatedHiddenLeft.pop();
   var updatedHiddenRight = this.state.hiddenRight;
   updatedHiddenRight.unshift(productToHide);
-  updatedProductsShown.unshift(productToShow); //? push appends to end. Want it at front
-console.log( updatedProductsShown , productToHide, updatedHiddenLeft, productToShow)
+  updatedProductsShown.unshift(productToShow);
   this.setState({
     productsShown: updatedProductsShown,
     hiddenLeft: updatedHiddenLeft,
@@ -105,8 +98,7 @@ console.log( updatedProductsShown , productToHide, updatedHiddenLeft, productToS
 render() {
   const {currentProduct, currentProductId, products, relatedProducts} = this.props;
   const {productsShown, left, right} = this.state;
-
-  console.log('STATE--> ', this.state, 'PROPS -->', this.props)
+  console.log('STATE---> ', this.state, 'PROPS --->', this.props)
   if (!left && right) {
     return (
       <div className = "related-products-car">

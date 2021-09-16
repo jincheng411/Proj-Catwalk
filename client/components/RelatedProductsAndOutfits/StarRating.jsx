@@ -1,6 +1,6 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
-import ProductCard from './ProductCard.jsx';
+
 
 class StarRating extends React.Component {
   constructor(props) {
