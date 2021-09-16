@@ -4,6 +4,11 @@ $grey: #6d8194;
   margin: -2px;
   margin-right: 8px;
 }
+@mixin subtitle {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 10px 0px;
+}
 .product-overview > h2 {
   font-size: 2.5em;
   font-weight: 400;
@@ -44,9 +49,7 @@ $grey: #6d8194;
   display: flex;
   flex-direction: column;
   span {
-    font-size: 1.2em;
-    font-weight: 600;
-    margin: 10px 0px;
+    @include subtitle;
   }
   img {
     width: 70px;
@@ -58,7 +61,7 @@ $grey: #6d8194;
       @include selected;
     }
   }
-  .selected{
+  .selected {
     @include selected;
     border-bottom: 5px solid black;
     margin-bottom: -5px;
@@ -67,25 +70,49 @@ $grey: #6d8194;
 
 .size-selector {
   display: flex;
-  span{
-    border: 2px solid $grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 55px;
-    margin: 16px 3px;
-    margin-left: 0;
-    border-radius: 4px;
-    cursor: pointer;
-    box-sizing: border-box;
-    // margin: -3px;
-    &:hover{
-      border: 3px solid black;
-      // margin: -3px;
+  flex-direction: column;
+  p{
+    @include subtitle;
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
+  div {
+    &:first-child{
+      display: flex;
+      justify-content: space-between;
+      p{
+        &:last-child{
+          color: $grey;
+          text-align: end;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
     }
   }
-  .selected{
+  div {
+    display: flex;
+    flex-direction: row;
+    span {
+      border: 2px solid $grey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 55px;
+      margin: 16px 3px;
+      margin-left: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      box-sizing: border-box;
+      &:hover {
+        border: 3px solid black;
+        // margin: -3px;
+      }
+    }
+  }
+
+  .selected {
     border: 3px solid black;
   }
 }
