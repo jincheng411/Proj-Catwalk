@@ -54,7 +54,6 @@ $grey: #6d8194;
     margin-right: 10px;
     cursor: pointer;
     border-radius: 4px;
-    // box-sizing: border-box;
     &:hover {
       @include selected;
     }
@@ -63,5 +62,30 @@ $grey: #6d8194;
     @include selected;
     border-bottom: 5px solid black;
     margin-bottom: -5px;
+  }
+}
+
+.size-selector {
+  display: flex;
+  span{
+    border: 2px solid $grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 55px;
+    margin: 16px 3px;
+    margin-left: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    // margin: -3px;
+    &:hover{
+      border: 3px solid black;
+      // margin: -3px;
+    }
+  }
+  .selected{
+    border: 3px solid black;
   }
 }

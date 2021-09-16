@@ -7,9 +7,9 @@ function SizeQuantitySelector({ style, addToBag }) {
   const [inventory, setInventory] = useState(1);
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
-  function updateInventory(num) {
-    setInventory(num);
-    setSize(num);
+  function updateInventory(inventory, size) {
+    setInventory(inventory);
+    setSize(size);
 
   }
   function updateQuantity(num) {
