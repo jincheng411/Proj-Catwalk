@@ -6,7 +6,7 @@ function Description({ product, features }) {
       <h4>{product.slogan}</h4>
       <p>{product.description}</p>
       {features && features.map((feature) => {
-      return <p>{feature.value}</p>
+      return <p key={feature.value}>{feature.value}</p>
     })}
     </div>
   )

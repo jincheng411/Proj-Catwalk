@@ -1,38 +1,81 @@
 import React from 'react';
 import axios from 'axios';
-import ImageGallery from './ProductDetail/ImageGallery';
-import ProductOverview from './ProductDetail/ProductOverview';
-import Description from './ProductDetail/Description';
-import './ProductDetail.css'
+import ImageGallery from './ProductDetail/ImageGallery/ImageGallery';
+import ProductOverview from './ProductDetail/ProductOverview/ProductOverview';
+import Description from './ProductDetail/Description/Description';
+import Cart from './ProductDetail/Cart/Cart';
+import './ProductDetail.css';
+import _ from 'underscore';
 
 class ProductDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      styles: []
+      styles: [],
+      currentStyle: {},
+      cart: []
     }
+    this.passToImageGallery = this.passToImageGallery.bind(this);
+    this.updateBag = this.updateBag.bind(this);
   }
   componentDidUpdate() {
     if (this.state.styles.length === 0) {
       if (this.props.currentProduct) {
         const { id } = this.props.currentProduct
-        console.log(id)
-        axios(`/api/products/${id}/styles`).then(({ data }) => {
+        axios.get(`/api/products/${id}/styles`).then(({ data }) => {
           this.setState({
-            styles: data.results
+            styles: data.results,
+            currentStyle: data.results[0],
           })
         })
       }
     }
   }
+
+  passToImageGallery(style) {
+    this.setState({
+      currentStyle: style
+    })
+  }
+
+  updateBag(data) {
+    const { cart } = this.state;
+    const isExist = cart.filter(item => (
+      item.style.style_id === data.style.style_id &&
+      item.size === data.size
+    )).length > 0
+    if (_.isEmpty(cart) || !isExist) {
+      this.setState({
+        cart: cart.concat(data)
+      })
+    } else {
+      const newState = cart.map((item) => {
+        if (item.style.style_id === data.style.style_id && item.size === data.size) {
+          return { ...item, quantity: Number(item.quantity) + Number(data.quantity) }
+        } else {
+          return item;
+        }
+      });
+      this.setState({ cart: newState });
+    }
+  }
+
+
   render() {
     const { currentProduct } = this.props;
-    const { styles } = this.state;
+    const { styles, currentStyle, cart } = this.state;
     return (
       <div className="product-detail">
         <div className="product-detail-row">
-          <ImageGallery styles={styles} />
-          <ProductOverview product={currentProduct} styles={styles} />
+          <ImageGallery style={currentStyle} />
+          <ProductOverview
+            product={currentProduct}
+            currentStyle={currentStyle}
+            styles={styles}
+            passToImageGallery={this.passToImageGallery}
+            updateBag={this.updateBag}
+          />
+          <Cart items={cart}/>
         </div>
         <Description product={currentProduct} features={currentProduct.features} />
       </div >

@@ -12,41 +12,45 @@ class App extends React.Component {
       currentProduct: {},
       currentProductId: null
     }
-    this.setProduct = this.setProduct.bind(this)
+    // this.setProduct = this.setProduct.bind(this)
   }
 
   componentDidMount() {
-
-    this.setProduct('37313');
-    axios.get('/api/products').then(({data}) => {
-      this.setState({
-        products: data
+    const productId = '37313';
+    axios.get('/api/products').then((products) => {
+      axios.get(`/api/products/${productId}`).then(( product ) => {
+        this.setState({
+          currentProduct: product.data,
+          currentProductId: product.data.id,
+          products: products.data
+        })
       })
     })
+
   }
 
-  setProduct(productId) {
-    axios.get(`/api/products/${productId}`).then(({ data }) => {
-      this.setState({
-        currentProduct: data,
-        currentProductId: data.id
-      })
-    })
-  }
+  // setProduct(productId) {
+  //   axios.get(`/api/products/${productId}`).then(({ data }) => {
+  //     this.setState({
+  //       currentProduct: data,
+  //       currentProductId: data.id
+  //     })
+  //   })
+  // }
 
   render() {
     //console.log(this.state)
     const { name } = this.props;
-    const {currentProduct, currentProductId, products} = this.state;
+    const { currentProduct, currentProductId, products } = this.state;
 
     return (
       <>
         <h1>
           Hello {name}
         </h1>
-        {/* <ProductDetail currentProduct={currentProduct} /> */}
+        <ProductDetail currentProduct={currentProduct} />
         <br></br>
-        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId}/>
+        {/* <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId}/> */}
       </>
     );
   }
