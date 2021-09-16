@@ -1,5 +1,37 @@
+$grey: #6d8194;
+
 .product-overview>h2 {
   font-size: 2.5em;
   font-weight: 400;
   font-style: oblique;
 }
+
+.product-overview>p {
+  color: $grey;
+}
+// .onsale-tag {
+//   text-decoration: line-through;
+// }
+// .sale-price-tag {
+//   color: red;
+// }
+
+.product-overview-price-tag {
+  font-weight: 800;
+  font-size: 1.3em;
+}
+.on-sale {
+  display: flex;
+  div{
+    &:first-child {
+      color: red;
+    }
+    &:last-child {
+      margin-left: 10px;
+      color: $grey;
+      font-weight: 300;
+      text-decoration: line-through;
+    }
+  }
+}
+

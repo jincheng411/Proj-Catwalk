@@ -3,4 +3,30 @@
   font-weight: 400;
   font-style: oblique;
 }
+
+.product-overview > p {
+  color: #6d8194;
+}
+
+.product-overview-price-tag {
+  font-weight: 800;
+  font-size: 1.3em;
+}
+
+.on-sale {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.on-sale div:first-child {
+  color: red;
+}
+
+.on-sale div:last-child {
+  margin-left: 10px;
+  color: #6d8194;
+  font-weight: 300;
+  text-decoration: line-through;
+}
 /*# sourceMappingURL=ProductOverview.css.map */
