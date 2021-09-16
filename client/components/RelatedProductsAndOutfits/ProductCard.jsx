@@ -10,7 +10,7 @@ class Product extends React.Component {
       name: null,
       category: null,
       price: null,
-      rating: null
+      rating: 0
     }
   }
   componentDidMount() {
@@ -20,42 +20,59 @@ class Product extends React.Component {
       this.setState({
       name: data.data.name,
       category: data.data.category,
-      price: data.data.default_price
+      price: data.data.default_price,
+      rating: 0
     })
+    this.getRatings();
     })
     .catch(err => {
       console.log(err)
     })
-   this.getRatings();
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
+      this.getRatings();
+    }
+  }
+
   getRatings() {
     axios.get(`/api/reviews/${this.props.relatedProduct}`)
     .then(data => {
-      console.log('RATINGS DATA --> ', data)
+      console.log(data)
+      if (data.data.results.length === 0) {
+        this.setState({rating: 100})
+      } else {
+
+        this.setState({rating: data.data.results[0].rating})
+      }
     })
     .catch(err => {
       console.log(err)
     })
   }
-/**
- * Product Category
-Product Name
-Price -
+
+    /**
+     * Product Category
+     Product Name
+     Price -
 Star Rating (# of Reviews)
 
 
  */
   render() {
     const {name, category, price, rating} = this.state;
-    return (
-      <div className='product-card'>
+    //console.log('!!!!!!!!!!!!!!!!!', this.props)
+
+      return (
+        <div className='product-card'>
         <h3>{name}</h3>
         <p>{category}</p>
         <p>{price}</p>
-        <StarRating/>
+        <StarRating rating={rating} />
         <ProductImage relatedProduct={this.props.relatedProduct}/>
       </div>
     )
-  }
 }
+}
+
 export default Product;
