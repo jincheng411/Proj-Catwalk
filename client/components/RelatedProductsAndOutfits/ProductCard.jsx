@@ -48,15 +48,6 @@ class Product extends React.Component {
       console.log(err)
     })
   }
-
-    /**
-     * Product Category
-     Product Name
-     Price -
-Star Rating (# of Reviews)
-
-
- */
   render() {
     const {name, category, price, rating} = this.state;
       return (

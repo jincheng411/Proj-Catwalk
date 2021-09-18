@@ -25,10 +25,21 @@ componentDidUpdate(prevProps) {
 }
 
 setProductsShown() {
-  this.setState({
-    productsShown: this.props.relatedProducts.slice(0, 4),
-    hiddenRight: this.props.relatedProducts.slice(4)
-  })
+  if (this.props.relatedProducts.slice(4).length >= 1) {
+    console.log(1)
+    this.setState({
+      productsShown: this.props.relatedProducts.slice(0, 4),
+      hiddenRight: this.props.relatedProducts.slice(4),
+      right: true
+    })
+  } else {
+    console.log(2)
+    this.setState({
+      productsShown: this.props.relatedProducts.slice(0, 4),
+      right: false
+    })
+  }
+
 }
 
 hideComponent(hidden) {

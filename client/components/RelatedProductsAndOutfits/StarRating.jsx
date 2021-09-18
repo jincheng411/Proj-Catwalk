@@ -14,7 +14,6 @@ class StarRating extends React.Component {
     });
   }
   render() {
-    console.log(this.props)
     if (this.props.rating === 100) {
       return (
         <p>No Reviews</p>
