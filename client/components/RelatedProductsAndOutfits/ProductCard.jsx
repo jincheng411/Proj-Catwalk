@@ -59,6 +59,19 @@ class Product extends React.Component {
   }
   render() {
     const {name, category, price, rating} = this.state;
+    const {relatedProduct, inOutfitList, removeOutfit} = this.props
+    if(inOutfitList) {
+      return (
+        <div className='product-card'>
+        <h3>{name}</h3>
+        <p>{category}</p>
+        <p>{price}</p>
+        <StarRating rating={rating} />
+        <button onClick={removeOutfit}>X</button>
+        <ProductImage relatedProduct={relatedProduct}/>
+      </div>
+    )
+    } else {
       return (
         <div className='product-card'>
         <h3>{name}</h3>
@@ -66,9 +79,10 @@ class Product extends React.Component {
         <p>{price}</p>
         <StarRating rating={rating} />
         <button onClick={this.addRelatedProductToOutfit}>Star</button>
-        <ProductImage relatedProduct={this.props.relatedProduct}/>
+        <ProductImage relatedProduct={relatedProduct}/>
       </div>
     )
+  }
 }
 }
 

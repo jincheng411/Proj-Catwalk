@@ -136,11 +136,11 @@ class RelatedProductsAndOutfits extends React.Component {
       <div className="related-products">
         <h1 className="related-products-header">Related Products Main Component</h1>
 
-        <RelatedProducts relatedProducts={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={this.addOutfit} />
+        <RelatedProducts inOutfitList={currentInOutfitList} relatedProducts={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={this.addOutfit} />
         <p></p>
         </div>
         <div className="outfit-main">
-        <OutfitList removeOutfit={this.removeOutfit} yourOutfitList={yourOutfitList} currentInOutfitList={currentInOutfitList}/>
+        <OutfitList inOutfitList={currentInOutfitList} removeOutfit={this.removeOutfit} yourOutfitList={yourOutfitList} currentInOutfitList={currentInOutfitList}/>
         </div>
       </div>
     )
