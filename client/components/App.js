@@ -12,7 +12,7 @@ class App extends React.Component {
       currentProduct: {},
       currentProductId: null
     }
-    // this.setProduct = this.setProduct.bind(this)
+    this.handleRelatedProductsClick = this.handleRelatedProductsClick.bind(this)
   }
 
   componentDidMount() {
@@ -26,7 +26,6 @@ class App extends React.Component {
         })
       })
     })
-
   }
 
   // setProduct(productId) {
@@ -37,6 +36,15 @@ class App extends React.Component {
   //     })
   //   })
   // }
+  handleRelatedProductsClick(id) {
+    axios.get(`/api/products/${id}`)
+    .then(product => {
+      this.setState({
+        currentProduct: product,
+        currentProductId: product.id
+      });
+    })
+  }
 
   render() {
     //console.log(this.state)

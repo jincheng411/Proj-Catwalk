@@ -107,7 +107,7 @@ handleClickLeft() {
 
 
 render() {
-  const {currentProduct, currentProductId, products, relatedProducts} = this.props;
+  const {currentProduct, currentProductId, products, relatedProducts, addOutfit} = this.props;
   const {productsShown, left, right} = this.state;
   console.log('STATE---> ', this.state, 'PROPS --->', this.props)
   if (!left && right) {
@@ -115,7 +115,7 @@ render() {
       <div className = "related-products-car">
       <h2> Related sub</h2>
       <button onClick={this.handleClickRight}>Next</button>
-      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit}/>)}
     </div>
   )}
   if (left && right) {
@@ -124,7 +124,7 @@ render() {
       <h2> Related sub</h2>
       <button onClick={this.handleClickRight}>Next</button>
       <button onClick={this.handleClickLeft}>PREV</button>
-      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit}/>)}
     </div>
   )}
 if (left && !right) {
@@ -132,14 +132,14 @@ if (left && !right) {
     <div className = "related-products-car">
     <h2> Related sub</h2>
     <button onClick={this.handleClickLeft}>PREV</button>
-    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit}/>)}
   </div>
 )}
 if (!left && !right) {
   return (
     <div className = "related-products-car">
     <h2> Related sub</h2>
-    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit}/>)}
   </div>
 )}
 }}

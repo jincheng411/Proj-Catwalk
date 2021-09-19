@@ -56,6 +56,7 @@ class Product extends React.Component {
         <p>{category}</p>
         <p>{price}</p>
         <StarRating rating={rating} />
+        <button onClick={this.props.addOutfit}>Star</button>
         <ProductImage relatedProduct={this.props.relatedProduct}/>
       </div>
     )
