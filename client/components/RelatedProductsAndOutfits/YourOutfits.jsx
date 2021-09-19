@@ -1,5 +1,5 @@
 import React from "react";
-
+import Product from "./ProductCard";
 class OutfitList extends React.Component {
   constructor(props) {
     super(props);
@@ -18,23 +18,23 @@ class OutfitList extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
+    if (prevProps.yourOutfitList !== this.props.yourOutfitList && this.props.yourOutfitList.name !== 'Error') {
       this.setProductsShown();
     }
   }
 
   setProductsShown() {
-    if (this.props.relatedProducts.slice(4).length >= 1) {
+    if (this.props.yourOutfitList.slice(4).length >= 1) {
       console.log(1)
       this.setState({
-        productsShown: this.props.relatedProducts.slice(0, 4),
-        hiddenRight: this.props.relatedProducts.slice(4),
+        productsShown: this.props.yourOutfitList.slice(0, 4),
+        hiddenRight: this.props.yourOutfitList.slice(4),
         right: true
       })
     } else {
       console.log(2)
       this.setState({
-        productsShown: this.props.relatedProducts.slice(0, 4),
+        productsShown: this.props.yourOutfitList.slice(0, 4),
         right: false
       })
     }
@@ -59,6 +59,7 @@ class OutfitList extends React.Component {
           null;
     }
   }
+
   handleShownButtons() {
     if(this.state.hiddenRight.length !== 0 && this.state.hiddenLeft.length === 0) {
       this.hideComponent('leftBtnHidden')
@@ -88,7 +89,6 @@ class OutfitList extends React.Component {
   }
 
   handleClickLeft() {
-
     var updatedProductsShown = this.state.productsShown;
     var productToHide = updatedProductsShown.pop();
     var updatedHiddenLeft = this.state.hiddenLeft;
@@ -104,41 +104,41 @@ class OutfitList extends React.Component {
     this.handleShownButtons();
   }
 
-
+// pass to product card because it is set up the same exact way, except for the action button. Need a way to differentiate.
   render() {
-    const {currentProduct, currentProductId, products, relatedProducts} = this.props;
+    const {currentProduct, currentProductId, products} = this.props;
     const {productsShown, left, right} = this.state;
-    console.log('STATE---> ', this.state, 'PROPS --->', this.props)
+    // console.log('STATE---> ', this.state, 'PROPS --->', this.props)
     if (!left && right) {
       return (
         <div className = "related-products-car">
-        <h2> Related sub</h2>
+        <h2> Your Outfits</h2>
         <button onClick={this.handleClickRight}>Next</button>
-        {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+        {productsShown.map(outfitId => <Product key={outfitId} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
       </div>
     )}
     if (left && right) {
       return (
         <div className = "related-products-car">
-        <h2> Related sub</h2>
+        <h2> Your Outfits</h2>
         <button onClick={this.handleClickRight}>Next</button>
         <button onClick={this.handleClickLeft}>PREV</button>
-        {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+        {productsShown.map(outfitId => <Product key={outfitId} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
       </div>
     )}
   if (left && !right) {
     return (
       <div className = "related-products-car">
-      <h2> Related sub</h2>
+      <h2> Your Outfits</h2>
       <button onClick={this.handleClickLeft}>PREV</button>
-      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+      {productsShown.map(outfitId => <Product key={outfitId} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
     </div>
   )}
   if (!left && !right) {
     return (
       <div className = "related-products-car">
-      <h2> Related sub</h2>
-      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+      <h2> Your Outfits</h2>
+      {productsShown.map(outfitId => <Product key={outfitId} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
     </div>
   )}
   }}

@@ -22,8 +22,22 @@ class RelatedProductsAndOutfits extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.currentProductId !== this.props.currentProductId && this.props.currentProductId !== null) {
       this.getAndSetRelated()
+      if (sessionStorage.getItem('yourOutfits') !== null) {
+        console.log('!!!!!!', sessionStorage.getItem('yourOutfits'))
+        var storageIds = sessionStorage.getItem('yourOutfits')
+        var outfitListStr = storageIds.split(',')
+        var finalOutfitList = []
+        outfitListStr.forEach(str => {
+          var numVal = parseInt(str)
+            finalOutfitList.push(numVal)
+        })
+        console.log(finalOutfitList)
+        this.setState({
+          yourOutfitList: finalOutfitList
+        })
+      }
+      console.log(sessionStorage)
     }
-    console.log(sessionStorage)
   }
 
   getAndSetRelated() {
@@ -57,21 +71,43 @@ class RelatedProductsAndOutfits extends React.Component {
   }
   // Add and remove Oufit to List functions. Apply these functions to button
   //? In outfit component, handle carasaul and indiv outift item like product card.
-  addOutfit() {
-    var toAddToOutfitStorage = this.props.currentProductId
-    var outfitList = this.state.yourOutfitList
-    if (this.state.yourOutfitList.indexOf(this.props.currentProductId) === -1) {
-      outfitList.unshift(toAddToOutfitStorage);
-      this.setState({
-        yourOutfitList: outfitList,
-        currentInOutfitList: true
-      });
-    sessionStorage.setItem('yourOutfits', toAddToOutfitStorage);
-    // SETTING AN ID
+  addOutfit(id) {
+    //HANDLES ONLY THE CURRENT OUTFIT ADD
+    if (id) {
+      //! HANDLES WHATS CLICKED IN PRODUCT CARD
+      console.log(200)
+      console.log('!!!!!!!', id)
+      var toAddToOutfitStorage = id;
+      var outfitList = this.state.yourOutfitList
+      if (this.state.yourOutfitList.indexOf(id) === -1) {
+        outfitList.unshift(toAddToOutfitStorage);
+        this.setState({
+          yourOutfitList: outfitList,
+          currentInOutfitList: true
+        });
+      sessionStorage.setItem(`yourOutfits`, outfitList);
+      // SETTING AN ID
+      } else {
+        console.log('Product Already In your Outfits')
+      }
+      console.log('Updated Storage--> ', sessionStorage)
     } else {
-      console.log('Product Already In your Outfits')
+      //! HANDLES CURRENT PRODUCT
+      console.log(100)
+      var toAddToOutfitStorage = this.props.currentProductId
+      var outfitList = this.state.yourOutfitList
+      if (this.state.yourOutfitList.indexOf(this.props.currentProductId) === -1) {
+        outfitList.unshift(toAddToOutfitStorage);
+        this.setState({
+          yourOutfitList: outfitList,
+          currentInOutfitList: true
+        });
+        sessionStorage.setItem(`yourOutfits`, outfitList);
+      } else {
+        console.log('Product Already In your Outfits')
+      }
+      console.log('Updated Storage--> ', sessionStorage)
     }
-    console.log('Updated Storage--> ', sessionStorage)
   }
 
   removeOutfit() {
@@ -91,14 +127,21 @@ class RelatedProductsAndOutfits extends React.Component {
 
   render () {
     // console.log('PROPS --> ', this.props)
-    // console.log('STATE--> ', this.state)
+    console.log('OUTFIT STATE--> ', this.state.yourOutfitList)
     const {currentProduct, currentProductId, products} = this.props;
-    const {relatedProducts} = this.state;
+    const {relatedProducts, yourOutfitList, currentInOutfitList} = this.state;
 
     return (
+        <div>
       <div className="related-products">
         <h1 className="related-products-header">Related Products Main Component</h1>
+
         <RelatedProducts relatedProducts={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={this.addOutfit} />
+        <p></p>
+        </div>
+        <div className="outfit-main">
+        <OutfitList removeOutfit={this.removeOutfit} yourOutfitList={yourOutfitList} currentInOutfitList={currentInOutfitList}/>
+        </div>
       </div>
     )
   }

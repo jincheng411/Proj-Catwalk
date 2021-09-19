@@ -7,20 +7,24 @@ class Product extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: null,
       name: null,
       category: null,
       price: null,
       rating: 0
     }
+    this.addRelatedProductToOutfit = this.addRelatedProductToOutfit.bind(this)
   }
   componentDidMount() {
     axios.get(`/api/products/${this.props.relatedProduct}`)
     .then(data => {
       this.setState({
+      id: data.data.id,
       name: data.data.name,
       category: data.data.category,
       price: data.data.default_price,
-      rating: 0
+      rating: 0,
+      isOutfit: false
     })
     this.getRatings();
     })
@@ -32,6 +36,11 @@ class Product extends React.Component {
     if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
       this.getRatings();
     }
+  }
+
+  addRelatedProductToOutfit() {
+    //HANDLES ONLY THE CURRENT OUTFIT ADD
+    this.props.addOutfit(this.state.id)
   }
 
   getRatings() {
@@ -56,7 +65,7 @@ class Product extends React.Component {
         <p>{category}</p>
         <p>{price}</p>
         <StarRating rating={rating} />
-        <button onClick={this.props.addOutfit}>Star</button>
+        <button onClick={this.addRelatedProductToOutfit}>Star</button>
         <ProductImage relatedProduct={this.props.relatedProduct}/>
       </div>
     )
