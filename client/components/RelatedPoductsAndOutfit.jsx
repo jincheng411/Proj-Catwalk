@@ -30,18 +30,26 @@ class RelatedProductsAndOutfits extends React.Component {
     if (sessionStorage.getItem('yourOutfits') !== null) {
       console.log('!!!!!!', sessionStorage.getItem('yourOutfits'))
       var storageIds = sessionStorage.getItem('yourOutfits')
-      var outfitListStr = storageIds.split(',')
+        var outfitListStr = storageIds.split(',')
+        var finalOutfitList = []
+        if (storageIds.length > 0) {
+          outfitListStr.forEach(str => {
+            var numVal = parseInt(str)
+            finalOutfitList.push(numVal)
+          })
+        }
+        console.log(finalOutfitList)
+        this.setState({
+          yourOutfitList: finalOutfitList
+        })
+    } else {
+      console.log('hit')
       var finalOutfitList = []
-      outfitListStr.forEach(str => {
-        var numVal = parseInt(str)
-          finalOutfitList.push(numVal)
-      })
-      console.log(finalOutfitList)
       this.setState({
         yourOutfitList: finalOutfitList
       })
     }
-    console.log(sessionStorage)
+    console.log('yeet yaw', this.state.yourOutfitList)
   }
 
   getAndSetRelated() {
@@ -109,16 +117,22 @@ class RelatedProductsAndOutfits extends React.Component {
   }
 
   removeOutfit(id) {
-    var toRemoveFromOutfitStorage = id
-    var outfitList = this.state.yourOutfitList
-    var index = outfitList.indexOf(toRemoveFromOutfitStorage)
-    outfitList.splice(index, 1);
-    this.setState({
-      yourOutfitList: outfitList,
-    });
-    sessionStorage.setItem('yourOutfits', outfitList);
-    this.updateStateAndRender();
-    console.log('Updated Storage--> ', sessionStorage)
+    if (this.state.yourOutfitList.length > 1) {
+      var toRemoveFromOutfitStorage = id
+      var outfitList = this.state.yourOutfitList
+      var index = outfitList.indexOf(toRemoveFromOutfitStorage)
+      outfitList.splice(index, 1);
+      this.setState({
+        yourOutfitList: outfitList,
+      });
+      sessionStorage.setItem('yourOutfits', outfitList);
+      console.log('Updated Storage--> ', sessionStorage)
+      this.updateStateAndRender();
+    } else {
+      sessionStorage.clear();
+      console.log('sessionstorage post remove ',sessionStorage.getItem('yourOutfits'))
+      this.updateStateAndRender();
+    }
   }
 
 

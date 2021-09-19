@@ -8,7 +8,8 @@ class OutfitList extends React.Component {
       hiddenLeft: [],
       hiddenRight: [],
       left: false,
-      right: false
+      right: false,
+      emptyOutfits: true
     }
     this.setProductsShown = this.setProductsShown.bind(this)
     this.handleClickRight = this.handleClickRight.bind(this)
@@ -29,16 +30,26 @@ class OutfitList extends React.Component {
   }
 
   setProductsShown() {
-    if (this.props.yourOutfitList.slice(4).length >= 1) {
-      this.setState({
-        productsShown: this.props.yourOutfitList.slice(0, 4),
-        hiddenRight: this.props.yourOutfitList.slice(4),
-        right: true
-      })
+    if(this.props.yourOutfitList.length !== 0) {
+
+      if (this.props.yourOutfitList.slice(4).length >= 1) {
+        this.setState({
+          productsShown: this.props.yourOutfitList.slice(0, 4),
+          hiddenRight: this.props.yourOutfitList.slice(4),
+          right: true,
+          emptyOutfits: false
+        })
+      } else {
+        this.setState({
+          productsShown: this.props.yourOutfitList.slice(0, 4),
+          right: false,
+          emptyOutfits: false
+        })
+      }
     } else {
       this.setState({
-        productsShown: this.props.yourOutfitList.slice(0, 4),
-        right: false
+        productsShown:this.props.yourOutfitList,
+        emptyOutfits: true
       })
     }
   }
@@ -110,8 +121,7 @@ class OutfitList extends React.Component {
   render() {
     const {currentProduct, currentProductId, products, removeOutfit} = this.props;
     const {productsShown, left, right} = this.state;
-    console.log('yourOutfitProps---> ! ', this.props.yourOutfitList)
-    if (!left && right) {
+    if (!left && right && productsShown.length >= 1) {
       return (
         <div className = "related-products-car">
         <h2> Your Outfits</h2>
@@ -119,7 +129,7 @@ class OutfitList extends React.Component {
         {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} />)}
       </div>
     )}
-    if (left && right) {
+    if (left && right && productsShown.length >= 1) {
       return (
         <div className = "related-products-car">
         <h2> Your Outfits</h2>
@@ -128,7 +138,7 @@ class OutfitList extends React.Component {
         {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} />)}
       </div>
     )}
-  if (left && !right) {
+  if (left && !right && productsShown.length >= 1) {
     return (
       <div className = "related-products-car">
       <h2> Your Outfits</h2>
@@ -136,18 +146,19 @@ class OutfitList extends React.Component {
       {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} />)}
     </div>
   )}
-  if (!left && !right) {
+  if (!left && !right && productsShown.length >= 1) {
     return (
       <div className = "related-products-car">
       <h2> Your Outfits</h2>
       {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} />)}
     </div>
   )}
-  if(!left && !right && productsShown.length === 0) {
+  if(productsShown.length === 0) {
     return (
       <div className = "related-products-car">
       <h2> Your Outfits</h2>
-      <Product nothing={true}/>
+      <h1>test</h1>
+      <Product emptyOutfits={this.state.emptyOutfits}/>
       </div>
     )
   }

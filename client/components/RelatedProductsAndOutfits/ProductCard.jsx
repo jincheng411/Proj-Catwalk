@@ -17,21 +17,21 @@ class Product extends React.Component {
     this.removeOutfitCard = this.removeOutfitCard.bind(this)
   }
   componentDidMount() {
-    axios.get(`/api/products/${this.props.relatedProduct}`)
-    .then(data => {
-      this.setState({
-      id: data.data.id,
-      name: data.data.name,
-      category: data.data.category,
-      price: data.data.default_price,
-      rating: 0,
-      isOutfit: false
-    })
-    this.getRatings();
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      axios.get(`/api/products/${this.props.relatedProduct}`)
+      .then(data => {
+        this.setState({
+          id: data.data.id,
+          name: data.data.name,
+          category: data.data.category,
+          price: data.data.default_price,
+          rating: 0,
+          isOutfit: false
+        })
+        this.getRatings();
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
   componentDidUpdate(prevProps) {
     if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
@@ -64,7 +64,7 @@ class Product extends React.Component {
   render() {
     const {name, category, price, rating} = this.state;
     const {relatedProduct, inOutfitList} = this.props
-    console.log('NOTHING PROPS', this.props.nothing)
+    console.log('Nothing--> ',this.props.emptyOutfits)
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
@@ -87,7 +87,8 @@ class Product extends React.Component {
         <ProductImage relatedProduct={relatedProduct}/>
       </div>
     )
-  } else if (this.props.nothing === undefined) {
+  } else if (this.props.emptyOutfits === true || this.props.emptyOutfits === undefined) {
+    // undefined because NaN gets plugged in
     return (
     <div className='product-card'>
       <h2>+</h2>
