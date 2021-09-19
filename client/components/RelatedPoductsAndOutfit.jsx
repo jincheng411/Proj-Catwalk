@@ -14,6 +14,7 @@ class RelatedProductsAndOutfits extends React.Component {
     this.getAndSetRelated = this.getAndSetRelated.bind(this)
     this.handleRender = this.handleRender.bind(this)
     this.removeOutfit = this.removeOutfit.bind(this)
+    this.updateStateAndRender = this.updateStateAndRender.bind(this)
   }
   componentDidMount() {
     console.log('yeah yup')
@@ -21,23 +22,26 @@ class RelatedProductsAndOutfits extends React.Component {
   }
   componentDidUpdate(prevProps) {
     if (prevProps.currentProductId !== this.props.currentProductId && this.props.currentProductId !== null) {
-      this.getAndSetRelated()
-      if (sessionStorage.getItem('yourOutfits') !== null) {
-        console.log('!!!!!!', sessionStorage.getItem('yourOutfits'))
-        var storageIds = sessionStorage.getItem('yourOutfits')
-        var outfitListStr = storageIds.split(',')
-        var finalOutfitList = []
-        outfitListStr.forEach(str => {
-          var numVal = parseInt(str)
-            finalOutfitList.push(numVal)
-        })
-        console.log(finalOutfitList)
-        this.setState({
-          yourOutfitList: finalOutfitList
-        })
-      }
-      console.log(sessionStorage)
+      this.getAndSetRelated();
+      this.updateStateAndRender();
     }
+  }
+  updateStateAndRender() {
+    if (sessionStorage.getItem('yourOutfits') !== null) {
+      console.log('!!!!!!', sessionStorage.getItem('yourOutfits'))
+      var storageIds = sessionStorage.getItem('yourOutfits')
+      var outfitListStr = storageIds.split(',')
+      var finalOutfitList = []
+      outfitListStr.forEach(str => {
+        var numVal = parseInt(str)
+          finalOutfitList.push(numVal)
+      })
+      console.log(finalOutfitList)
+      this.setState({
+        yourOutfitList: finalOutfitList
+      })
+    }
+    console.log(sessionStorage)
   }
 
   getAndSetRelated() {
@@ -110,16 +114,15 @@ class RelatedProductsAndOutfits extends React.Component {
     }
   }
 
-  removeOutfit() {
-    var toRemoveFromOutfitStorage = this.props.currentProductId
+  removeOutfit(id) {
+    var toRemoveFromOutfitStorage = id
     var outfitList = this.state.yourOutfitList
     var index = outfitList.indexOf(toRemoveFromOutfitStorage)
     outfitList.splice(index, 1);
     this.setState({
       yourOutfitList: outfitList,
-      currentInOutfitList: false
     });
-    sessionStorage.removeItem('yourOutfits', toRemoveFromOutfitStorage);
+    sessionStorage.setItem('yourOutfits', outfitList);
     console.log('Updated Storage--> ', sessionStorage)
   }
 

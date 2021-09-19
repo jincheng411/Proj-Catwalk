@@ -14,6 +14,7 @@ class Product extends React.Component {
       rating: 0
     }
     this.addRelatedProductToOutfit = this.addRelatedProductToOutfit.bind(this)
+    this.removeOutfitCard = this.removeOutfitCard.bind(this)
   }
   componentDidMount() {
     axios.get(`/api/products/${this.props.relatedProduct}`)
@@ -42,6 +43,9 @@ class Product extends React.Component {
     //HANDLES ONLY THE CURRENT OUTFIT ADD
     this.props.addOutfit(this.state.id)
   }
+  removeOutfitCard(){
+    this.props.removeOutfit(this.state.id)
+  }
 
   getRatings() {
     axios.get(`/api/reviews/${this.props.relatedProduct}`)
@@ -67,7 +71,7 @@ class Product extends React.Component {
         <p>{category}</p>
         <p>{price}</p>
         <StarRating rating={rating} />
-        <button onClick={removeOutfit}>X</button>
+        <button onClick={this.removeOutfitCard}>X</button>
         <ProductImage relatedProduct={relatedProduct}/>
       </div>
     )
