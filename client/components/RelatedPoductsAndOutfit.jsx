@@ -117,6 +117,7 @@ class RelatedProductsAndOutfits extends React.Component {
       yourOutfitList: outfitList,
     });
     sessionStorage.setItem('yourOutfits', outfitList);
+    this.updateStateAndRender();
     console.log('Updated Storage--> ', sessionStorage)
   }
 

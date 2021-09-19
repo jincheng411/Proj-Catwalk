@@ -143,6 +143,14 @@ class OutfitList extends React.Component {
       {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} />)}
     </div>
   )}
+  if(!left && !right && productsShown.length === 0) {
+    return (
+      <div className = "related-products-car">
+      <h2> Your Outfits</h2>
+      <Product nothing={true}/>
+      </div>
+    )
+  }
   }}
 
   export default OutfitList;
