@@ -57,7 +57,7 @@ app.get('/api/products/:id/related', (req, res) => {
 
 app.get('/api/products/:id/reviews', (req, res) => {
   const {id} = req.params;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}/reviews`,
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${id}`,
   {headers: {Authorization: TOKEN}})
   .then(({data}) => {
     res.json(data);

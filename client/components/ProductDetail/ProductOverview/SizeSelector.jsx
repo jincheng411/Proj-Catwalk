@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import _ from 'underscore';
 
-function SizeSelector({ style, updateInventory }) {
-  function handleOnChange(event) {
-    updateInventory(event.target.value.split(',')[1]);
+function SizeSelector({ style, updateInventory, sizeWarning }) {
+  const [selectedSize, setSelectedSize] = useState(null);
+  function handleOnClick(quantity, size) {
+    updateInventory(quantity, size);
+    setSelectedSize(size);
   }
   return (
-    <div className="selector">
-      <select onChange={handleOnChange} >
-        <option value="disabled">SIZE</option>
+    <div className="size-selector">
+      <div>
+        <p>Select Size</p>
+        <p>Size Guide</p>
+      </div>
+      <div className={sizeWarning ? 'warning-size' : null}>
         {!_.isEmpty(style) && _.map(style.skus, (value, key, sku) => {
-          return <option key={key} value={[value.size, value.quantity]}>{value.size}</option>
+          return <span
+            className={value.size === selectedSize ? 'selected' : null}
+            key={key}
+            onClick={() => { handleOnClick(value.quantity, value.size) }}>
+            {/* value={[value.size, value.quantity]} */}
+            {value.size}
+          </span>
         })
         }
-      </select>
+      </div>
+
     </div>
   )
 }
