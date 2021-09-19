@@ -9,7 +9,7 @@ constructor(props) {
     hiddenLeft: [],
     hiddenRight: [],
     left: false,
-    right: true
+    right: true,
   }
   this.setProductsShown = this.setProductsShown.bind(this)
   this.handleClickRight = this.handleClickRight.bind(this)

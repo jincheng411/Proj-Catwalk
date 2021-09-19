@@ -5,7 +5,6 @@ import StarRatings from 'react-star-ratings';
 class StarRating extends React.Component {
   constructor(props) {
     super(props)
-
     this.changeRating = this.changeRating.bind(this)
   }
   changeRating( newRating, name ) {

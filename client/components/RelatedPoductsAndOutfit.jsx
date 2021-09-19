@@ -84,16 +84,13 @@ class RelatedProductsAndOutfits extends React.Component {
       var toAddToOutfitStorage = id;
       var outfitList = this.state.yourOutfitList
       if (this.state.yourOutfitList.indexOf(id) === -1) {
-        outfitList.unshift(toAddToOutfitStorage);
-        this.setState({
-          yourOutfitList: outfitList,
-          currentInOutfitList: true
-        });
+      outfitList.unshift(toAddToOutfitStorage);
       sessionStorage.setItem(`yourOutfits`, outfitList);
       // SETTING AN ID
       } else {
         console.log('Product Already In your Outfits')
       }
+      this.updateStateAndRender();
       console.log('Updated Storage--> ', sessionStorage)
     } else {
       //! HANDLES CURRENT PRODUCT
@@ -102,14 +99,11 @@ class RelatedProductsAndOutfits extends React.Component {
       var outfitList = this.state.yourOutfitList
       if (this.state.yourOutfitList.indexOf(this.props.currentProductId) === -1) {
         outfitList.unshift(toAddToOutfitStorage);
-        this.setState({
-          yourOutfitList: outfitList,
-          currentInOutfitList: true
-        });
         sessionStorage.setItem(`yourOutfits`, outfitList);
       } else {
         console.log('Product Already In your Outfits')
       }
+      this.updateStateAndRender();
       console.log('Updated Storage--> ', sessionStorage)
     }
   }
@@ -130,7 +124,7 @@ class RelatedProductsAndOutfits extends React.Component {
 
   render () {
     // console.log('PROPS --> ', this.props)
-    console.log('OUTFIT STATE--> ', this.state.yourOutfitList)
+    //console.log('OUTFIT STATE--> ', this.state.yourOutfitList)
     const {currentProduct, currentProductId, products} = this.props;
     const {relatedProducts, yourOutfitList, currentInOutfitList} = this.state;
 

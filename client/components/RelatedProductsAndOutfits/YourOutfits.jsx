@@ -8,7 +8,7 @@ class OutfitList extends React.Component {
       hiddenLeft: [],
       hiddenRight: [],
       left: false,
-      right: true
+      right: false
     }
     this.setProductsShown = this.setProductsShown.bind(this)
     this.handleClickRight = this.handleClickRight.bind(this)
@@ -17,28 +17,30 @@ class OutfitList extends React.Component {
     this.handleShownButtons = this.handleShownButtons.bind(this)
   }
 
+  componentDidMount() {
+    console.log('UPDATED')
+    this.setProductsShown();
+  }
   componentDidUpdate(prevProps) {
-    if (prevProps.yourOutfitList !== this.props.yourOutfitList && this.props.yourOutfitList.name !== 'Error') {
+    if (this.props.yourOutfitList !== prevProps.yourOutfitList) {
+      console.log('fsdahkajsdfhaksdlhf', this.props.yourOutfitList)
       this.setProductsShown();
     }
   }
 
   setProductsShown() {
     if (this.props.yourOutfitList.slice(4).length >= 1) {
-      console.log(1)
       this.setState({
         productsShown: this.props.yourOutfitList.slice(0, 4),
         hiddenRight: this.props.yourOutfitList.slice(4),
         right: true
       })
     } else {
-      console.log(2)
       this.setState({
         productsShown: this.props.yourOutfitList.slice(0, 4),
         right: false
       })
     }
-
   }
 
   hideComponent(hidden) {
@@ -108,7 +110,7 @@ class OutfitList extends React.Component {
   render() {
     const {currentProduct, currentProductId, products, removeOutfit} = this.props;
     const {productsShown, left, right} = this.state;
-    // console.log('STATE---> ', this.state, 'PROPS --->', this.props)
+    console.log('yourOutfitProps---> ! ', this.props.yourOutfitList)
     if (!left && right) {
       return (
         <div className = "related-products-car">
