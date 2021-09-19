@@ -155,9 +155,12 @@ class OutfitList extends React.Component {
   )}
   if(productsShown.length === 0) {
     return (
-      <div className = "related-products-car">
+      <div className = "related-products-card">
+        <div className="outfit-headers">
+
       <h2> Your Outfits</h2>
-      <h1>test</h1>
+      <h1>Add Outfits to Save for Later</h1>
+        </div>
       <Product emptyOutfits={this.state.emptyOutfits}/>
       </div>
     )
