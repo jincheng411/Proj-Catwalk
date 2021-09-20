@@ -56,6 +56,8 @@ class RelatedProductsAndOutfits extends React.Component {
       axios.get(`/api/products/${this.props.currentProductId}/related`)
       .then(({ data }) => {
         this.setState({relatedProducts: data})
+      }).catch((err) => {
+        console.log(err)
       })
       .catch(err => {
         console.log(err)
