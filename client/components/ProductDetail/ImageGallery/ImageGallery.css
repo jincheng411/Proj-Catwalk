@@ -11,6 +11,11 @@
           transform: scale(110%);
 }
 
+#thumbnail-selected {
+  -webkit-box-shadow: 0 4px black;
+          box-shadow: 0 4px black;
+}
+
 .product-detail-main-img {
   min-width: 450px;
   display: -webkit-box;
