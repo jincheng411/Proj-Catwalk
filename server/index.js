@@ -10,6 +10,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(morgan('dev'));
 
+
 app.get('/api/products/:id', (req, res) => {
   const {id} = req.params;
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}`,
@@ -55,20 +56,26 @@ app.get('/api/products/:id/related', (req, res) => {
   })
 })
 
-app.get('/api/reviews', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews`, {
-    headers: {Authorization: TOKEN},
-    params: {
-      product_id: req.params.product_id || 1
-  }
-   })
-   .then(({data}) => {
+
+app.get('/api/reviews/:id', (req, res) => {
+  const {id} = req.params;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=${id}`,
+  {headers: {Authorization: TOKEN}})
+  .then(({data}) => {
     res.json(data);
   })
   .catch(err => {
     res.send(err)
   })
 })
+// alright alright. Outfits. Put into session storage. boom.
+//? need to create a session id. How? RESEARCH.
+// app.put('/putInYourOutfit', (req, res) => {
+// console.log(req.body)
+// sessionStorage.setItem(req.body);
+// console.log(sessionStorage)
+// res.sendStatus(200);
+// })
 
 const port = 3456
 app.listen(port, function() {

@@ -9,7 +9,7 @@ constructor(props) {
     hiddenLeft: [],
     hiddenRight: [],
     left: false,
-    right: true
+    right: true,
   }
   this.setProductsShown = this.setProductsShown.bind(this)
   this.handleClickRight = this.handleClickRight.bind(this)
@@ -17,11 +17,6 @@ constructor(props) {
   this.hideComponent = this.hideComponent.bind(this)
   this.handleShownButtons = this.handleShownButtons.bind(this)
 }
-// componentDidMount() {
-//   if(this.state.hiddenRight.length === 0) {
-//     this.setState({right: false})
-//   }
-// }
 
 componentDidUpdate(prevProps) {
   if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
@@ -30,10 +25,25 @@ componentDidUpdate(prevProps) {
 }
 
 setProductsShown() {
-  this.setState({
-    productsShown: this.props.relatedProducts.slice(0, 4),
-    hiddenRight: this.props.relatedProducts.slice(4)
-  })
+  var relatedNoCopies = this.props.relatedProducts
+  relatedNoCopies = relatedNoCopies.filter((id, index) => {
+    return relatedNoCopies.indexOf(id) === index
+  });
+  if (relatedNoCopies.slice(4).length >= 1) {
+    console.log(1)
+    this.setState({
+      productsShown: relatedNoCopies.slice(0, 4),
+      hiddenRight: relatedNoCopies.slice(4),
+      right: true
+    })
+  } else {
+    console.log(2)
+    this.setState({
+      productsShown: relatedNoCopies.slice(0, 4),
+      right: false
+    })
+  }
+
 }
 
 hideComponent(hidden) {
@@ -74,7 +84,6 @@ handleClickRight() {
   var updatedHiddenLeft = this.state.hiddenLeft;
   updatedHiddenLeft.push(productToHide);
   updatedProductsShown.push(productToShow);
-console.log(updatedHiddenLeft, updatedHiddenRight)
   this.setState({
     productsShown: updatedProductsShown,
     hiddenLeft: updatedHiddenLeft,
@@ -91,8 +100,7 @@ handleClickLeft() {
   var productToShow = updatedHiddenLeft.pop();
   var updatedHiddenRight = this.state.hiddenRight;
   updatedHiddenRight.unshift(productToHide);
-  updatedProductsShown.unshift(productToShow); //? push appends to end. Want it at front
-console.log( updatedProductsShown , productToHide, updatedHiddenLeft, productToShow)
+  updatedProductsShown.unshift(productToShow);
   this.setState({
     productsShown: updatedProductsShown,
     hiddenLeft: updatedHiddenLeft,
@@ -103,16 +111,15 @@ console.log( updatedProductsShown , productToHide, updatedHiddenLeft, productToS
 
 
 render() {
-  const {currentProduct, currentProductId, products, relatedProducts} = this.props;
+  const {currentProduct, currentProductId, products, relatedProducts, addOutfit} = this.props;
   const {productsShown, left, right} = this.state;
-
-  console.log('STATE--> ', this.state, 'PROPS -->', this.props)
+  console.log('STATE---> ', this.state, 'PROPS --->', this.props)
   if (!left && right) {
     return (
       <div className = "related-products-car">
       <h2> Related sub</h2>
       <button onClick={this.handleClickRight}>Next</button>
-      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit}/>)}
     </div>
   )}
   if (left && right) {
@@ -121,7 +128,7 @@ render() {
       <h2> Related sub</h2>
       <button onClick={this.handleClickRight}>Next</button>
       <button onClick={this.handleClickLeft}>PREV</button>
-      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit}/>)}
     </div>
   )}
 if (left && !right) {
@@ -129,14 +136,14 @@ if (left && !right) {
     <div className = "related-products-car">
     <h2> Related sub</h2>
     <button onClick={this.handleClickLeft}>PREV</button>
-    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit}/>)}
   </div>
 )}
 if (!left && !right) {
   return (
     <div className = "related-products-car">
     <h2> Related sub</h2>
-    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} />)}
+    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit}/>)}
   </div>
 )}
 }}
