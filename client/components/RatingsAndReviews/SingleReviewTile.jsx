@@ -2,12 +2,14 @@ import React from 'react';
 
 const SingleReviewTile = (props) => {
   let currentProductId = props.currentProductId;
+  let reviews = props.reviews;
+  console.log('hello', currentProductId, reviews);
 
   return (
     <div className="single-review-tile">
       <h3>Product Id: {currentProductId}</h3>
       <ul>
-        {props.reviews.map((loneReview) => {
+        {reviews.map((loneReview) => {
           return (
             <div className="lone-review" key={loneReview.review_id}>
               <h5>Review {loneReview.review_id}</h5>

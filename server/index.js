@@ -56,6 +56,7 @@ app.get('/api/products/:id/related', (req, res) => {
   })
 })
 
+
 app.get('/api/reviews/:id', (req, res) => {
   const {id} = req.params;
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=${id}`,
