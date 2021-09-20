@@ -11,7 +11,7 @@ function SizeSelector({ style, updateInventory, sizeWarning }) {
     <div className="size-selector">
       <div>
         <p>Select Size</p>
-        <p>Size Guide</p>
+        <p>Size Guide </p>
       </div>
       <div className={sizeWarning ? 'warning-size' : null}>
         {!_.isEmpty(style) && _.map(style.skus, (value, key, sku) => {
