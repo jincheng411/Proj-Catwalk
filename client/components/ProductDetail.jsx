@@ -18,8 +18,8 @@ class ProductDetail extends React.Component {
     this.passToImageGallery = this.passToImageGallery.bind(this);
     this.updateBag = this.updateBag.bind(this);
   }
-  componentDidUpdate() {
-    if (this.state.styles.length === 0) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentProduct !== this.props.currentProduct || this.state.styles.length === 0) {
       if (this.props.currentProduct) {
         const { id } = this.props.currentProduct
         axios.get(`/api/products/${id}/styles`).then(({ data }) => {
