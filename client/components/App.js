@@ -40,15 +40,16 @@ class App extends React.Component {
   handleRelatedProductsClick(id) {
     axios.get(`/api/products/${id}`)
     .then(product => {
+      console.log('APPPPP LOGGG',product)
       this.setState({
-        currentProduct: product,
-        currentProductId: product.id
+        currentProduct: product.data,
+        currentProductId: product.data.id
       });
     })
   }
 
   render() {
-    //console.log(this.state)
+    console.log('APP STATE', this.state)
     const { name } = this.props;
     const { currentProduct, currentProductId, products } = this.state;
 
@@ -57,9 +58,9 @@ class App extends React.Component {
         <h1>
           Hello {name}
         </h1>
-        {/* <ProductDetail currentProduct={currentProduct} /> */}
+        <ProductDetail currentProduct={currentProduct} />
         <br></br>
-        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId}/>
+        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId} handleRelatedProductsClick={this.handleRelatedProductsClick}/>
         <br></br>
         {/* <ReviewsCore currentProductId={currentProductId} reviewList={this.state.reviews} /> */}
       </>

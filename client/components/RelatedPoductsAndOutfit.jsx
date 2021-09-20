@@ -63,10 +63,8 @@ class RelatedProductsAndOutfits extends React.Component {
     }
 
   handleRender(id) {
-    //? going to go to click functionality for each product Card along with Outfit
-    // ! Come back to! Switch gears to getting outfit rendered
-    //! NON TESTED
     this.props.handleRelatedProductsClick(id);
+    console.log(id)
     var isCurrentInOutfit = function () {
       if (this.state.yourOutfitList.indexOf(id) !== -1) {
         return true
@@ -75,12 +73,12 @@ class RelatedProductsAndOutfits extends React.Component {
       }
     }
     this.setState({
-      currentProductId: id,
       currentInOutfitList: isCurrentInOutfit
     })
     // this.getAndSetRelated();
     axios.get(`/api/products/${this.props.currentProductId}/related`)
       .then(({ data }) => {
+        console.log('DATA@@@@@@', data)
         this.setState({relatedProducts: data})
       })
       .catch(err => {
@@ -146,7 +144,7 @@ class RelatedProductsAndOutfits extends React.Component {
   render () {
     // console.log('PROPS --> ', this.props)
     //console.log('OUTFIT STATE--> ', this.state.yourOutfitList)
-    const {currentProduct, currentProductId, products} = this.props;
+    const {currentProduct, currentProductId, products, handleRelatedProductsClick} = this.props;
     const {relatedProducts, yourOutfitList, currentInOutfitList} = this.state;
 
     return (
@@ -154,11 +152,11 @@ class RelatedProductsAndOutfits extends React.Component {
       <div className="related-products">
         <h1 className="related-products-header">Related Products Main Component</h1>
 
-        <RelatedProducts inOutfitList={currentInOutfitList} relatedProducts={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={this.addOutfit} />
+        <RelatedProducts inOutfitList={currentInOutfitList} relatedProducts={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={this.addOutfit} handleRender={this.handleRender} />
         <p></p>
         </div>
         <div className="outfit-main">
-        <OutfitList inOutfitList={currentInOutfitList} removeOutfit={this.removeOutfit} yourOutfitList={yourOutfitList} currentInOutfitList={currentInOutfitList}/>
+        <OutfitList inOutfitList={currentInOutfitList} removeOutfit={this.removeOutfit} yourOutfitList={yourOutfitList} currentInOutfitList={currentInOutfitList} handleRender={this.handleRender}/>
         </div>
       </div>
     )
