@@ -18,7 +18,7 @@ class Product extends React.Component {
     this.getAndSet =  this.getAndSet.bind(this)
   }
   componentDidMount() {
-      this.getAndSet()
+      this.getAndSet();
   }
   componentDidUpdate(prevProps) {
     if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
