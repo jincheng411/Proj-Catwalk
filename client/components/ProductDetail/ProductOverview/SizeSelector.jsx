@@ -25,7 +25,6 @@ function SizeSelector({ style, updateInventory, sizeWarning }) {
         })
         }
       </div>
-
     </div>
   )
 }

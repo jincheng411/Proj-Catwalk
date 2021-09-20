@@ -1,13 +1,12 @@
 .product-detail-description {
+  color: rgb(99, 98, 98);
   margin-right: 15px;
   display: flex;
-
-  // &:first-child {
-  //   <div>
-
-  //   border: 1px black solid;
-  //   </div
-  // }
+  div {
+    &:first-child {
+      width: 65%;
+    }
+  }
   span {
     border-right: 2px black solid;
     margin: 8px 20px;

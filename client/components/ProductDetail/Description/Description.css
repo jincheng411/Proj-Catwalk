@@ -1,8 +1,13 @@
 .product-detail-description {
+  color: #636262;
   margin-right: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.product-detail-description div:first-child {
+  width: 65%;
 }
 
 .product-detail-description span {
