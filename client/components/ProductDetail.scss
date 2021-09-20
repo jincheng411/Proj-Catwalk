@@ -1,0 +1,15 @@
+.product-detail{
+  font-family: sans-serif, Helvetica, Arial ;
+  display: flex;
+  flex-direction: row;
+}
+.product-detail-col {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.product-overview {
+  min-width: 350px;
+  margin-left: 20px;
+  width: 30%;
+}
