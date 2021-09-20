@@ -1,10 +1,11 @@
 .product-detail{
-  display: flex;
-  flex-direction: column;
-}
-.product-detail-row {
+  font-family: sans-serif, Helvetica, Arial ;
   display: flex;
   flex-direction: row;
+}
+.product-detail-col {
+  display: flex;
+  flex-direction: column;
 }
 .product-overview {
   margin-left: 20px;
