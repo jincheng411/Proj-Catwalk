@@ -4,7 +4,7 @@ import SizeSelector from './SizeSelector';
 import QuantitySelector from './QuantitySelector';
 
 
-function SizeQuantitySelector({ style, addToBag }) {
+function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite }) {
   const [inventory, setInventory] = useState(1);
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
@@ -21,6 +21,8 @@ function SizeQuantitySelector({ style, addToBag }) {
   }
   function addToFav() {
     setIsFav(!isFav);
+    handleAddMainAsFavorite();
+    console.log('bingo', handleAddMainAsFavorite)
   }
 
   function handleOnClick() {

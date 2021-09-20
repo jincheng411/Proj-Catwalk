@@ -61,7 +61,7 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    const { currentProduct } = this.props;
+    const { currentProduct , handleAddMainAsFavorite} = this.props;
     const { styles, currentStyle, cart } = this.state;
     return (
       <div className="product-detail">
@@ -77,6 +77,7 @@ class ProductDetail extends React.Component {
           styles={styles}
           passToImageGallery={this.passToImageGallery}
           updateBag={this.updateBag}
+          handleAddMainAsFavorite={handleAddMainAsFavorite}
         />
 
       </div >
