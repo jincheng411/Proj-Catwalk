@@ -16,15 +16,13 @@ class Product extends React.Component {
     this.addRelatedProductToOutfit = this.addRelatedProductToOutfit.bind(this)
     this.removeOutfitCard = this.removeOutfitCard.bind(this)
     this.getAndSet =  this.getAndSet.bind(this)
+    this.handleRenderCard = this.handleRenderCard.bind(this)
   }
   componentDidMount() {
-    console.log('2', this.props.relatedProduct)
-    console.log('3', `/api/products/${this.props.relatedProduct}`)
     this.getAndSet();
   }
   componentDidUpdate(prevProps) {
     if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
-      console.log('comp did update prod card')
       this.getAndSet();
     }
   }
@@ -32,7 +30,6 @@ class Product extends React.Component {
   getAndSet() {
     axios.get(`/api/products/${this.props.relatedProduct}`)
       .then(data => {
-        console.log(data)
         this.setState({
           id: data.data.id,
           name: data.data.name,
@@ -54,6 +51,9 @@ class Product extends React.Component {
   removeOutfitCard(){
     this.props.removeOutfit(this.state.id)
   }
+  handleRenderCard() {
+    this.props.handleRender(this.state.id)
+  }
 
   getRatings() {
     axios.get(`/api/reviews/${this.props.relatedProduct}`)
@@ -72,15 +72,17 @@ class Product extends React.Component {
   render() {
     const {name, category, price, rating} = this.state;
     const {relatedProduct, inOutfitList} = this.props
-    console.log('PROPS RELATED PRODUCTS 72--> ', this.props.relatedProductsList);
 
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
+           <div className="product-card-head" onClick={this.handleRenderCard}>
         <h3>{name}</h3>
         <p>{category}</p>
         <p>{price}</p>
         <StarRating rating={rating} />
+        <div/>
+        </div>
         <button onClick={this.removeOutfitCard}>X</button>
         <ProductImage relatedProduct={relatedProduct}/>
       </div>
@@ -88,10 +90,12 @@ class Product extends React.Component {
     } else if(!inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
+          <div className="product-card-head" onClick={this.handleRenderCard}>
         <h3>{name}</h3>
         <p>{category}</p>
         <p>{price}</p>
         <StarRating rating={rating} />
+        </div>
         <button onClick={this.addRelatedProductToOutfit}>Star</button>
         <ProductImage relatedProduct={relatedProduct}/>
       </div>

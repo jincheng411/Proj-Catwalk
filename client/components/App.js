@@ -41,17 +41,15 @@ class App extends React.Component {
     axios.get(`/api/products/${id}`)
     .then(product => {
       this.setState({
-        currentProduct: product,
-        currentProductId: product.id
+        currentProduct: product.data,
+        currentProductId: product.data.id
       });
     })
   }
 
   render() {
-    //console.log(this.state)
     const { name } = this.props;
     const { currentProduct, currentProductId, products } = this.state;
-
     return (
       <>
         <h1>
