@@ -1,3 +1,9 @@
+.thumbnail-list {
+  position: absolute;
+  bottom: 5%;
+  left: 30%;
+}
+
 .thumbnail-list > img {
   width: 35px;
   height: 35px;
@@ -9,6 +15,18 @@
 .thumbnail-list > img:hover {
   -webkit-transform: scale(110%);
           transform: scale(110%);
+}
+
+.hide-thumbnail {
+  height: 0px !important;
+  -webkit-transition: height 0.3s linear !important;
+  transition: height 0.3s linear !important;
+}
+
+.show-thumbnail {
+  height: 35px !important;
+  -webkit-transition: height 0.3s linear !important;
+  transition: height 0.3s linear !important;
 }
 
 #thumbnail-selected {
@@ -78,11 +96,5 @@
 
 .image-gallery span:nth-child(4) {
   right: 40px;
-}
-
-.thumbnail-list {
-  position: absolute;
-  bottom: 5%;
-  left: 30%;
 }
 /*# sourceMappingURL=ImageGallery.css.map */
