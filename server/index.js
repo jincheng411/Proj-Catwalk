@@ -13,10 +13,14 @@ app.use(morgan('dev'));
 
 app.get('/api/products/:id', (req, res) => {
   const {id} = req.params;
+  console.log('SERVER ID---> ', id)
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}`,
   {headers: {Authorization: TOKEN}})
   .then(({data}) => {
     res.json(data);
+  })
+  .catch(err => {
+    res.sendStatus(404)
   })
 })
 

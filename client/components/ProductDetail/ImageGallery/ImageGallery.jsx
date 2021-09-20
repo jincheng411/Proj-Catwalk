@@ -20,8 +20,8 @@ function ImageGallery({ style }) {
     <div className="image-gallery">
       <MainImg index={imgIndex} style={style} currImg={currImg} defaultImg={style.name ? style.photos[0].url : ''}/>
       <ThumbnailList list={style.photos} changeCurrImg={changeCurrImg}/>
-      <button onClick={()=>changeIndex(-1)}>&lt; </button>
-      <button onClick={()=>changeIndex(1)}>&gt; </button>
+      <span onClick={()=>changeIndex(-1)}><i className="fas fa-arrow-left"></i></span>
+      <span onClick={()=>changeIndex(1)}><i className="fas fa-arrow-right"></i></span>
     </div>
   )
 }

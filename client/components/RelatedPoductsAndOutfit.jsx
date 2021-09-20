@@ -20,6 +20,7 @@ class RelatedProductsAndOutfits extends React.Component {
     console.log('yeah yup')
     this.getAndSetRelated()
   }
+
   componentDidUpdate(prevProps) {
     if (prevProps.currentProductId !== this.props.currentProductId && this.props.currentProductId !== null) {
       this.getAndSetRelated();
@@ -81,6 +82,9 @@ class RelatedProductsAndOutfits extends React.Component {
     axios.get(`/api/products/${this.props.currentProductId}/related`)
       .then(({ data }) => {
         this.setState({relatedProducts: data})
+      })
+      .catch(err => {
+        console.log(err)
       })
   }
   // Add and remove Oufit to List functions. Apply these functions to button
