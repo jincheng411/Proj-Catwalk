@@ -15,9 +15,18 @@ class Product extends React.Component {
     }
     this.addRelatedProductToOutfit = this.addRelatedProductToOutfit.bind(this)
     this.removeOutfitCard = this.removeOutfitCard.bind(this)
+    this.getAndSet =  this.getAndSet.bind(this)
   }
   componentDidMount() {
-      axios.get(`/api/products/${this.props.relatedProduct}`)
+      this.getAndSet()
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
+      this.getAndSet();
+    }
+  }
+  getAndSet() {
+    axios.get(`/api/products/${this.props.relatedProduct}`)
       .then(data => {
         this.setState({
           id: data.data.id,
@@ -33,12 +42,6 @@ class Product extends React.Component {
         console.log(err)
       })
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
-      this.getRatings();
-    }
-  }
-
   addRelatedProductToOutfit() {
     //HANDLES ONLY THE CURRENT OUTFIT ADD
     this.props.addOutfit(this.state.id)
@@ -64,7 +67,7 @@ class Product extends React.Component {
   render() {
     const {name, category, price, rating} = this.state;
     const {relatedProduct, inOutfitList} = this.props
-    console.log('Nothing--> ',this.props.emptyOutfits)
+    console.log('Nothing--> ',this.state)
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
