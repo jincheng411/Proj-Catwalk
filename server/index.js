@@ -55,11 +55,14 @@ app.get('/api/products/:id/related', (req, res) => {
   })
 })
 
-app.get('/api/products/:id/reviews', (req, res) => {
-  const {id} = req.params;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/${id}`,
-  {headers: {Authorization: TOKEN}})
-  .then(({data}) => {
+app.get('/api/reviews', (req, res) => {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews`, {
+    headers: {Authorization: TOKEN},
+    params: {
+      product_id: req.params.product_id || 1
+  }
+   })
+   .then(({data}) => {
     res.json(data);
   })
   .catch(err => {

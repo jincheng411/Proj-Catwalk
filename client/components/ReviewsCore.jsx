@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import SingleReviewTile from './RatingsAndReviews/SingleReviewTile.jsx';
+import WriteNewReviewButton from './RatingsAndReviews/WriteNewReviewButton.jsx';
+import MoreReviewsButton from './RatingsAndReviews/MoreReviewsButton.jsx';
+import './ReviewsStyle.css';
 
 class ReviewsCore extends React.Component {
   constructor(props) {
@@ -11,28 +14,48 @@ class ReviewsCore extends React.Component {
     }
   }
 
+  componentDidMount() {
+    console.log('is this working?')
+    this.getReviewData()
+  }
   componentDidUpdate(prevProps) {
-    if (this.props.currentProductId !== prevProps.currentProductId) {
-      getReviewData(this.props.currentProductId)
-        .then((res) => {
-          let allReviews = response.data.results;
+    if (prevProps.currentProductId !== this.props.currentProductId) {
+      if (this.props.currentProductId) {
+        axios.get(`/api/reviews`, {
+          params: {
+            product_id: this.props.currentProductId
+        }
+        }).then(({ data }) => {
           this.setState({
-            reviews: allReviews})
+            reviews: data.results,
+          })
         })
+      }
     }
   }
 
   getReviewData() {
-    axios.get(`/api/products/${this.props.currentProductId}/reviews`)
+    console.log('allo?');
+    axios.get(`/api/reviews`, {
+      params: {
+        product_id: this.props.currentProductId
+    }
+    }).then(({ data }) => {
+      this.setState({
+        reviews: data.results,
+      })
+    })
   }
 
 
   render () {
+    console.log('array of reviews:', this.state.reviews);
     const {currentProductId} = this.props;
     return (
       <div className="reviews-core">
         <h2>Reviews Core</h2>
         <SingleReviewTile currentProductId={currentProductId} reviews={this.state.reviews} />
+        <MoreReviewsButton /><br></br><br></br><WriteNewReviewButton />
       </div>
     )
   }
