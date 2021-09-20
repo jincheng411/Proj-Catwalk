@@ -1,0 +1,15 @@
+.product-detail-description {
+  margin-right: 15px;
+  display: flex;
+
+  // &:first-child {
+  //   <div>
+
+  //   border: 1px black solid;
+  //   </div
+  // }
+  span {
+    border-right: 2px black solid;
+    margin: 8px 20px;
+  }
+}

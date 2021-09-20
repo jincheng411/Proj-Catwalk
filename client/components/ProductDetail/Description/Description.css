@@ -1,0 +1,12 @@
+.product-detail-description {
+  margin-right: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.product-detail-description span {
+  border-right: 2px black solid;
+  margin: 8px 20px;
+}
+/*# sourceMappingURL=Description.css.map */
