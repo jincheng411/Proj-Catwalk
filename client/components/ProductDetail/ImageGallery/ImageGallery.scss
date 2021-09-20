@@ -22,10 +22,6 @@
   height: 35px !important;
   transition: height 0.3s linear !important;
 }
-@keyframes slideout {
-  0% {height: 35px}
-  100% {height: 0px}
-}
 
 #thumbnail-selected {
   box-shadow: 0 4px black;

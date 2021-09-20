@@ -11,9 +11,11 @@ class App extends React.Component {
     this.state = {
       products: [],
       currentProduct: {},
-      currentProductId: null
+      currentProductId: null,
+      favoritedMain: false
     }
     this.handleRelatedProductsClick = this.handleRelatedProductsClick.bind(this)
+    this.handleAddMainAsFavorite = this.handleAddMainAsFavorite.bind(this)
   }
 
   componentDidMount() {
@@ -23,20 +25,17 @@ class App extends React.Component {
         this.setState({
           currentProduct: product.data,
           currentProductId: product.data.id,
-          products: products.data
+          products: products.data,
+          favoritedMain: false
         })
       })
     })
   }
+  handleAddMainAsFavorite() {
+    console.log('hitttt')
+    this.setState({favoritedMain: true})
+  }
 
-  // setProduct(productId) {
-  //   axios.get(`/api/products/${productId}`).then(({ data }) => {
-  //     this.setState({
-  //       currentProduct: data,
-  //       currentProductId: data.id
-  //     })
-  //   })
-  // }
   handleRelatedProductsClick(id) {
     axios.get(`/api/products/${id}`)
     .then(product => {
@@ -49,15 +48,16 @@ class App extends React.Component {
 
   render() {
     const { name } = this.props;
-    const { currentProduct, currentProductId, products } = this.state;
+    const { currentProduct, currentProductId, products, favoritedMain} = this.state;
+    console.log(favoritedMain)
     return (
       <>
         <h1>
           Hello {name}
         </h1>
-        <ProductDetail currentProduct={currentProduct} />
+        <ProductDetail currentProduct={currentProduct} handleAddMainAsFavorite={this.handleAddMainAsFavorite}  />
         <br></br>
-        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId}/>
+        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId} handleRelatedProductsClick={this.handleRelatedProductsClick} favoritedMain={favoritedMain}/>
         <br></br>
         {/* <ReviewsCore currentProductId={currentProductId} reviewList={this.state.reviews} /> */}
       </>

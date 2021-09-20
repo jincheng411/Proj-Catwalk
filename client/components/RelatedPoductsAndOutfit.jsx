@@ -18,14 +18,24 @@ class RelatedProductsAndOutfits extends React.Component {
   }
   componentDidMount() {
     this.getAndSetRelated()
+    this.addFavorite();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.currentProductId !== this.props.currentProductId && this.props.currentProductId !== null) {
+    if ((prevProps.currentProductId !== this.props.currentProductId && this.props.currentProductId !== null) || (prevProps.favoritedMain !== this.props.favoritedMain) ) {
       this.getAndSetRelated();
       this.updateStateAndRender();
+      console.log(1)
+      this.addFavorite();
     }
   }
+  addFavorite() {
+    if (this.props.favoritedMain) {
+      console.log(2)
+      this.addOutfit();
+    }
+  }
+
   updateStateAndRender() {
     if (sessionStorage.getItem('yourOutfits') !== null) {
       var storageIds = sessionStorage.getItem('yourOutfits')
