@@ -19,19 +19,16 @@ class OutfitList extends React.Component {
   }
 
   componentDidMount() {
-    console.log('UPDATED')
     this.setProductsShown();
   }
   componentDidUpdate(prevProps) {
     if (this.props.yourOutfitList !== prevProps.yourOutfitList) {
-      console.log('fsdahkajsdfhaksdlhf', this.props.yourOutfitList)
       this.setProductsShown();
     }
   }
 
   setProductsShown() {
     if(this.props.yourOutfitList.length !== 0) {
-
       if (this.props.yourOutfitList.slice(4).length >= 1) {
         this.setState({
           productsShown: this.props.yourOutfitList.slice(0, 4),

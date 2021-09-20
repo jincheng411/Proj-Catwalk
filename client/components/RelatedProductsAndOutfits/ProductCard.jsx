@@ -23,7 +23,6 @@ class Product extends React.Component {
   }
   componentDidUpdate(prevProps) {
     if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
-      console.log('comp did update prod card')
       this.getAndSet();
     }
   }
@@ -31,7 +30,6 @@ class Product extends React.Component {
   getAndSet() {
     axios.get(`/api/products/${this.props.relatedProduct}`)
       .then(data => {
-        console.log(data)
         this.setState({
           id: data.data.id,
           name: data.data.name,
@@ -54,7 +52,6 @@ class Product extends React.Component {
     this.props.removeOutfit(this.state.id)
   }
   handleRenderCard() {
-    console.log('THISSSSSS---> ',this.state.id)
     this.props.handleRender(this.state.id)
   }
 

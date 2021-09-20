@@ -17,7 +17,6 @@ class RelatedProductsAndOutfits extends React.Component {
     this.updateStateAndRender = this.updateStateAndRender.bind(this)
   }
   componentDidMount() {
-    console.log('yeah yup')
     this.getAndSetRelated()
   }
 
@@ -38,18 +37,15 @@ class RelatedProductsAndOutfits extends React.Component {
             finalOutfitList.push(numVal)
           })
         }
-        console.log(finalOutfitList)
         this.setState({
           yourOutfitList: finalOutfitList
         })
     } else {
-      console.log('hit')
       var finalOutfitList = []
       this.setState({
         yourOutfitList: finalOutfitList
       })
     }
-    console.log('yeet yaw', this.state.yourOutfitList)
   }
 
   getAndSetRelated() {
@@ -64,7 +60,6 @@ class RelatedProductsAndOutfits extends React.Component {
 
   handleRender(id) {
     this.props.handleRelatedProductsClick(id);
-    console.log(id)
     var isCurrentInOutfit = function () {
       if (this.state.yourOutfitList.indexOf(id) !== -1) {
         return true
@@ -78,7 +73,6 @@ class RelatedProductsAndOutfits extends React.Component {
     // this.getAndSetRelated();
     axios.get(`/api/products/${this.props.currentProductId}/related`)
       .then(({ data }) => {
-        console.log('DATA@@@@@@', data)
         this.setState({relatedProducts: data})
       })
       .catch(err => {
@@ -91,8 +85,6 @@ class RelatedProductsAndOutfits extends React.Component {
     //HANDLES ONLY THE CURRENT OUTFIT ADD
     if (id) {
       //! HANDLES WHATS CLICKED IN PRODUCT CARD
-      console.log(200)
-      console.log('!!!!!!!', id)
       var toAddToOutfitStorage = id;
       var outfitList = this.state.yourOutfitList
       if (this.state.yourOutfitList.indexOf(id) === -1) {
@@ -134,7 +126,7 @@ class RelatedProductsAndOutfits extends React.Component {
       this.updateStateAndRender();
     } else {
       sessionStorage.clear();
-      console.log('sessionstorage post remove ',sessionStorage.getItem('yourOutfits'))
+      console.log('sessionstorage post remove ', sessionStorage.getItem('yourOutfits'))
       this.updateStateAndRender();
     }
   }
@@ -142,8 +134,6 @@ class RelatedProductsAndOutfits extends React.Component {
 
 
   render () {
-    // console.log('PROPS --> ', this.props)
-    //console.log('OUTFIT STATE--> ', this.state.yourOutfitList)
     const {currentProduct, currentProductId, products, handleRelatedProductsClick} = this.props;
     const {relatedProducts, yourOutfitList, currentInOutfitList} = this.state;
 

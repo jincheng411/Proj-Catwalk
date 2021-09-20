@@ -40,7 +40,6 @@ class App extends React.Component {
   handleRelatedProductsClick(id) {
     axios.get(`/api/products/${id}`)
     .then(product => {
-      console.log('APPPPP LOGGG',product)
       this.setState({
         currentProduct: product.data,
         currentProductId: product.data.id
@@ -49,10 +48,8 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('APP STATE', this.state)
     const { name } = this.props;
     const { currentProduct, currentProductId, products } = this.state;
-
     return (
       <>
         <h1>

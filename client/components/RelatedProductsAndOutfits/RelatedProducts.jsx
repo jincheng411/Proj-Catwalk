@@ -34,14 +34,12 @@ setProductsShown() {
     return relatedNoCopies.indexOf(id) === index
   });
   if (relatedNoCopies.slice(4).length >= 1) {
-    console.log(1)
     this.setState({
       productsShown: relatedNoCopies.slice(0, 4),
       hiddenRight: relatedNoCopies.slice(4),
       right: true
     })
   } else {
-    console.log(2)
     this.setState({
       productsShown: relatedNoCopies.slice(0, 4),
       right: false
@@ -117,7 +115,7 @@ handleClickLeft() {
 render() {
   const {currentProduct, currentProductId, products, addOutfit, handleRender} = this.props;
   const {productsShown, left, right, relatedProducts} = this.state;
-  console.log('STATE---> ', this.state, 'PROPS --->', this.props)
+  // console.log('STATE---> ', this.state, 'PROPS --->', this.props)
   if (!left && right) {
     return (
       <div className = "related-products-car">
