@@ -10,6 +10,14 @@
   width: 65%;
 }
 
+.product-detail-description div:first-child h4 {
+  font-size: 1.3em;
+}
+
+.product-detail-description div:nth-child(3) {
+  margin-top: 10px;
+}
+
 .product-detail-description span {
   border-right: 2px black solid;
   margin: 8px 20px;

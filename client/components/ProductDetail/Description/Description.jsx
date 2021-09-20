@@ -10,9 +10,11 @@ function Description({ product, features }) {
       </div>
       <span></span>
       <div>
-        {features && features.map((feature) => {
-          return <p key={feature.value}>{feature.value}</p>
-        })}
+        <ul>
+          {features && features.map((feature) => {
+            return <li key={feature.value}>{feature.value}</li>
+          })}
+        </ul>
       </div>
     </div>
   )
