@@ -26,7 +26,6 @@ class ProductImage extends React.Component {
         if(style.photos[0].url === null) {
           image = 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg'
         }
-
         this.setState({image: image})
        })
     });
