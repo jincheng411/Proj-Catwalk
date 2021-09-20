@@ -56,6 +56,9 @@ class RelatedProductsAndOutfits extends React.Component {
       .then(({ data }) => {
         this.setState({relatedProducts: data})
       })
+      .catch(err => {
+        console.log(err)
+      })
     }
 
   handleRender(id) {
