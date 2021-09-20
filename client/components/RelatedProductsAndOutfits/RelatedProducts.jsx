@@ -25,17 +25,21 @@ componentDidUpdate(prevProps) {
 }
 
 setProductsShown() {
-  if (this.props.relatedProducts.slice(4).length >= 1) {
+  var relatedNoCopies = this.props.relatedProducts
+  relatedNoCopies = relatedNoCopies.filter((id, index) => {
+    return relatedNoCopies.indexOf(id) === index
+  });
+  if (relatedNoCopies.slice(4).length >= 1) {
     console.log(1)
     this.setState({
-      productsShown: this.props.relatedProducts.slice(0, 4),
-      hiddenRight: this.props.relatedProducts.slice(4),
+      productsShown: relatedNoCopies.slice(0, 4),
+      hiddenRight: relatedNoCopies.slice(4),
       right: true
     })
   } else {
     console.log(2)
     this.setState({
-      productsShown: this.props.relatedProducts.slice(0, 4),
+      productsShown: relatedNoCopies.slice(0, 4),
       right: false
     })
   }

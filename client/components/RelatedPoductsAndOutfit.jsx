@@ -28,7 +28,6 @@ class RelatedProductsAndOutfits extends React.Component {
   }
   updateStateAndRender() {
     if (sessionStorage.getItem('yourOutfits') !== null) {
-      console.log('!!!!!!', sessionStorage.getItem('yourOutfits'))
       var storageIds = sessionStorage.getItem('yourOutfits')
         var outfitListStr = storageIds.split(',')
         var finalOutfitList = []
