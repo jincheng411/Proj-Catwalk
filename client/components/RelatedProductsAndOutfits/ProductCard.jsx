@@ -16,7 +16,7 @@ class Product extends React.Component {
       currentProductFeatures: [],
       myProductFeatures: [],
       hover: false,
-      modal: 'Hover For Comparison'
+      modal: ''
     }
     this.addRelatedProductToOutfit = this.addRelatedProductToOutfit.bind(this)
     this.removeOutfitCard = this.removeOutfitCard.bind(this)
@@ -36,13 +36,13 @@ class Product extends React.Component {
   }
   // ? Comparison Modal
   renderModal() {
-    return  <ComparisonModal className='comparison-modal-render' currentProduct={this.props.currentProduct} myName={this.state.name} currentProductFeatures={this.state.currentProductFeatures} myProductFeatures={this.state.myProductFeatures} hover={this.state.hover}/>
+    return  <ComparisonModal currentProduct={this.props.currentProduct} myName={this.state.name} currentProductFeatures={this.state.currentProductFeatures} myProductFeatures={this.state.myProductFeatures} hover={this.state.hover}/>
   }
   handleEnter() {
     this.setState({hover: !this.state.hover, modal: this.renderModal()})
   }
   handleLeave() {
-    this.setState({modal: 'Hover For Comparison'})
+    this.setState({modal: ''})
   }
 
   //? Getting and Setting Related Products
@@ -113,20 +113,18 @@ class Product extends React.Component {
         <div>
         <div className='product-card'>
           <div className="product-card-head" onClick={this.handleRenderCard}>
+          <div className='compare-wrapper'>
+        <div className='compare-modal-incard' onMouseOver={this.handleEnter} onMouseLeave={this.handleLeave} modal={this.state.modal}>HOVER HERE</div>
+        </div>
         <h3 className='product-card-name'>{name}</h3>
         <p className='product-card-category'>{category}</p>
         <p className='product-card-price'>{price}</p>
         <StarRating rating={rating} />
         </div>
         <button onClick={this.addRelatedProductToOutfit}>Star</button>
-        <div className='compare-wrapper'>
-        <div className='compare-modal-incard' onMouseOver={this.handleEnter} onMouseLeave={this.handleLeave}>{this.state.modal}</div>
-        </div>
-        {/* <ComparisonModal currentProduct={currentProduct} myName={name} currentProductFeatures={currentProductFeatures} myProductFeatures={myProductFeatures} hover={hover}/> */}
-        <ProductImage relatedProduct={relatedProduct}/>
-
+        <ProductImage className='product-card-images' relatedProduct={relatedProduct}/>
       </div>
-
+      <div>{this.state.modal}</div>
       </div>
     )
   } else if (this.props.emptyOutfits === true || this.props.emptyOutfits === undefined) {

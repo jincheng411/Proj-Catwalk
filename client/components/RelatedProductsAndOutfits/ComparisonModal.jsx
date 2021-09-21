@@ -20,9 +20,11 @@ class ComparisonModal extends React.Component {
     }
     this.comparisonModal = this.comparisonModal.bind(this)
   }
+  componentDidMount() {
+    this.comparisonModal();
+  }
   componentDidUpdate(prevProps) {
     if(prevProps.hover !== this.props.hover || this.props.myProductFeatures !== prevProps.myProductFeatures) {
-    this.setState({toggleModal: this.props.hover ? 'compare-modal display-block' : 'compare-modal display-none'})
     this.comparisonModal();
     }
   }
@@ -55,7 +57,6 @@ class ComparisonModal extends React.Component {
       var finalFeaturesArray = Object.keys(features);
       this.setState({features: finalFeaturesArray,
       featuresObj: features})
-
   }
 }
 
@@ -70,13 +71,13 @@ class ComparisonModal extends React.Component {
           <span className='compare-head'>Comparing</span>
           <br></br>
           <span className='current-product-name-cm'>{currentProduct.name}</span>
-          <span>    ||   </span>
-          <span className='product-card-name-cm'>{myName}</span>
-          <br></br>
-          <br></br>
 
-          <table id="features-table">
-          <tbody>
+          <span> || </span>
+
+          <span className='product-card-name-cm'>{myName}</span>
+
+          <table className="features-table">
+          <tbody className="features-table">
             {this.state.features.map((feature, index) => {
               return (
                 <tr className="features-table-rows" key={index}>
