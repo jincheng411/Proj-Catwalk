@@ -34,7 +34,7 @@ class Product extends React.Component {
       this.getAndSet();
     }
   }
-
+  // ? Comparison Modal
   renderModal() {
     return  <ComparisonModal className='comparison-modal-render' currentProduct={this.props.currentProduct} myName={this.state.name} currentProductFeatures={this.state.currentProductFeatures} myProductFeatures={this.state.myProductFeatures} hover={this.state.hover}/>
   }
@@ -44,10 +44,8 @@ class Product extends React.Component {
   handleLeave() {
     this.setState({modal: 'Hover For Comparison'})
   }
-  // handleModal() {
-  //   this.setState({hover: !this.state.hover})
-  // }
 
+  //? Getting and Setting Related Products
   getAndSet() {
     axios.get(`/api/products/${this.props.relatedProduct}`)
       .then(data => {
@@ -66,6 +64,7 @@ class Product extends React.Component {
         console.log(err)
       })
   }
+  // ? handle Outfits
   addRelatedProductToOutfit() {
     //HANDLES ONLY THE CURRENT OUTFIT ADD
     this.props.addOutfit(this.state.id)
@@ -76,7 +75,7 @@ class Product extends React.Component {
   handleRenderCard() {
     this.props.handleRender(this.state.id)
   }
-
+ //? API call for Ratings (stars)
   getRatings() {
     axios.get(`/api/reviews/${this.props.relatedProduct}`)
     .then(data => {
@@ -91,9 +90,10 @@ class Product extends React.Component {
       console.log(err)
     })
   }
+  // ? Our beautiful render
   render() {
-    const {name, category, price, rating, currentProductFeatures, myProductFeatures, hover} = this.state;
-    const {relatedProduct, inOutfitList, currentProduct} = this.props
+    const {name, category, price, rating} = this.state;
+    const {relatedProduct, inOutfitList} = this.props
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>

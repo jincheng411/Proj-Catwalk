@@ -66,6 +66,7 @@ hideComponent(hidden) {
         null;
   }
 }
+
 handleShownButtons() {
   if(this.state.hiddenRight.length !== 0 && this.state.hiddenLeft.length === 0) {
     this.hideComponent('leftBtnHidden')

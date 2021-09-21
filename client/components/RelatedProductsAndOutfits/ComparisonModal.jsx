@@ -24,11 +24,9 @@ class ComparisonModal extends React.Component {
     this.setState({toggleModal: this.props.hover ? 'compare-modal display-block' : 'compare-modal display-none'})
     this.comparisonModal();
     }
-
   }
 
   comparisonModal() {
-    console.log('COMPARISON MODAL BIATCH')
     if (this.props.myProductFeatures.length > 0 && this.props.currentProductFeatures.length > 0) {
       var features = {};
       this.props.currentProductFeatures.forEach(currentProductFeature => {
@@ -59,24 +57,6 @@ class ComparisonModal extends React.Component {
 
   }
 }
-/**
- * features
-[0: "Fabric: 100% Cotton"
-1: "Cut: Skinny"
-2: "Sole: Rubber"
-3: "Material: FullControlSkin"
-4: "Stitching: Double Stitch" ]
-
-featuresObj
-{Cut: Skinny: "current"
-Fabric: 100% Cotton: "current"
-Material: FullControlSkin: "recent"
-Sole: Rubber: "recent"
-Stitching: Double Stitch: "recent"
-}
-
- *
- */
 
   render() {
     console.log(this.state)
