@@ -120,32 +120,32 @@ render() {
   if (!left && right) {
     return (
       <div className = "related-products-car">
-      <h2> Related sub</h2>
-      <button onClick={this.handleClickRight}>Next</button>
+      <h2 className='carousal-header'> Related sub</h2>
+      <button className = "carousal-next" onClick={this.handleClickRight}>Next</button>
       {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
     </div>
   )}
   if (left && right) {
     return (
       <div className = "related-products-car">
-      <h2> Related sub</h2>
-      <button onClick={this.handleClickRight}>Next</button>
-      <button onClick={this.handleClickLeft}>PREV</button>
+      <h2 className='carousal-header'> Related sub</h2>
+      <button className = "carousal-next" onClick={this.handleClickRight}>Next</button>
+      <button className = "carousal-prev" onClick={this.handleClickLeft}>PREV</button>
       {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId}  relatedProductsList={relatedProducts} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
     </div>
   )}
 if (left && !right) {
   return (
     <div className = "related-products-car">
-    <h2> Related sub</h2>
-    <button onClick={this.handleClickLeft}>PREV</button>
+    <h2 className='carousal-header'> Related sub</h2>
+    <button className = "carousal-prev" onClick={this.handleClickLeft}>PREV</button>
     {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
   </div>
 )}
 if (!left && !right) {
   return (
     <div className = "related-products-car">
-    <h2> Related sub</h2>
+    <h2 className='carousal-header'> Related sub</h2>
     {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
   </div>
 )}

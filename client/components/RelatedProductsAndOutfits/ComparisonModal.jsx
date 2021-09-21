@@ -8,7 +8,8 @@ hover: false
 myName: name of ProductCard
 myProductFeatures: features of product card ([{}, {}, {}])
 */
-
+//? Current is product detail
+//? recent is relatedProduct Card
 class ComparisonModal extends React.Component {
   constructor(props) {
     super(props)

@@ -98,9 +98,9 @@ class Product extends React.Component {
       return (
         <div className='product-card'>
            <div className="product-card-head" onClick={this.handleRenderCard}>
-        <h3>{name}</h3>
-        <p>{category}</p>
-        <p>{price}</p>
+           <h3 className='product-card-name'>{name}</h3>
+        <p className='product-card-category'>{category}</p>
+        <p className='product-card-price'>{price}</p>
         <StarRating rating={rating} />
         <div/>
         </div>
@@ -113,9 +113,9 @@ class Product extends React.Component {
         <div>
         <div className='product-card'>
           <div className="product-card-head" onClick={this.handleRenderCard}>
-        <h3>{name}</h3>
-        <p>{category}</p>
-        <p>{price}</p>
+        <h3 className='product-card-name'>{name}</h3>
+        <p className='product-card-category'>{category}</p>
+        <p className='product-card-price'>{price}</p>
         <StarRating rating={rating} />
         </div>
         <button onClick={this.addRelatedProductToOutfit}>Star</button>
@@ -132,8 +132,8 @@ class Product extends React.Component {
   } else if (this.props.emptyOutfits === true || this.props.emptyOutfits === undefined) {
     // undefined because NaN gets plugged in
     return (
-    <div className='product-card'>
-      <h2>+</h2>
+    <div className='product-card-empty-outfits'>
+      <h2 className='empty-outfit-plus'>+</h2>
     </div>
     )
   }

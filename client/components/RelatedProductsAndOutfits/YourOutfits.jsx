@@ -121,7 +121,7 @@ class OutfitList extends React.Component {
     if (!left && right && productsShown.length >= 1) {
       return (
         <div className = "related-products-car">
-        <h2> Your Outfits</h2>
+        <h2 className='outfit-header'> Your Outfits</h2>
         <button onClick={this.handleClickRight}>Next</button>
         {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
       </div>
@@ -129,7 +129,7 @@ class OutfitList extends React.Component {
     if (left && right && productsShown.length >= 1) {
       return (
         <div className = "related-products-car">
-        <h2> Your Outfits</h2>
+        <h2 className='outfit-header'> Your Outfits</h2>
         <button onClick={this.handleClickRight}>Next</button>
         <button onClick={this.handleClickLeft}>PREV</button>
         {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender}/>)}
@@ -138,7 +138,7 @@ class OutfitList extends React.Component {
   if (left && !right && productsShown.length >= 1) {
     return (
       <div className = "related-products-car">
-      <h2> Your Outfits</h2>
+      <h2 className='outfit-header'> Your Outfits</h2>
       <button onClick={this.handleClickLeft}>PREV</button>
       {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
     </div>
@@ -146,7 +146,7 @@ class OutfitList extends React.Component {
   if (!left && !right && productsShown.length >= 1) {
     return (
       <div className = "related-products-car">
-      <h2> Your Outfits</h2>
+      <h2 className='outfit-header'> Your Outfits</h2>
       {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
     </div>
   )}
@@ -155,8 +155,8 @@ class OutfitList extends React.Component {
       <div className = "related-products-card">
         <div className="outfit-headers">
 
-      <h2> Your Outfits</h2>
-      <h1>Add Outfits to Save for Later</h1>
+      <h2 className='outfit-header'> Your Outfits</h2>
+      <h1 className='empty-outfit-header'>Add Outfits to Save for Later</h1>
         </div>
       <Product emptyOutfits={this.state.emptyOutfits}/>
       </div>
