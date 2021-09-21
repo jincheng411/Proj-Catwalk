@@ -15,7 +15,6 @@ class ProductDetail extends React.Component {
       styles: [],
       currentStyle: {},
       cart: [],
-      itemCount: 0
     }
     this.passToImageGallery = this.passToImageGallery.bind(this);
     this.updateBag = this.updateBag.bind(this);
@@ -47,10 +46,8 @@ class ProductDetail extends React.Component {
       item.size === data.size
     )).length > 0
     if (_.isEmpty(cart) || !isExist) {
-
       this.setState({
         cart: cart.concat(data),
-        itemCount: data.quantity
       })
     } else {
       const newState = cart.map((item) => {
@@ -70,7 +67,7 @@ class ProductDetail extends React.Component {
     return (
       <div className="product-detail">
         {/* <Cart items={cart}/> */}
-        <NavBar itemCount={cart.length}/>
+        <NavBar cart={cart} />
         <div className="product-detail-content">
           <div className="product-detail-col">
             <ImageGallery style={currentStyle} />

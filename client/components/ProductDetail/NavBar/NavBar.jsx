@@ -1,7 +1,10 @@
 import React from 'react';
 import './NavBar.css'
 
-function NavBar({itemCount}) {
+function NavBar({cart}) {
+  const count = cart.reduce((a, b) => {
+    return a + b.quantity
+  }, 0)
   return (
     <div className="navbar">
       <div>
@@ -19,7 +22,7 @@ function NavBar({itemCount}) {
         <input placeholder="search"/>
       </div>
       <div>
-        {itemCount > 0 && <span>{itemCount}</span>}
+        {count > 0 && <span>{count}</span>}
 
         <i className="fas fa-shopping-bag"></i>
       </div>
