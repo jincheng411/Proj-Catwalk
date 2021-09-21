@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css'
 
-function NavBar() {
+function NavBar({itemCount}) {
   return (
     <div className="navbar">
       <div>
@@ -15,13 +15,14 @@ function NavBar() {
         <span>sale</span>
       </div>
       <div>
-        <i class="fas fa-search"></i>
+        <i className="fas fa-search"></i>
         <input placeholder="search"/>
       </div>
       <div>
+        {itemCount > 0 && <span>{itemCount}</span>}
+
         <i className="fas fa-shopping-bag"></i>
       </div>
-
     </div>
   )
 }

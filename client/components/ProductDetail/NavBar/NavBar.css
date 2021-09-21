@@ -79,5 +79,27 @@
   font-size: 2em;
   margin-right: 30px;
   cursor: pointer;
+  position: relative;
+}
+
+.navbar div:nth-child(4) span {
+  background-color: #b80808;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 0.7em;
+  position: absolute;
+  top: 10%;
+  left: 10px;
 }
 /*# sourceMappingURL=NavBar.css.map */
