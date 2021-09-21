@@ -12,7 +12,7 @@ class App extends React.Component {
       products: [],
       currentProduct: {},
       currentProductId: null,
-      favoritedMain: false
+      favoritedMain: false,
     }
     this.handleRelatedProductsClick = this.handleRelatedProductsClick.bind(this)
     this.handleAddMainAsFavorite = this.handleAddMainAsFavorite.bind(this)
@@ -31,9 +31,9 @@ class App extends React.Component {
       })
     })
   }
-  handleAddMainAsFavorite() {
+  handleAddMainAsFavorite(bool) {
     console.log('hitttt')
-    this.setState({favoritedMain: true})
+    this.setState({favoritedMain: bool})
   }
 
   handleRelatedProductsClick(id) {

@@ -25,13 +25,11 @@ class RelatedProductsAndOutfits extends React.Component {
     if ((prevProps.currentProductId !== this.props.currentProductId && this.props.currentProductId !== null) || (prevProps.favoritedMain !== this.props.favoritedMain) ) {
       this.getAndSetRelated();
       this.updateStateAndRender();
-      console.log(1)
       this.addFavorite();
     }
   }
   addFavorite() {
     if (this.props.favoritedMain) {
-      console.log(2)
       this.addOutfit();
     }
   }
@@ -73,16 +71,11 @@ class RelatedProductsAndOutfits extends React.Component {
   handleRender(id) {
     this.props.handleRelatedProductsClick(id);
     var isCurrentInOutfit = function () {
-      if (this.state.yourOutfitList.indexOf(id) !== -1) {
-        return true
-      } else {
-        return false
-      }
+      if (this.state.yourOutfitList.indexOf(id) !== -1) { return true } else { return false }
     }
     this.setState({
       currentInOutfitList: isCurrentInOutfit
     })
-    // this.getAndSetRelated();
     axios.get(`/api/products/${this.props.currentProductId}/related`)
       .then(({ data }) => {
         this.setState({relatedProducts: data})
@@ -91,10 +84,8 @@ class RelatedProductsAndOutfits extends React.Component {
         console.log(err)
       })
   }
-  // Add and remove Oufit to List functions. Apply these functions to button
-  //? In outfit component, handle carasaul and indiv outift item like product card.
+
   addOutfit(id) {
-    //HANDLES ONLY THE CURRENT OUTFIT ADD
     if (id) {
       //! HANDLES WHATS CLICKED IN PRODUCT CARD
       var toAddToOutfitStorage = id;
@@ -102,7 +93,6 @@ class RelatedProductsAndOutfits extends React.Component {
       if (this.state.yourOutfitList.indexOf(id) === -1) {
       outfitList.unshift(toAddToOutfitStorage);
       sessionStorage.setItem(`yourOutfits`, outfitList);
-      // SETTING AN ID
       } else {
         console.log('Product Already In your Outfits')
       }
@@ -143,10 +133,9 @@ class RelatedProductsAndOutfits extends React.Component {
     }
   }
 
-
-
   render () {
-    const {currentProduct, currentProductId, products, handleRelatedProductsClick} = this.props;
+    const {currentProduct, currentProductId, products} = this.props;
+
     const {relatedProducts, yourOutfitList, currentInOutfitList} = this.state;
 
     return (
@@ -158,7 +147,7 @@ class RelatedProductsAndOutfits extends React.Component {
         <p></p>
         </div>
         <div className="outfit-main">
-        <OutfitList inOutfitList={currentInOutfitList} removeOutfit={this.removeOutfit} yourOutfitList={yourOutfitList} currentInOutfitList={currentInOutfitList} handleRender={this.handleRender}/>
+        <OutfitList inOutfitList={currentInOutfitList} removeOutfit={this.removeOutfit} yourOutfitList={yourOutfitList} currentInOutfitList={currentInOutfitList} currentProduct={currentProduct} handleRender={this.handleRender}/>
         </div>
       </div>
     )

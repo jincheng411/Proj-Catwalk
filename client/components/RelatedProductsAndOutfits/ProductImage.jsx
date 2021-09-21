@@ -12,8 +12,6 @@ class ProductImage extends React.Component {
     axios.get(`/api/products/${this.props.relatedProduct}/styles`)
     .then((data) => {
       var image = this.state.image;
-      //console.log(data)
-      //? difference between thumbnail url and url? I dont see one. What does 'default?' refers to.
       var dataResults = data.data.results;
       dataResults.forEach(style => {
         //console.log(style)
@@ -31,10 +29,7 @@ class ProductImage extends React.Component {
     });
   }
 
-  //https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg
-
   render() {
-    //console.log('PRODUCT state', this.props)
     return (
       <div className='product-card-image-full'>
         <img className="product-card-image" src={this.state.image}></img>
