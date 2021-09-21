@@ -1,5 +1,11 @@
+body {
+  font-family: sans-serif, Helvetica, Arial;
+}
 .product-detail{
-  font-family: sans-serif, Helvetica, Arial ;
+  display: flex;
+  flex-direction: column;
+}
+.product-detail-content {
   display: flex;
   flex-direction: row;
 }

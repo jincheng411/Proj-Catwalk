@@ -19,14 +19,14 @@
 
 .hide-thumbnail {
   height: 0px !important;
-  -webkit-transition: height 0.3s linear !important;
-  transition: height 0.3s linear !important;
+  -webkit-transition: height 0.2s linear !important;
+  transition: height 0.2s linear !important;
 }
 
 .show-thumbnail {
   height: 35px !important;
-  -webkit-transition: height 0.3s linear !important;
-  transition: height 0.3s linear !important;
+  -webkit-transition: height 0.2s linear !important;
+  transition: height 0.2s linear !important;
 }
 
 #thumbnail-selected {

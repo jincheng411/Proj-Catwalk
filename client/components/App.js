@@ -47,14 +47,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { name } = this.props;
     const { currentProduct, currentProductId, products, favoritedMain} = this.state;
     console.log(favoritedMain)
     return (
       <>
-        <h1>
-          Hello {name}
-        </h1>
         <ProductDetail currentProduct={currentProduct} handleAddMainAsFavorite={this.handleAddMainAsFavorite}  />
         <br></br>
         <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId} handleRelatedProductsClick={this.handleRelatedProductsClick} favoritedMain={favoritedMain}/>

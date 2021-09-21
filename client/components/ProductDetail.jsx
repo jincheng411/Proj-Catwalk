@@ -4,6 +4,7 @@ import ImageGallery from './ProductDetail/ImageGallery/ImageGallery';
 import ProductOverview from './ProductDetail/ProductOverview/ProductOverview';
 import Description from './ProductDetail/Description/Description';
 import Cart from './ProductDetail/Cart/Cart';
+import NavBar from './ProductDetail/NavBar/NavBar';
 import './ProductDetail.css';
 import _ from 'underscore';
 
@@ -61,26 +62,27 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    const { currentProduct , handleAddMainAsFavorite} = this.props;
+    const { currentProduct, handleAddMainAsFavorite } = this.props;
     const { styles, currentStyle, cart } = this.state;
     return (
       <div className="product-detail">
-        <div className="product-detail-col">
-          <ImageGallery style={currentStyle} />
-          <Description product={currentProduct} features={currentProduct.features} />
-          {/* <Cart items={cart}/> */}
+        {/* <Cart items={cart}/> */}
+        <NavBar />
+        <div className="product-detail-content">
+          <div className="product-detail-col">
+            <ImageGallery style={currentStyle} />
+            <Description product={currentProduct} features={currentProduct.features} />
+          </div>
+          <ProductOverview
+            product={currentProduct}
+            currentStyle={currentStyle}
+            styles={styles}
+            passToImageGallery={this.passToImageGallery}
+            updateBag={this.updateBag}
+            handleAddMainAsFavorite={handleAddMainAsFavorite}
+          />
         </div>
-
-        <ProductOverview
-          product={currentProduct}
-          currentStyle={currentStyle}
-          styles={styles}
-          passToImageGallery={this.passToImageGallery}
-          updateBag={this.updateBag}
-          handleAddMainAsFavorite={handleAddMainAsFavorite}
-        />
-
-      </div >
+      </div>
     )
   }
 }
