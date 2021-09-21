@@ -134,7 +134,7 @@ class RelatedProductsAndOutfits extends React.Component {
   }
 
   render () {
-    const {currentProduct, currentProductId, products, handleRelatedProductsClick} = this.props;
+    const {currentProduct, currentProductId, products} = this.props;
 
     const {relatedProducts, yourOutfitList, currentInOutfitList} = this.state;
 

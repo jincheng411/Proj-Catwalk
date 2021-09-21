@@ -121,17 +121,17 @@ render() {
     return (
       <div className = "related-products-car">
       <h2 className='carousal-header'> Related sub</h2>
-      <button className = "carousal-next" onClick={this.handleClickRight}>Next</button>
       {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
+      <button className = "carousal-next" onClick={this.handleClickRight}>Next</button>
     </div>
   )}
   if (left && right) {
     return (
       <div className = "related-products-car">
       <h2 className='carousal-header'> Related sub</h2>
-      <button className = "carousal-next" onClick={this.handleClickRight}>Next</button>
       <button className = "carousal-prev" onClick={this.handleClickLeft}>PREV</button>
       {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId}  relatedProductsList={relatedProducts} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
+      <button className = "carousal-next" onClick={this.handleClickRight}>Next</button>
     </div>
   )}
 if (left && !right) {

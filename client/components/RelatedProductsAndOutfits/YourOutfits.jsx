@@ -122,17 +122,17 @@ class OutfitList extends React.Component {
       return (
         <div className = "related-products-car">
         <h2 className='outfit-header'> Your Outfits</h2>
-        <button onClick={this.handleClickRight}>Next</button>
         {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
+        <button onClick={this.handleClickRight}>Next</button>
       </div>
     )}
     if (left && right && productsShown.length >= 1) {
       return (
         <div className = "related-products-car">
         <h2 className='outfit-header'> Your Outfits</h2>
-        <button onClick={this.handleClickRight}>Next</button>
         <button onClick={this.handleClickLeft}>PREV</button>
         {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender}/>)}
+        <button onClick={this.handleClickRight}>Next</button>
       </div>
     )}
   if (left && !right && productsShown.length >= 1) {

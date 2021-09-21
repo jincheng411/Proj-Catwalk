@@ -70,6 +70,7 @@ class ComparisonModal extends React.Component {
           <span className='compare-head'>Comparing</span>
           <br></br>
           <span className='current-product-name-cm'>{currentProduct.name}</span>
+          <span>    ||   </span>
           <span className='product-card-name-cm'>{myName}</span>
           <br></br>
           <br></br>
