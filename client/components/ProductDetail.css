@@ -1,5 +1,18 @@
-.product-detail {
+body {
   font-family: sans-serif, Helvetica, Arial;
+}
+
+.product-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.product-detail-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
