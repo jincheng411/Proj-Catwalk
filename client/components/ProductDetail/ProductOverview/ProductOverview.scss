@@ -43,22 +43,33 @@ $grey: #6d8194;
   display: flex;
   flex-direction: column;
   span {
-    @include subtitle;
+    @include subtitle;  //color available
   }
   img {
     width: 70px;
     height: 70px;
-    margin-right: 10px;
+    object-fit: cover;
     cursor: pointer;
     border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     &:hover {
-      @include selected;
+      // @include selected;
+      border: 2px black solid;
+      margin-bottom: 8px;
+      margin-right: 8px;
+      margin-top: -2px;
+      margin-left: -2px;
     }
   }
   .selected {
-    @include selected;
-    border-bottom: 5px solid black;
-    margin-bottom: -5px;
+    // @include selected;
+    box-shadow: 0 4px white, 0 8px black;
+
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    // margin-bottom: -5px;
   }
 }
 
@@ -75,7 +86,7 @@ $grey: #6d8194;
       display: flex;
       justify-content: space-between;
       p {
-        &:last-child {
+        &:last-child {  //size guide
           color: $grey;
           text-align: end;
           font-weight: 500;
