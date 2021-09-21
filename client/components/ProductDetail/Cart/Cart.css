@@ -1,0 +1,18 @@
+.cart {
+  visibility: hidden;
+  position: absolute;
+  background-color: white;
+  color: blue;
+  width: 25%;
+  height: 200px;
+  min-width: 350px;
+  border: black 1px solid;
+  right: 30px;
+  top: 40px;
+  z-index: 100;
+}
+
+.shown {
+  visibility: visible;
+}
+/*# sourceMappingURL=Cart.css.map */

@@ -15,9 +15,11 @@ class ProductDetail extends React.Component {
       styles: [],
       currentStyle: {},
       cart: [],
+      listVisible: false
     }
     this.passToImageGallery = this.passToImageGallery.bind(this);
     this.updateBag = this.updateBag.bind(this);
+    this.makeVisible = this.makeVisible.bind(this);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.currentProduct !== this.props.currentProduct || this.state.styles.length === 0) {
@@ -61,13 +63,17 @@ class ProductDetail extends React.Component {
     }
   }
 
+  makeVisible(bool) {
+    this.setState({listVisible: bool});
+  }
+
   render() {
     const { currentProduct, handleAddMainAsFavorite } = this.props;
-    const { styles, currentStyle, cart } = this.state;
+    const { styles, currentStyle, cart, listVisible } = this.state;
     return (
       <div className="product-detail">
-        {/* <Cart items={cart}/> */}
-        <NavBar cart={cart} />
+        <Cart items={cart} visible={listVisible}/>
+        <NavBar cart={cart} makeVisible={this.makeVisible}/>
         <div className="product-detail-content">
           <div className="product-detail-col">
             <ImageGallery style={currentStyle} />
