@@ -27,10 +27,9 @@ function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite }) {
 
   function handleOnClick() {
     if(size) {
-      addToBag({style, size, quantity})
+      addToBag({style, size, quantity});
     } else {
       setSizeWarning(true);
-      console.log('select a size first')
     }
   }
 

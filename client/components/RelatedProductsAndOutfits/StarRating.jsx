@@ -28,7 +28,6 @@ class StarRating extends React.Component {
         starDimension="10px"
         starSpacing="8px"
         />
-
         )
       }
   }
