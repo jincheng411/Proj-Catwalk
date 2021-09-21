@@ -14,10 +14,12 @@ class ProductDetail extends React.Component {
     this.state = {
       styles: [],
       currentStyle: {},
-      cart: []
+      cart: [],
+      listVisible: false
     }
     this.passToImageGallery = this.passToImageGallery.bind(this);
     this.updateBag = this.updateBag.bind(this);
+    this.makeVisible = this.makeVisible.bind(this);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.currentProduct !== this.props.currentProduct || this.state.styles.length === 0) {
@@ -40,14 +42,14 @@ class ProductDetail extends React.Component {
   }
 
   updateBag(data) {
-    const { cart } = this.state;
+    const { cart, itemCount } = this.state;
     const isExist = cart.filter(item => (
       item.style.style_id === data.style.style_id &&
       item.size === data.size
     )).length > 0
     if (_.isEmpty(cart) || !isExist) {
       this.setState({
-        cart: cart.concat(data)
+        cart: cart.concat(data),
       })
     } else {
       const newState = cart.map((item) => {
@@ -57,17 +59,22 @@ class ProductDetail extends React.Component {
           return item;
         }
       });
+      console.log(cart)
       this.setState({ cart: newState });
     }
   }
 
+  makeVisible(bool) {
+    this.setState({listVisible: bool});
+  }
+
   render() {
     const { currentProduct, handleAddMainAsFavorite } = this.props;
-    const { styles, currentStyle, cart } = this.state;
+    const { styles, currentStyle, cart, listVisible } = this.state;
     return (
       <div className="product-detail">
-        {/* <Cart items={cart}/> */}
-        <NavBar />
+        <Cart items={cart} visible={listVisible}/>
+        <NavBar cart={cart} makeVisible={this.makeVisible}/>
         <div className="product-detail-content">
           <div className="product-detail-col">
             <ImageGallery style={currentStyle} />

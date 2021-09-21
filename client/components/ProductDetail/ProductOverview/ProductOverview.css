@@ -50,23 +50,27 @@
 .style-selector img {
   width: 70px;
   height: 70px;
-  margin-right: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
   cursor: pointer;
   border-radius: 4px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .style-selector img:hover {
   border: 2px black solid;
-  margin: -2px;
+  margin-bottom: 8px;
   margin-right: 8px;
+  margin-top: -2px;
+  margin-left: -2px;
 }
 
 .style-selector .selected {
-  border: 2px black solid;
-  margin: -2px;
-  margin-right: 8px;
-  border-bottom: 5px solid black;
-  margin-bottom: -5px;
+  -webkit-box-shadow: 0 4px white, 0 8px black;
+          box-shadow: 0 4px white, 0 8px black;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .size-selector {

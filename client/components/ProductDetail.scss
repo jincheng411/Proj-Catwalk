@@ -2,6 +2,7 @@ body {
   font-family: sans-serif, Helvetica, Arial;
 }
 .product-detail{
+  position: relative;
   display: flex;
   flex-direction: column;
 }

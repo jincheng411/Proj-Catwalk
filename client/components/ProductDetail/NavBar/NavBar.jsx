@@ -1,7 +1,13 @@
 import React from 'react';
 import './NavBar.css'
 
-function NavBar() {
+function NavBar({ cart, makeVisible }) {
+  const count = cart.reduce((a, b) => {
+    return a + b.quantity
+  }, 0)
+  function handleMouse(bool) {
+    makeVisible(bool)
+  }
   return (
     <div className="navbar">
       <div>
@@ -15,13 +21,17 @@ function NavBar() {
         <span>sale</span>
       </div>
       <div>
-        <i class="fas fa-search"></i>
-        <input placeholder="search"/>
+        <i className="fas fa-search"></i>
+        <input placeholder="search" />
       </div>
       <div>
-        <i className="fas fa-shopping-bag"></i>
+        {count > 0 && <span>{count}</span>}
+        <i
+          className="fas fa-shopping-bag"
+          onMouseEnter={() => handleMouse(true)}
+          onMouseLeave={() => handleMouse(false)}
+        ></i>
       </div>
-
     </div>
   )
 }
