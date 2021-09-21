@@ -21,8 +21,7 @@ function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite }) {
   }
   function addToFav() {
     setIsFav(!isFav);
-    handleAddMainAsFavorite();
-    console.log('bingo', handleAddMainAsFavorite)
+    handleAddMainAsFavorite(!isFav);
   }
 
   function handleOnClick() {

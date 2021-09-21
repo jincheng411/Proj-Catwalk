@@ -15,7 +15,7 @@ class StarRating extends React.Component {
   render() {
     if (this.props.rating === 100) {
       return (
-        <p>No Reviews</p>
+        <p className='no-reviews'>No Reviews</p>
       )
     } else if (this.props.rating >= 0 && this.props.rating <= 5) {
       return (
