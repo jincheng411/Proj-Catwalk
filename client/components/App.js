@@ -53,7 +53,7 @@ class App extends React.Component {
       <>
         <ProductDetail currentProduct={currentProduct} handleAddMainAsFavorite={this.handleAddMainAsFavorite}  />
         <br></br>
-        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId} handleRelatedProductsClick={this.handleRelatedProductsClick} favoritedMain={favoritedMain}/>
+        {/* <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId} handleRelatedProductsClick={this.handleRelatedProductsClick} favoritedMain={favoritedMain}/> */}
         <br></br>
         {/* <ReviewsCore currentProductId={currentProductId} reviewList={this.state.reviews} /> */}
       </>

@@ -10,17 +10,27 @@ function Cart({ items, visible }) {
   const saleTotal = items.reduce((a, b) => {
     return a + Number(b.style.sale_price || b.style.original_price) * Number(b.quantity);
   }, 0);
-
   return (
     <div
       className={visible || isVisible ? "cart shown" : "cart"}
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >
-      Shopping cart
-      {items.map(item => {
-        return <p key={item.style.style_id + item.size}>{item.productName} Size: {item.size} Style: {item.style.name} price: {item.style.sale_price || item.style.original_price} * {item.quantity}</p>
-      })}
+      <div>
+        Subtotal: <span>${saleTotal}</span>
+      </div>
+      <div>
+        Proceed to checkout
+      </div>
+      <div></div>
+      <div className="cart-product-list">
+        {items.map(item => {
+          return <div key={item.style.style_id + item.size}>
+            <img src={item.style.photos[0].thumbnail_url} />
+            <p>{item.size} {item.style.name} $ {item.style.sale_price || item.style.original_price} * {item.quantity}</p>
+          </div>
+        })}
+      </div>
     </div>
   )
 }

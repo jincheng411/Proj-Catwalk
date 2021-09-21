@@ -2,14 +2,98 @@
   visibility: hidden;
   position: absolute;
   background-color: white;
-  color: blue;
   width: 25%;
-  height: 200px;
   min-width: 350px;
-  border: black 1px solid;
+  border: #949393 1px solid;
   right: 30px;
   top: 40px;
   z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cart > :first-child {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.cart > :first-child span {
+  color: #a80707;
+}
+
+.cart > :nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 10px 0;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.cart > :nth-child(2):hover {
+  color: white;
+  background-color: black;
+}
+
+.cart > :nth-child(3) {
+  width: 100%;
+  margin: 15px 0;
+  border-bottom: 1px solid grey;
+}
+
+.cart > :nth-child(4) {
+  font-size: 0.5em;
+  margin: 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 0;
+}
+
+.cart > :nth-child(4) > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: 0 !important;
+  margin-bottom: 10px;
+}
+
+.cart > :nth-child(4) > div > img {
+  width: 55px;
+  height: 55px;
+}
+
+.cart > :nth-child(4) > div > p {
+  margin-left: 10px;
+  font-size: 2em;
 }
 
 .shown {

@@ -59,6 +59,7 @@ class ProductDetail extends React.Component {
           return item;
         }
       });
+      console.log(cart)
       this.setState({ cart: newState });
     }
   }

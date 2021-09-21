@@ -2,14 +2,72 @@
   visibility: hidden;
   position: absolute;
   background-color: white;
-  color: blue;
   width: 25%;
-  height: 200px;
   min-width: 350px;
-  border: black 1px solid;
+  border: rgb(148, 147, 147) 1px solid;
   right: 30px;
   top: 40px;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > :first-child {
+    //subtotal
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 20px;
+    span {
+      color: rgb(168, 7, 7);
+    }
+  }
+  & > :nth-child(2) {
+    //checkout btn
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px 0;
+    padding: 10px 0;
+    cursor: pointer;
+    &:hover {
+      color: white;
+      background-color: black;
+    }
+  }
+  & > :nth-child(3) {
+    //horizontal line
+    width: 100%;
+    margin: 15px 0;
+    border-bottom: 1px solid grey;
+  }
+
+  & > :nth-child(4) {
+    //order items
+    font-size: 0.5em;
+    margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    & > div {
+      display: flex;
+
+      flex-direction: row;
+      margin-left: 0 !important;
+      margin-bottom: 10px;
+      & > img {
+        width: 55px;
+        height: 55px;
+      }
+      & > p {
+        margin-left: 10px;
+        font-size: 2em;
+      }
+    }
+  }
 }
 .shown {
   visibility: visible;
