@@ -12,7 +12,7 @@ class App extends React.Component {
       products: [],
       currentProduct: {},
       currentProductId: null,
-      favoritedMain: false
+      favoritedMain: false,
     }
     this.handleRelatedProductsClick = this.handleRelatedProductsClick.bind(this)
     this.handleAddMainAsFavorite = this.handleAddMainAsFavorite.bind(this)

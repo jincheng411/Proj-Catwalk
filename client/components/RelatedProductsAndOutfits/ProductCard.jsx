@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import ProductImage from './ProductImage.jsx';
 import StarRating from "./StarRating.jsx";
+import ComparisonModal from "./ComparisonModal.jsx";
 
 class Product extends React.Component {
   constructor(props) {
@@ -11,12 +12,19 @@ class Product extends React.Component {
       name: null,
       category: null,
       price: null,
-      rating: 0
+      rating: 0,
+      currentProductFeatures: [],
+      myProductFeatures: [],
+      hover: false,
+      modal: 'Hover For Comparison'
     }
     this.addRelatedProductToOutfit = this.addRelatedProductToOutfit.bind(this)
     this.removeOutfitCard = this.removeOutfitCard.bind(this)
     this.getAndSet =  this.getAndSet.bind(this)
     this.handleRenderCard = this.handleRenderCard.bind(this)
+    this.renderModal = this.renderModal.bind(this)
+    this.handleEnter = this.handleEnter.bind(this)
+    this.handleLeave = this.handleLeave.bind(this)
   }
   componentDidMount() {
     this.getAndSet();
@@ -27,6 +35,19 @@ class Product extends React.Component {
     }
   }
 
+  renderModal() {
+    return  <ComparisonModal className='comparison-modal-render' currentProduct={this.props.currentProduct} myName={this.state.name} currentProductFeatures={this.state.currentProductFeatures} myProductFeatures={this.state.myProductFeatures} hover={this.state.hover}/>
+  }
+  handleEnter() {
+    this.setState({hover: !this.state.hover, modal: this.renderModal()})
+  }
+  handleLeave() {
+    this.setState({modal: 'Hover For Comparison'})
+  }
+  // handleModal() {
+  //   this.setState({hover: !this.state.hover})
+  // }
+
   getAndSet() {
     axios.get(`/api/products/${this.props.relatedProduct}`)
       .then(data => {
@@ -36,7 +57,8 @@ class Product extends React.Component {
           category: data.data.category,
           price: data.data.default_price,
           rating: 0,
-          isOutfit: false
+          currentProductFeatures: this.props.currentProduct.features,
+          myProductFeatures: data.data.features
         })
         this.getRatings();
       })
@@ -70,9 +92,8 @@ class Product extends React.Component {
     })
   }
   render() {
-    const {name, category, price, rating} = this.state;
-    const {relatedProduct, inOutfitList} = this.props
-
+    const {name, category, price, rating, currentProductFeatures, myProductFeatures, hover} = this.state;
+    const {relatedProduct, inOutfitList, currentProduct} = this.props
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
@@ -97,7 +118,12 @@ class Product extends React.Component {
         <StarRating rating={rating} />
         </div>
         <button onClick={this.addRelatedProductToOutfit}>Star</button>
+        <div className='compare-wrapper'>
+        <div className='compare-modal-incard' onMouseOver={this.handleEnter} onMouseLeave={this.handleLeave}>{this.state.modal}</div>
+        </div>
+        {/* <ComparisonModal currentProduct={currentProduct} myName={name} currentProductFeatures={currentProductFeatures} myProductFeatures={myProductFeatures} hover={hover}/> */}
         <ProductImage relatedProduct={relatedProduct}/>
+
       </div>
     )
   } else if (this.props.emptyOutfits === true || this.props.emptyOutfits === undefined) {
