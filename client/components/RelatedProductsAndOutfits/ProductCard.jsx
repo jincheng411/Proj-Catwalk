@@ -110,6 +110,7 @@ class Product extends React.Component {
     )
     } else if(!inOutfitList && this.state.id !== null) {
       return (
+        <div>
         <div className='product-card'>
           <div className="product-card-head" onClick={this.handleRenderCard}>
         <h3>{name}</h3>
@@ -123,6 +124,8 @@ class Product extends React.Component {
         </div>
         {/* <ComparisonModal currentProduct={currentProduct} myName={name} currentProductFeatures={currentProductFeatures} myProductFeatures={myProductFeatures} hover={hover}/> */}
         <ProductImage relatedProduct={relatedProduct}/>
+
+      </div>
 
       </div>
     )

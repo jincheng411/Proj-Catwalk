@@ -31,9 +31,9 @@ class App extends React.Component {
       })
     })
   }
-  handleAddMainAsFavorite() {
+  handleAddMainAsFavorite(bool) {
     console.log('hitttt')
-    this.setState({favoritedMain: true})
+    this.setState({favoritedMain: bool})
   }
 
   handleRelatedProductsClick(id) {
