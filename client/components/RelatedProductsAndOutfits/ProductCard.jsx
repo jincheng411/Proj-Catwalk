@@ -3,6 +3,7 @@ import axios from "axios";
 import ProductImage from './ProductImage.jsx';
 import StarRating from "./StarRating.jsx";
 import ComparisonModal from "./ComparisonModal.jsx";
+import { values } from "underscore";
 
 class Product extends React.Component {
   constructor(props) {
@@ -92,8 +93,11 @@ class Product extends React.Component {
   }
   // ? Our beautiful render
   render() {
-    const {name, category, price, rating} = this.state;
-    const {relatedProduct, inOutfitList} = this.props
+    console.log(this)
+    const {id, name, category, price, rating} = this.state;
+    const {relatedProduct, inOutfitList, productsShown} = this.props
+    console.log('products shown')
+    //id={'id' + productsShown.indexOf(id)
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
@@ -110,7 +114,6 @@ class Product extends React.Component {
     )
     } else if(!inOutfitList && this.state.id !== null) {
       return (
-        <div>
         <div className='product-card'>
           <div className="product-card-head" onClick={this.handleRenderCard}>
           <div className='compare-wrapper'>
@@ -123,9 +126,9 @@ class Product extends React.Component {
         </div>
         <span onClick={this.addRelatedProductToOutfit}><i className="fas fa-star"></i></span>
         <ProductImage className='product-card-images' relatedProduct={relatedProduct}/>
-      </div>
       <div>{this.state.modal}</div>
       </div>
+
     )
   } else if (this.props.emptyOutfits === true || this.props.emptyOutfits === undefined) {
     // undefined because NaN gets plugged in
