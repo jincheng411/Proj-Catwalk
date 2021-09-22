@@ -120,7 +120,7 @@ render() {
   if (!left && right) {
     return (
       <div className = "related-products-car">
-      <h2 className='carousal-header'> Related sub</h2>
+      <h2 className='carousal-header'> Related Products</h2>
       {productsShown.map(relatedProduct => <Product key={relatedProduct} productsShown={productsShown} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
       <button className = "carousal-next" onClick={this.handleClickRight}><i className="fas fa-arrow-right"></i></button>
     </div>

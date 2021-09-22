@@ -104,7 +104,7 @@ class Product extends React.Component {
            <div className="product-card-head" onClick={this.handleRenderCard}>
            <h3 className='product-card-name'>{name}</h3>
         <p className='product-card-category'>{category}</p>
-        <p className='product-card-price'>{price}</p>
+        <p className='product-card-price'>$ {price}</p>
         <StarRating rating={rating} />
         <div/>
         </div>
@@ -121,10 +121,10 @@ class Product extends React.Component {
         </div>
         <h3 className='product-card-name'>{name}</h3>
         <p className='product-card-category'>{category}</p>
-        <p className='product-card-price'>{price}</p>
+        <p className='product-card-price'>$ {price}</p>
         <StarRating rating={rating} />
         </div>
-        <span onClick={this.addRelatedProductToOutfit}><i className="fas fa-star"></i></span>
+        <span onClick={this.addRelatedProductToOutfit} className='star-add'><i className="fas fa-star"></i></span>
         <ProductImage className='product-card-images' relatedProduct={relatedProduct}/>
       <div>{this.state.modal}</div>
       </div>
