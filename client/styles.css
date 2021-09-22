@@ -7,7 +7,7 @@ body {
   border: 2px solid #ddd;
   border-radius: 25px;
   padding: 5px;
-  background-color: rgb(205, 230, 252);
+  background-color: rgba(205, 230, 252, 0.721);
   vertical-align: top;
   width: 280px;
   height: 350px;
@@ -16,18 +16,18 @@ body {
   margin: 5px;
 }
 
-@media screen and (max-width: 1370px) {
- .related-products-car .product-card:nth-child(5) {
+@media screen and (max-width: 1300px) {
+ .related-products-car .product-card:nth-child(4) {
     display: none;
   }
 }
-@media screen and (max-width: 1050px) {
-  .related-products-car .product-card:nth-child(4) {
+@media screen and (max-width: 1000px) {
+  .related-products-car .product-card:nth-child(3) {
      display: none;
    }
  }
- @media screen and (max-width: 720px) {
-  .related-products-car .product-card:nth-child(3) {
+ @media screen and (max-width: 690px) {
+  .related-products-car .product-card:nth-child(2) {
      display: none;
    }
  }
@@ -48,6 +48,7 @@ body {
   width: fit-content;
   margin-right: 0px;
   margin-bottom: 5px;
+  color: gray;
 }
 .product-card-price {
   text-align: right;
@@ -55,6 +56,7 @@ body {
   width: fit-content;
   margin-left: 0px;
   margin-bottom: 5px;
+  color: gray
 }
 .no-reviews {
   text-align: left;
@@ -62,6 +64,7 @@ body {
   width: fit-content;
   margin-right: 0px;
   margin-bottom: 5px;
+  color:gray
 }
 .stars {
   position: relative;
@@ -75,13 +78,13 @@ body {
 .star-add {
   margin-bottom: 20px;
   padding-right: 3px;
-  color: rgb(3, 212, 249)
+  color: rgb(136, 100, 244)
 }
 
 .product-card-image {
   border: 1px solid #ddd;
   border-radius: 4px;
-  border-color: azure;
+  border-color: rgb(255, 253, 240);
   padding: 5px;
   height: 190px;
   align-content: center;
@@ -94,7 +97,12 @@ body {
   margin-right: auto;
   display: block;
 }
-
+.carousal-header {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
 .related-products-car {
 display: inline;
 text-align: center;
@@ -120,25 +128,28 @@ margin-top: 20px;
   width: 100%;
 }
 .comparison-main-pop-up {
-  position: fixed;
+  position: relative;
   text-align: center;
+  justify-content: center;
   padding: 1%;
-  height: fit-content;
-  top: 15%;
+  height: 200px;
+  width: 300px;
+  top: 10%;
   left: 50%;
-  background: white;
+  color: white;
+  background: rgb(52, 79, 147);
   transform: translate(-50%,-50%);
 }
- /* .features-table {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 3;
-} */
-
+.current-product-name-cm {
+  display: inline;
+}
+.product-card-name-cm {
+  display: inline;
+}
+.features-table {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 

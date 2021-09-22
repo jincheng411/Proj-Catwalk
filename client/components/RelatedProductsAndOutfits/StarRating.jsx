@@ -22,7 +22,7 @@ class StarRating extends React.Component {
         <StarRatings
         className='stars'
         rating={this.props.rating}
-        starRatedColor="gold"
+        starRatedColor="rgb(235, 210, 17)"
         changeRating={this.changeRating}
         numberOfStars={5}
         name='rating'
