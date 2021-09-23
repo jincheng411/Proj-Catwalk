@@ -3,6 +3,7 @@ import axios from "axios";
 import ProductImage from './ProductImage.jsx';
 import StarRating from "./StarRating.jsx";
 import ComparisonModal from "./ComparisonModal.jsx";
+import { values } from "underscore";
 
 class Product extends React.Component {
   constructor(props) {
@@ -92,46 +93,48 @@ class Product extends React.Component {
   }
   // ? Our beautiful render
   render() {
-    const {name, category, price, rating} = this.state;
-    const {relatedProduct, inOutfitList} = this.props
+
+    const {id, name, category, price, rating} = this.state;
+    const {relatedProduct, inOutfitList, productsShown} = this.props
+
+    //id={'id' + productsShown.indexOf(id)
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
            <div className="product-card-head" onClick={this.handleRenderCard}>
            <h3 className='product-card-name'>{name}</h3>
         <p className='product-card-category'>{category}</p>
-        <p className='product-card-price'>{price}</p>
+        <p className='product-card-price'>$ {price}</p>
         <StarRating rating={rating} />
         <div/>
         </div>
-        <button onClick={this.removeOutfitCard}>X</button>
+        <span onClick={this.removeOutfitCard}><i className="fas fa-minus-circle"></i></span>
         <ProductImage relatedProduct={relatedProduct}/>
       </div>
     )
     } else if(!inOutfitList && this.state.id !== null) {
       return (
-        <div>
         <div className='product-card'>
           <div className="product-card-head" onClick={this.handleRenderCard}>
           <div className='compare-wrapper'>
-        <div className='compare-modal-incard' onMouseOver={this.handleEnter} onMouseLeave={this.handleLeave} modal={this.state.modal}>HOVER HERE</div>
+        <div className='compare-modal-incard' onMouseOver={this.handleEnter} onMouseLeave={this.handleLeave} modal={this.state.modal}><i className="fas fa-scroll"></i></div>
         </div>
         <h3 className='product-card-name'>{name}</h3>
         <p className='product-card-category'>{category}</p>
-        <p className='product-card-price'>{price}</p>
+        <p className='product-card-price'>$ {price}</p>
         <StarRating rating={rating} />
         </div>
-        <button onClick={this.addRelatedProductToOutfit}>Star</button>
+        <span onClick={this.addRelatedProductToOutfit} className='star-add'><i className="fas fa-star"></i></span>
         <ProductImage className='product-card-images' relatedProduct={relatedProduct}/>
-      </div>
       <div>{this.state.modal}</div>
       </div>
+
     )
   } else if (this.props.emptyOutfits === true || this.props.emptyOutfits === undefined) {
     // undefined because NaN gets plugged in
     return (
     <div className='product-card-empty-outfits'>
-      <h2 className='empty-outfit-plus'>+</h2>
+      <h2 className='empty-outfit-plus'><i className="fas fa-plus-square"></i></h2>
     </div>
     )
   }

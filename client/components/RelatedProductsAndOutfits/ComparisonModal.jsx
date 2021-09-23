@@ -81,9 +81,9 @@ class ComparisonModal extends React.Component {
             {this.state.features.map((feature, index) => {
               return (
                 <tr className="features-table-rows" key={index}>
-                  <td className="features-table-text" >{this.state.featuresObj[feature] === 'current' || this.state.featuresObj[feature] === 'both' ? 'check' : ''}</td>
+                  <td className="features-table-text" >{this.state.featuresObj[feature] === 'current' || this.state.featuresObj[feature] === 'both' ? <i className="fas fa-check"></i> : ''}</td>
                   <td className="features-table-text features-table-name">{feature}</td>
-                  <td className="features-table-data">{this.state.featuresObj[feature] === 'inBoth' || this.state.featuresObj[feature] === 'recent' ? 'check' : ''}</td>
+                  <td className="features-table-data">{this.state.featuresObj[feature] === 'inBoth' || this.state.featuresObj[feature] === 'recent' ? <i className="fas fa-check"></i> : ''}</td>
                 </tr>
               );
             })}

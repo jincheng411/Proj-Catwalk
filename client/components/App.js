@@ -26,7 +26,6 @@ class App extends React.Component {
           currentProduct: product.data,
           currentProductId: product.data.id,
           products: products.data,
-          // favoritedMain: false
         })
       })
     })
@@ -40,28 +39,36 @@ class App extends React.Component {
       })
     }
   }
+//   componentDidUpdate(prevState) {
+//     if(prevProps.currentProduct !== this.state.currentProduct && sessionStorage.yourOutfits && sessionStorage.yourOutfits.split(',').includes(this.state.currentProductId+'')) {
+//       console.log(prevProps)
+//       this.setState({favoritedMain: true})
+//   }
+// }
+
   handleAddMainAsFavorite(bool) {
-    this.setState({ favoritedMain: bool });
+    this.setState({favoritedMain: bool})
   }
 
   handleRelatedProductsClick(id) {
     axios.get(`/api/products/${id}`)
-      .then(product => {
-        this.setState({
-          currentProduct: product.data,
-          currentProductId: product.data.id
-        });
-      })
+    .then(product => {
+      this.setState({
+        currentProduct: product.data,
+        currentProductId: product.data.id,
+        favoritedMain: false
+      });
+    })
   }
 
   render() {
-    const { currentProduct, currentProductId, products, favoritedMain } = this.state;
-    console.log(favoritedMain)
+    const { currentProduct, currentProductId, products, favoritedMain} = this.state;
+    console.log('APP STATE FAVE MAIN', favoritedMain)
     return (
       <>
         <ProductDetail favoritedMain={favoritedMain} currentProduct={currentProduct} handleAddMainAsFavorite={this.handleAddMainAsFavorite} />
         <br></br>
-        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId} handleRelatedProductsClick={this.handleRelatedProductsClick} favoritedMain={favoritedMain} />
+        <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId} handleRelatedProductsClick={this.handleRelatedProductsClick} favoritedMain={favoritedMain}/>
         <br></br>
         {/* <ReviewsCore currentProductId={currentProductId} reviewList={this.state.reviews} /> */}
       </>

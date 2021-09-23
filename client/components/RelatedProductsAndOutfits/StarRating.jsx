@@ -20,12 +20,13 @@ class StarRating extends React.Component {
     } else if (this.props.rating >= 0 && this.props.rating <= 5) {
       return (
         <StarRatings
+        className='stars'
         rating={this.props.rating}
-        starRatedColor="black"
+        starRatedColor="rgb(235, 210, 17)"
         changeRating={this.changeRating}
         numberOfStars={5}
         name='rating'
-        starDimension="10px"
+        starDimension="12px"
         starSpacing="8px"
         />
         )

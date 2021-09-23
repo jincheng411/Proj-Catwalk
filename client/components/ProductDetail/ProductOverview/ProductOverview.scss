@@ -170,15 +170,11 @@ $grey: #6d8194;
   display: flex;
   justify-content: center;
   align-items: center;
-  // top: 15px;
   width: 35px;
   height: 35px;
-  // background: transparent;
-  // margin: 30px auto 0 auto;
   border: solid 5px #000000;
   border-top: solid 5px #fafafa;
   border-radius: 50%;
-  // opacity: 0;
   animation: loading 1.2s linear;
   animation-fill-mode: forwards;
 }
@@ -193,6 +189,5 @@ $grey: #6d8194;
   100% {
     opacity:0;
     transform: rotate(880deg);
-    //  border-color: #f8f8f8;
   }
 }

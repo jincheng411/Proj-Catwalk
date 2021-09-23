@@ -120,34 +120,42 @@ class OutfitList extends React.Component {
     const {productsShown, left, right} = this.state;
     if (!left && right && productsShown.length >= 1) {
       return (
+        <div>
+        <h2 className='carousal-header'> Your Outfits</h2>
         <div className = "related-products-car">
-        <h2 className='outfit-header'> Your Outfits</h2>
         {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
         <button className = "carousal-next" onClick={this.handleClickRight}><i className="fas fa-arrow-right"></i></button>
+      </div>
       </div>
     )}
     if (left && right && productsShown.length >= 1) {
       return (
+        <div>
+        <h2 className='carousal-header'> Your Outfits</h2>
         <div className = "related-products-car">
-        <h2 className='outfit-header'> Your Outfits</h2>
-        {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender}/>)}
         <button  className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
+        {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender}/>)}
         <button className = "carousal-next" onClick={this.handleClickRight}><i className="fas fa-arrow-right"></i></button>
+      </div>
       </div>
     )}
   if (left && !right && productsShown.length >= 1) {
     return (
+      <div>
+        <h2 className='carousal-header'> Your Outfits</h2>
       <div className = "related-products-car">
-      <h2 className='outfit-header'> Your Outfits</h2>
-      {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
       <button  className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
+      {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
+    </div>
     </div>
   )}
   if (!left && !right && productsShown.length >= 1) {
     return (
+      <div>
+        <h2 className='carousal-header'> Your Outfits</h2>
       <div className = "related-products-car">
-      <h2 className='outfit-header'> Your Outfits</h2>
       {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
+    </div>
     </div>
   )}
   if(productsShown.length === 0) {
