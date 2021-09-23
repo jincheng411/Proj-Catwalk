@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import _ from 'underscore';
 import SizeSelector from './SizeSelector';
 import QuantitySelector from './QuantitySelector';
 
 
-function SizeQuantitySelector({ style, favoritedMain, addToBag, handleAddMainAsFavorite, currentProductId }) {
+function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite, currentProductId }) {
   const [inventory, setInventory] = useState(1);
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
   const [sizeWarning, setSizeWarning] = useState(false);
   const [isFav, setIsFav] = useState(false);
+  const [btnDisabled, setBtnDisabled] = useState(false);
+
   function updateInventory(inventory, size) {
     setInventory(inventory);
     setSize(size);
@@ -19,34 +21,35 @@ function SizeQuantitySelector({ style, favoritedMain, addToBag, handleAddMainAsF
     console.log(`seleted ${num} items`)
     setQuantity(num);
   }
-  function addToFav () {
+  function addToFav() {
     handleAddMainAsFavorite(!favoritedMain);
-    setIsFav(!isFav);
+    // setIsFav(!isFav);
   }
 
   function handleOnClick() {
-    if(size) {
-      addToBag({style, size, quantity});
+    if (size) {
+      addToBag({ style, size, quantity });
+      setBtnDisabled(true);
+      setTimeout(() => setBtnDisabled(false), 1200)
     } else {
       setSizeWarning(true);
     }
   }
 
-useEffect(()=> {
-  if(favoritedMain) {
-    setIsFav(false);
-  }
-})
-
   return (
     <div className="selector">
-      <SizeSelector style={style} updateInventory={updateInventory} sizeWarning={sizeWarning}/>
+      <SizeSelector style={style} updateInventory={updateInventory} sizeWarning={sizeWarning} />
       {/* <QuantitySelector inventory={inventory} updateQuantity={updateQuantity}/> */}
       <div className="selector-add-to-cart">
-      <span onClick={handleOnClick}>ADD TO BAG</span>
-      <span onClick={addToFav}>
-        Favorite {isFav ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
-      </span>
+        <button
+          onClick={handleOnClick}
+          disabled={btnDisabled}
+          id={btnDisabled ? "btnClicked" : null}>
+          {btnDisabled ? <span id="loading"></span> : ''}
+          ADD TO BAG</button>
+        <button onClick={addToFav}>
+          Favorite {isFav ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
+        </button>
       </div>
     </div>
   )
