@@ -114,7 +114,6 @@ class OutfitList extends React.Component {
     this.handleShownButtons();
   }
 
-// pass to product card because it is set up the same exact way, except for the action button. Need a way to differentiate.
   render() {
     const {currentProduct, currentProductId, products, removeOutfit, handleRender} = this.props;
     const {productsShown, left, right} = this.state;

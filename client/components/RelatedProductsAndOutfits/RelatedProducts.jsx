@@ -21,6 +21,7 @@ constructor(props) {
 
 componentDidUpdate(prevProps) {
   if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
+    console.table([this.props.relatedProducts, prevProps.relatedProducts])
     this.setProductsShown();
     this.setState({
       relatedProducts: this.props.relatedProducts
@@ -116,7 +117,7 @@ handleClickLeft() {
 render() {
   const {currentProduct, currentProductId, products, addOutfit, handleRender} = this.props;
   const {productsShown, left, right, relatedProducts} = this.state;
-  // console.log('STATE---> ', this.state, 'PROPS --->', this.props)
+
   if (!left && right) {
     return (
       <div>

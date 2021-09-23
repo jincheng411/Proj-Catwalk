@@ -3,7 +3,6 @@ import axios from "axios";
 import ProductImage from './ProductImage.jsx';
 import StarRating from "./StarRating.jsx";
 import ComparisonModal from "./ComparisonModal.jsx";
-import { values } from "underscore";
 
 class Product extends React.Component {
   constructor(props) {
@@ -30,11 +29,7 @@ class Product extends React.Component {
   componentDidMount() {
     this.getAndSet();
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
-      this.getAndSet();
-    }
-  }
+
   // ? Comparison Modal
   renderModal() {
     return  <ComparisonModal currentProduct={this.props.currentProduct} myName={this.state.name} currentProductFeatures={this.state.currentProductFeatures} myProductFeatures={this.state.myProductFeatures} hover={this.state.hover}/>
@@ -94,10 +89,9 @@ class Product extends React.Component {
   // ? Our beautiful render
   render() {
 
-    const {id, name, category, price, rating} = this.state;
-    const {relatedProduct, inOutfitList, productsShown} = this.props
+    const {name, category, price, rating} = this.state;
+    const {relatedProduct, inOutfitList} = this.props
 
-    //id={'id' + productsShown.indexOf(id)
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
@@ -107,8 +101,8 @@ class Product extends React.Component {
         <p className='product-card-price'>$ {price}</p>
         <StarRating rating={rating} />
         <div/>
+        <span onClick={this.removeOutfitCard} className="remove-outfit"><i className="fas fa-minus-circle"></i></span>
         </div>
-        <span onClick={this.removeOutfitCard}><i className="fas fa-minus-circle"></i></span>
         <ProductImage relatedProduct={relatedProduct}/>
       </div>
     )
@@ -123,8 +117,8 @@ class Product extends React.Component {
         <p className='product-card-category'>{category}</p>
         <p className='product-card-price'>$ {price}</p>
         <StarRating rating={rating} />
+        <span onClick={this.addRelatedProductToOutfit} className='heart-add'><i className="fas fa-heart"></i></span>
         </div>
-        <span onClick={this.addRelatedProductToOutfit} className='star-add'><i className="fas fa-star"></i></span>
         <ProductImage className='product-card-images' relatedProduct={relatedProduct}/>
       <div>{this.state.modal}</div>
       </div>
