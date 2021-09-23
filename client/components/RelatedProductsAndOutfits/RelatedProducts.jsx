@@ -119,34 +119,42 @@ render() {
   // console.log('STATE---> ', this.state, 'PROPS --->', this.props)
   if (!left && right) {
     return (
+      <div>
+      <h2 className='carousal-header'> Related Products</h2>
       <div className = "related-products-car">
-      <h2 className='carousal-header'> Related sub</h2>
-      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
-      <button className = "carousal-next" onClick={this.handleClickRight}><i className="fas fa-arrow-right"></i></button>
-    </div>
+        {productsShown.map(relatedProduct => <Product key={relatedProduct} productsShown={productsShown} relatedProduct={relatedProduct} currentProductId={currentProductId}  relatedProductsList={relatedProducts} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
+        <button className = "carousal-next" onClick={this.handleClickRight}><i className="fas fa-arrow-right"></i></button>
+      </div>
+      </div>
   )}
   if (left && right) {
     return (
-      <div className = "related-products-car">
-      <h2 className='carousal-header'> Related sub</h2>
-      {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} currentProductId={currentProductId}  relatedProductsList={relatedProducts} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
-      <button className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
+    <div>
+    <h2 className='carousal-header'> Related Products</h2>
+    <div className = "related-products-car">
+    <button className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
+      {productsShown.map(relatedProduct => <Product key={relatedProduct} productsShown={productsShown} relatedProduct={relatedProduct} currentProductId={currentProductId}  relatedProductsList={relatedProducts} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
       <button className = "carousal-next" onClick={this.handleClickRight}><i className="fas fa-arrow-right"></i></button>
+    </div>
     </div>
   )}
 if (left && !right) {
   return (
+    <div>
+    <h2 className='carousal-header'> Related Products</h2>
     <div className = "related-products-car">
-    <h2 className='carousal-header'> Related sub</h2>
-    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
     <button className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
+    {productsShown.map(relatedProduct => <Product key={relatedProduct} productsShown={productsShown} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
+  </div>
   </div>
 )}
 if (!left && !right) {
   return (
+    <div>
+    <h2 className='carousal-header'> Related Products</h2>
     <div className = "related-products-car">
-    <h2 className='carousal-header'> Related sub</h2>
-    {productsShown.map(relatedProduct => <Product key={relatedProduct} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
+    {productsShown.map(relatedProduct => <Product key={relatedProduct} productsShown={productsShown} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
+  </div>
   </div>
 )}
 }}

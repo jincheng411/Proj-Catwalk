@@ -141,8 +141,6 @@ class RelatedProductsAndOutfits extends React.Component {
     return (
         <div>
       <div className="related-products">
-        <h1 className="related-products-header">Related Products Main Component</h1>
-
         <RelatedProducts inOutfitList={currentInOutfitList} relatedProducts={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={this.addOutfit} handleRender={this.handleRender} />
         <p></p>
         </div>
