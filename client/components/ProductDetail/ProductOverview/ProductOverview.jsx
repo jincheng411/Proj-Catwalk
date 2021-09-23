@@ -5,7 +5,7 @@ import PriceTag from './PriceTag';
 import _ from 'underscore';
 import './ProductOverview.css'
 
-function ProductOverview({product, styles, passToImageGallery, currentStyle, updateBag, handleAddMainAsFavorite}) {
+function ProductOverview({product, styles,favoritedMain, passToImageGallery, currentStyle, updateBag, handleAddMainAsFavorite}) {
 
   function handleChangeStyle(style) {
     passToImageGallery(style);
@@ -20,7 +20,7 @@ function ProductOverview({product, styles, passToImageGallery, currentStyle, upd
       <p>{currentStyle.name}</p>
       <PriceTag defaultPrice={product.default_price} style={currentStyle}/>
       <StyleSelector styles={styles} currentStyleId={currentStyle.style_id} changeStyle={handleChangeStyle}/>
-      <SizeQuantitySelector style={currentStyle} addToBag={addToBag} handleAddMainAsFavorite={handleAddMainAsFavorite}/>
+      <SizeQuantitySelector favoritedMain={favoritedMain} style={currentStyle} addToBag={addToBag} handleAddMainAsFavorite={handleAddMainAsFavorite} currentProductId={product.id}/>
     </div>
   )
 }

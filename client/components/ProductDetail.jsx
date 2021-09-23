@@ -35,6 +35,12 @@ class ProductDetail extends React.Component {
     }
   }
 
+  componentDidMount() {
+    if (sessionStorage.cart){
+      this.setState({cart: JSON.parse(sessionStorage.cart)})
+    }
+  }
+
   passToImageGallery(style) {
     this.setState({
       currentStyle: style
@@ -48,6 +54,7 @@ class ProductDetail extends React.Component {
       item.size === data.size
     )).length > 0
     if (_.isEmpty(cart) || !isExist) {
+      sessionStorage.setItem('cart', JSON.stringify(cart))
       this.setState({
         cart: cart.concat(data),
       })
@@ -59,7 +66,7 @@ class ProductDetail extends React.Component {
           return item;
         }
       });
-      console.log(cart)
+      sessionStorage.setItem('cart', JSON.stringify(newState))
       this.setState({ cart: newState });
     }
   }
@@ -69,7 +76,7 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    const { currentProduct, handleAddMainAsFavorite } = this.props;
+    const { currentProduct, favoritedMain,handleAddMainAsFavorite } = this.props;
     const { styles, currentStyle, cart, listVisible } = this.state;
     return (
       <div className="product-detail">
@@ -81,6 +88,7 @@ class ProductDetail extends React.Component {
             <Description product={currentProduct} features={currentProduct.features} />
           </div>
           <ProductOverview
+            favoritedMain={favoritedMain}
             product={currentProduct}
             currentStyle={currentStyle}
             styles={styles}

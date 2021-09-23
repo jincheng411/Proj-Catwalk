@@ -27,13 +27,13 @@ class RelatedProductsAndOutfits extends React.Component {
       this.updateStateAndRender();
       this.addFavorite();
     }
+
   }
   addFavorite() {
     if (this.props.favoritedMain) {
       this.addOutfit();
     }
   }
-
   updateStateAndRender() {
     if (sessionStorage.getItem('yourOutfits') !== null) {
       var storageIds = sessionStorage.getItem('yourOutfits')
