@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Product from './ProductCard';
+import Product from './ProductCard.jsx';
 class RelatedProducts extends React.Component {
 constructor(props) {
   super(props);
@@ -21,6 +21,7 @@ constructor(props) {
 
 componentDidUpdate(prevProps) {
   if (prevProps.relatedProducts !== this.props.relatedProducts && this.props.relatedProducts.name !== 'Error') {
+    console.table([this.props.relatedProducts, prevProps.relatedProducts])
     this.setProductsShown();
     this.setState({
       relatedProducts: this.props.relatedProducts
@@ -116,7 +117,7 @@ handleClickLeft() {
 render() {
   const {currentProduct, currentProductId, products, addOutfit, handleRender} = this.props;
   const {productsShown, left, right, relatedProducts} = this.state;
-  // console.log('STATE---> ', this.state, 'PROPS --->', this.props)
+
   if (!left && right) {
     return (
       <div>
