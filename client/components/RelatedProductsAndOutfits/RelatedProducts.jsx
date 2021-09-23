@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Product from './ProductCard';
+import Product from './ProductCard.jsx';
 class RelatedProducts extends React.Component {
 constructor(props) {
   super(props);

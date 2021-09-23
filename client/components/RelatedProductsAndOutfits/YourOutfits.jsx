@@ -1,5 +1,5 @@
 import React from "react";
-import Product from "./ProductCard";
+import Product from "./ProductCard.jsx";
 class OutfitList extends React.Component {
   constructor(props) {
     super(props);
