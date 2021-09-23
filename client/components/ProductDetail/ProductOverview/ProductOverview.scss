@@ -129,7 +129,7 @@ $grey: #6d8194;
   flex-direction: column;
 
   align-items: center;
-  span {
+  button {
     height: 60px;
     border-radius: 5px;
     display: flex;
@@ -138,7 +138,8 @@ $grey: #6d8194;
     margin-top: 15px;
     width: 100%;
     cursor: pointer;
-
+    position: relative;
+    overflow: hidden;
     &:first-child {
       background-color: black;
       color: white;
@@ -158,5 +159,35 @@ $grey: #6d8194;
         background-color: rgb(212, 211, 211);
       }
     }
+  }
+}
+#btnClicked {
+  cursor: wait;
+  background-color: rgb(85, 84, 84);
+}
+#loading  {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: solid 5px #000000;
+  border-top: solid 5px #fafafa;
+  border-radius: 50%;
+  animation: loading 1.2s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes loading {
+  0% {
+    opacity:1;
+  }
+  70% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+    transform: rotate(880deg);
   }
 }

@@ -35,7 +35,6 @@
   margin-right: 15px;
   overflow: hidden;
 }
-
 .product-detail-main-img > img {
   width: 100%;
   object-fit: fill;
@@ -43,11 +42,11 @@
 
 .image-gallery {
   position: relative;
-  span { //arrows
+  & > span { //arrows
     border-radius: 3px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     position: absolute;
     width: 60px;
     height: 60px;
@@ -61,6 +60,7 @@
     i{
       font-size: 1.2em;
       transform: scaleX(140%);
+
     }
 
     &:nth-child(3) { //left arrow

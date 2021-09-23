@@ -21,7 +21,7 @@ class App extends React.Component {
   componentDidMount() {
     const productId = '37313';
     axios.get('/api/products').then((products) => {
-      axios.get(`/api/products/${productId}`).then(( product ) => {
+      axios.get(`/api/products/${productId}`).then((product) => {
         this.setState({
           currentProduct: product.data,
           currentProductId: product.data.id,
@@ -29,6 +29,15 @@ class App extends React.Component {
         })
       })
     })
+    if(sessionStorage.yourOutfits && sessionStorage.yourOutfits.split(',').includes(this.state.currentProductId+'')) {
+      this.setState({
+        favoritedMain: true
+      })
+    } else {
+      this.setState({
+        favoritedMain: false
+      })
+    }
   }
 //   componentDidUpdate(prevState) {
 //     if(prevProps.currentProduct !== this.state.currentProduct && sessionStorage.yourOutfits && sessionStorage.yourOutfits.split(',').includes(this.state.currentProductId+'')) {
@@ -57,7 +66,7 @@ class App extends React.Component {
     console.log('APP STATE FAVE MAIN', favoritedMain)
     return (
       <>
-        <ProductDetail currentProduct={currentProduct} handleAddMainAsFavorite={this.handleAddMainAsFavorite}  />
+        <ProductDetail favoritedMain={favoritedMain} currentProduct={currentProduct} handleAddMainAsFavorite={this.handleAddMainAsFavorite} />
         <br></br>
         <RelatedProductsAndOutfits currentProduct={currentProduct} products={products} currentProductId={currentProductId} handleRelatedProductsClick={this.handleRelatedProductsClick} favoritedMain={favoritedMain}/>
         <br></br>
