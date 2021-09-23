@@ -78,8 +78,13 @@ class Product extends React.Component {
       if (data.data.results.length === 0) {
         this.setState({rating: 100})
       } else {
-
-        this.setState({rating: data.data.results[0].rating})
+        var arrOfReviews = data.data.results
+        var reviewToTheDecimal = 0
+        arrOfReviews.forEach(review => {
+          reviewToTheDecimal += review.rating
+        })
+        reviewToTheDecimal = reviewToTheDecimal/arrOfReviews.length
+        this.setState({rating: reviewToTheDecimal})
       }
     })
     .catch(err => {
