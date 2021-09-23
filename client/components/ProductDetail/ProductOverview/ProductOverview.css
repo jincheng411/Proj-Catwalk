@@ -98,6 +98,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 3px;
 }
 
 .size-selector div:first-child p:last-child {
@@ -111,10 +112,11 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .size-selector div span {
@@ -128,7 +130,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 80px;
+  min-width: 60px;
   height: 55px;
   margin: 16px 3px;
   margin-left: 0;
@@ -146,8 +148,12 @@
   border: 3px solid black;
 }
 
-.size-selector .warning-size {
-  border: 3px red solid;
+.size-selector .red-border {
+  border: 2px red solid;
+}
+
+.size-selector .red-text {
+  color: red;
 }
 
 .selector-add-to-cart {
