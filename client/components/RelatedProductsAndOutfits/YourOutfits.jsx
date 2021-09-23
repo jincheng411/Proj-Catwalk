@@ -133,9 +133,8 @@ class OutfitList extends React.Component {
         <div>
         <h2 className='carousal-header'> Your Outfits</h2>
         <div className = "related-products-car">
-
-        {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender}/>)}
         <button  className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
+        {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender}/>)}
         <button className = "carousal-next" onClick={this.handleClickRight}><i className="fas fa-arrow-right"></i></button>
       </div>
       </div>
@@ -145,8 +144,8 @@ class OutfitList extends React.Component {
       <div>
         <h2 className='carousal-header'> Your Outfits</h2>
       <div className = "related-products-car">
-      {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
       <button  className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
+      {productsShown.map(outfitId => <Product key={outfitId} inOutfitList={true} relatedProduct={outfitId} currentProductId={currentProductId} products={products} currentProduct={currentProduct} removeOutfit={removeOutfit} handleRender={handleRender} />)}
     </div>
     </div>
   )}

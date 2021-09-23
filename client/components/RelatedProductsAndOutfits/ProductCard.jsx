@@ -93,10 +93,10 @@ class Product extends React.Component {
   }
   // ? Our beautiful render
   render() {
-    console.log(this)
+
     const {id, name, category, price, rating} = this.state;
     const {relatedProduct, inOutfitList, productsShown} = this.props
-    console.log('products shown')
+
     //id={'id' + productsShown.indexOf(id)
     if(inOutfitList && this.state.id !== null) {
       return (

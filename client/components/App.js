@@ -26,13 +26,18 @@ class App extends React.Component {
           currentProduct: product.data,
           currentProductId: product.data.id,
           products: products.data,
-          favoritedMain: false
         })
       })
     })
   }
+//   componentDidUpdate(prevState) {
+//     if(prevProps.currentProduct !== this.state.currentProduct && sessionStorage.yourOutfits && sessionStorage.yourOutfits.split(',').includes(this.state.currentProductId+'')) {
+//       console.log(prevProps)
+//       this.setState({favoritedMain: true})
+//   }
+// }
+
   handleAddMainAsFavorite(bool) {
-    console.log('hitttt')
     this.setState({favoritedMain: bool})
   }
 
@@ -41,14 +46,15 @@ class App extends React.Component {
     .then(product => {
       this.setState({
         currentProduct: product.data,
-        currentProductId: product.data.id
+        currentProductId: product.data.id,
+        favoritedMain: false
       });
     })
   }
 
   render() {
     const { currentProduct, currentProductId, products, favoritedMain} = this.state;
-    console.log(favoritedMain)
+    console.log('APP STATE FAVE MAIN', favoritedMain)
     return (
       <>
         <ProductDetail currentProduct={currentProduct} handleAddMainAsFavorite={this.handleAddMainAsFavorite}  />

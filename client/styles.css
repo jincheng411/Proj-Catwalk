@@ -104,7 +104,7 @@ body {
   margin-bottom: 10px;
 }
 .related-products-car {
-display: inline;
+display: flex;
 text-align: center;
 overflow: hidden;
 height: 500px;
@@ -161,6 +161,15 @@ border: 2px solid rgb(227, 251, 255);
 background-color: rgb(227, 251, 255);
 border-radius: 25px;
 }
+.carousal-prev{
+  display: flex;
+  height: 364px;
+  width: 55px;
+  border: 2px solid rgb(227, 251, 255);
+  background-color: rgb(227, 251, 255);
+  border-radius: 25px;
+  }
+
 .fas.fa-arrow-right {
   position:relative;
   top: calc(50% - 10px);
@@ -172,12 +181,4 @@ border-radius: 25px;
   top: calc(50% - 10px);
   font-size: 30px;
   color:rgb(0, 0, 0)
-}
-.carousal-prev{
-display: flex;
-height: 364px;
-width: 55px;
-border: 2px solid rgb(227, 251, 255);
-background-color: rgb(227, 251, 255);
-border-radius: 25px;
 }

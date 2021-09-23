@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import _ from 'underscore';
 import SizeSelector from './SizeSelector';
 import QuantitySelector from './QuantitySelector';
@@ -9,7 +9,7 @@ function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite }) {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
   const [sizeWarning, setSizeWarning] = useState(false);
-  const [isFav, setIsFav] = useState(false);
+  const [isFav, setIsFav] = useState(true);
   function updateInventory(inventory, size) {
     setInventory(inventory);
     setSize(size);
@@ -19,10 +19,15 @@ function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite }) {
     console.log(`seleted ${num} items`)
     setQuantity(num);
   }
+
   function addToFav() {
-    setIsFav(!isFav);
-    handleAddMainAsFavorite(!isFav);
+    setIsFav(true)
+    console.log('log is fave' , isFav)
+    handleAddMainAsFavorite(isFav)
   }
+  // function checkFave () {
+  //   if(sessionStorage.yourOutfits && sessionStorage.yourOutfits.split(',').includes(this.state.currentProductId+'')) {
+  // }
 
   function handleOnClick() {
     if(size) {
@@ -31,6 +36,7 @@ function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite }) {
       setSizeWarning(true);
     }
   }
+
 
   return (
     <div className="selector">

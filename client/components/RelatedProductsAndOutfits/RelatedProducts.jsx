@@ -132,8 +132,8 @@ render() {
     <div>
     <h2 className='carousal-header'> Related Products</h2>
     <div className = "related-products-car">
+    <button className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
       {productsShown.map(relatedProduct => <Product key={relatedProduct} productsShown={productsShown} relatedProduct={relatedProduct} currentProductId={currentProductId}  relatedProductsList={relatedProducts} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
-      <button className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
       <button className = "carousal-next" onClick={this.handleClickRight}><i className="fas fa-arrow-right"></i></button>
     </div>
     </div>
@@ -143,8 +143,8 @@ if (left && !right) {
     <div>
     <h2 className='carousal-header'> Related Products</h2>
     <div className = "related-products-car">
-    {productsShown.map(relatedProduct => <Product key={relatedProduct} productsShown={productsShown} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
     <button className = "carousal-prev" onClick={this.handleClickLeft}><i className="fas fa-arrow-left"></i></button>
+    {productsShown.map(relatedProduct => <Product key={relatedProduct} productsShown={productsShown} relatedProduct={relatedProduct} relatedProductsList={relatedProducts} currentProductId={currentProductId} products={products} currentProduct={currentProduct} addOutfit={addOutfit} handleRender={handleRender}/>)}
   </div>
   </div>
 )}
