@@ -4,7 +4,7 @@ coverage/
 !dist/index.html
 node_modules/
 *.log
-
+package-lock.json
 # OS generated files
 .DS_Store
 .DS_Store?
