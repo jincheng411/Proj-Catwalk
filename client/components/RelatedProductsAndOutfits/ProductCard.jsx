@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import ProductImage from './ProductImage.jsx';
-import StarRating from "./StarRating.jsx";
-import ComparisonModal from "./ComparisonModal.jsx";
+import ProductImage from './ProductImage';
+import StarRating from "./StarRating";
+import ComparisonModal from "./ComparisonModal";
 
 class Product extends React.Component {
   constructor(props) {
@@ -114,12 +114,15 @@ class Product extends React.Component {
       </div>
     )
     } else if(!inOutfitList && this.state.id !== null) {
+
+      //onMouseLeave={this.handleLeave}
       return (
         <div className='product-card'>
           <div className="product-card-head">
             <div onClick={this.handleRenderCard}>
           <div className='compare-wrapper'>
-        <div className='compare-modal-incard' onMouseOver={this.handleEnter} onMouseLeave={this.handleLeave} modal={this.state.modal}><i className="fas fa-scroll"></i></div>
+        <div className='compare-modal-incard' onMouseOver={this.handleEnter}
+        onMouseLeave={this.handleLeave}  modal={this.state.modal}><i className="fas fa-scroll"></i></div>
         </div>
         <h3 className='product-card-name'>{name}</h3>
         <p className='product-card-category'>{category}</p>

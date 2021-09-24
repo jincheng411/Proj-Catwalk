@@ -149,13 +149,17 @@ margin-top: 20px;
   background-color: rgb(177, 56, 64);
   color: white;
   width: 100%;
+  border: 2px solid #ddd;
+  border-radius: 25px;
 }
 .comparison-main-pop-up {
   position: relative;
+  border: 2px solid #ddd;
+  border-radius: 25px;
   text-align: center;
   justify-content: center;
   padding: 1%;
-  height: 400px;
+  height: 350px;
   width: 400px;
   top: 10%;
   left: 50%;
@@ -177,13 +181,12 @@ margin-top: 20px;
 .features-table {
   margin-left: auto;
   margin-right: auto;
+  height: fit-content;
 }
 .fas.fa-check {
   padding-left: 15px;
   padding-right: 15px;
 }
-
-
 
 .carousal-next {
 display: flex;

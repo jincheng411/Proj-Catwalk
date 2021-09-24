@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import RelatedProducts from './RelatedProductsAndOutfits/RelatedProducts.jsx'
-import OutfitList from './RelatedProductsAndOutfits/YourOutfits.jsx';
+import RelatedProducts from './RelatedProductsAndOutfits/RelatedProducts'
+import OutfitList from './RelatedProductsAndOutfits/YourOutfits';
 class RelatedProductsAndOutfits extends React.Component {
   constructor(props) {
     super(props);

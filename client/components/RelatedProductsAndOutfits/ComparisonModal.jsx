@@ -62,11 +62,10 @@ class ComparisonModal extends React.Component {
           </div>
           <br></br>
           <span className='current-product-name-cm'>{currentProduct.name}</span>
-
           <span> || </span>
-
           <span className='product-card-name-cm'>{myName}</span>
-
+          <br></br>
+          <br></br>
           <table className="features-table">
           <tbody className="features-table">
             {this.state.features.map((feature, index) => {
