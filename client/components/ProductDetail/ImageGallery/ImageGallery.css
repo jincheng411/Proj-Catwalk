@@ -62,12 +62,6 @@
 
 .image-gallery > span {
   border-radius: 3px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   position: absolute;
   width: 60px;
   height: 60px;
@@ -81,10 +75,11 @@
   background-color: rgba(209, 208, 208, 0.698);
 }
 
-.image-gallery > span i {
+.image-gallery > span > i {
   font-size: 1.2em;
-  -webkit-transform: scaleX(140%);
-          transform: scaleX(140%);
+  -webkit-transform: scaleX(130%);
+          transform: scaleX(130%);
+  color: black !important;
 }
 
 .image-gallery > span:nth-child(3) {

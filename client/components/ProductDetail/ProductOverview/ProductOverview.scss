@@ -146,7 +146,7 @@ $grey: #6d8194;
   flex-direction: column;
 
   align-items: center;
-  button {
+  & > button {
     height: 60px;
     border-radius: 5px;
     display: flex;
@@ -157,7 +157,7 @@ $grey: #6d8194;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    &:first-child {
+    &:nth-child(2) {
       background-color: black;
       color: white;
       font-weight: 300;

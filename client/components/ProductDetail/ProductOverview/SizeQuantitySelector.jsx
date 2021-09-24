@@ -18,13 +18,11 @@ function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite, curren
     setSizeWarning(false);
   }
   function updateQuantity(num) {
-    console.log(`seleted ${num} items`)
     setQuantity(num);
   }
 
   function addToFav() {
     setIsFav(true)
-    console.log('log is fave', isFav)
     handleAddMainAsFavorite(isFav)
   }
   // function checkFave () {
