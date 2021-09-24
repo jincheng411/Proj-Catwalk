@@ -44,9 +44,9 @@
   position: relative;
   & > span { //arrows
     border-radius: 3px;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     width: 60px;
     height: 60px;
