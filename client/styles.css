@@ -202,14 +202,14 @@ border-radius: 25px;
   border-radius: 25px;
   }
 
-.fas.fa-arrow-right {
+.carousal-next .fas.fa-arrow-right {
   position:relative;
   top: calc(50% - 10px);
   font-size: 30px;
   left: 20%;
   color:rgb(231, 231, 230)
 }
-.fas.fa-arrow-left {
+.carousal-prev .fas.fa-arrow-left {
   position:relative;
   top: calc(50% - 10px);
   font-size: 30px;

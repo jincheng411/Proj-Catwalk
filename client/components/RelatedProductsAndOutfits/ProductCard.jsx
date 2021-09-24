@@ -100,12 +100,14 @@ class Product extends React.Component {
     if(inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
-           <div className="product-card-head" onClick={this.handleRenderCard}>
+           <div className="product-card-head">
+             <div onClick={this.handleRenderCard}>
            <h3 className='product-card-name'>{name}</h3>
         <p className='product-card-category'>{category}</p>
         <p className='product-card-price'>$ {price}</p>
         <StarRating rating={rating} />
         <div/>
+        </div>
         <span onClick={this.removeOutfitCard} className="remove-outfit"><i className="fas fa-minus-circle"></i></span>
         </div>
         <ProductImage relatedProduct={relatedProduct}/>
@@ -114,13 +116,15 @@ class Product extends React.Component {
     } else if(!inOutfitList && this.state.id !== null) {
       return (
         <div className='product-card'>
-          <div className="product-card-head" onClick={this.handleRenderCard}>
+          <div className="product-card-head">
+            <div onClick={this.handleRenderCard}>
           <div className='compare-wrapper'>
         <div className='compare-modal-incard' onMouseOver={this.handleEnter} onMouseLeave={this.handleLeave} modal={this.state.modal}><i className="fas fa-scroll"></i></div>
         </div>
         <h3 className='product-card-name'>{name}</h3>
         <p className='product-card-category'>{category}</p>
         <p className='product-card-price'>$ {price}</p>
+        </div>
         <StarRating rating={rating} />
         <span onClick={this.addRelatedProductToOutfit} className='heart-add'><i className="fas fa-heart"></i></span>
         </div>
