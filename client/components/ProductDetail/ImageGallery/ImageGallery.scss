@@ -44,8 +44,8 @@
   position: relative;
   & > span { //arrows
     border-radius: 3px;
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
     // align-items: center;
     position: absolute;
     width: 60px;
@@ -57,10 +57,10 @@
     &:hover{
       background-color: rgba(209, 208, 208, 0.698);
     }
-    i{
+    > i{
       font-size: 1.2em;
-      transform: scaleX(140%);
-
+      transform: scaleX(130%);
+      color: black !important;
     }
 
     &:nth-child(3) { //left arrow
@@ -72,3 +72,9 @@
   }
 }
 
+@media (max-width: 1000px) and (min-width: 300px) {
+  .hide-thumbnail {
+    height: 35px !important;
+    transition: height 0.2s linear !important;
+  }
+}

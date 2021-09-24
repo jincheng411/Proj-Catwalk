@@ -43,7 +43,7 @@ $grey: #6d8194;
   display: flex;
   flex-direction: column;
   span {
-    @include subtitle;  //color available
+    @include subtitle; //color available
   }
   img {
     width: 70px;
@@ -85,8 +85,10 @@ $grey: #6d8194;
     &:first-child {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 3px;
       p {
-        &:last-child {  //size guide
+        &:last-child {
+          //size guide
           color: $grey;
           text-align: end;
           font-weight: 500;
@@ -97,13 +99,14 @@ $grey: #6d8194;
   }
   div {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
     span {
       border: 2px solid $grey;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 80px;
+      min-width: 60px;
       height: 55px;
       margin: 16px 3px;
       margin-left: 0;
@@ -119,17 +122,31 @@ $grey: #6d8194;
   .selected {
     border: 3px solid black;
   }
-  .warning-size {
-    border: 3px red solid;
+  .red-border {
+    border: 2px red solid;
+  }
+  .red-text {
+    color: red;
   }
 }
-
+.promo-box {
+  padding: 20px;
+  border: 1px solid grey;
+  width: 75%;
+  >i {
+    font-weight: 600;
+  }
+  >span {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
 .selector-add-to-cart {
   display: flex;
   flex-direction: column;
 
   align-items: center;
-  button {
+  & > button {
     height: 60px;
     border-radius: 5px;
     display: flex;
@@ -140,7 +157,7 @@ $grey: #6d8194;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    &:first-child {
+    &:nth-child(2) {
       background-color: black;
       color: white;
       font-weight: 300;
@@ -152,7 +169,7 @@ $grey: #6d8194;
     &:last-child {
       font-size: 23px;
       border: 2px black solid;
-      i{
+      i {
         margin-left: 10px;
       }
       &:hover {
@@ -165,7 +182,7 @@ $grey: #6d8194;
   cursor: wait;
   background-color: rgb(85, 84, 84);
 }
-#loading  {
+#loading {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -181,13 +198,31 @@ $grey: #6d8194;
 
 @keyframes loading {
   0% {
-    opacity:1;
+    opacity: 1;
   }
   70% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
-    opacity:0;
+    opacity: 0;
     transform: rotate(880deg);
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 300px) {
+  .size-selector {
+    margin-left: 20px;
+  }
+  .product-overview > h2 {
+    display: none;
+  }
+  .product-overview > p {
+    display: none;
+  }
+  .style-selector {
+    img {
+      width: 100px;
+      height: 100px;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ThumbnailList from './ThumbnailList';
 import MainImg from './MainImg';
-import './ImageGallery.css'
+import './ImageGallery.css';
 
 function ImageGallery({ style, setThumbnailShown }) {
   const [imgIndex, setImgIndex] = useState(0);

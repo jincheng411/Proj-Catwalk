@@ -36,8 +36,8 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
-    if (sessionStorage.cart){
-      this.setState({cart: JSON.parse(sessionStorage.cart)})
+    if (sessionStorage.cart) {
+      this.setState({ cart: JSON.parse(sessionStorage.cart) })
     }
   }
 
@@ -72,16 +72,19 @@ class ProductDetail extends React.Component {
   }
 
   makeVisible(bool) {
-    this.setState({listVisible: bool});
+    this.setState({ listVisible: bool });
   }
 
   render() {
-    const { currentProduct, favoritedMain,handleAddMainAsFavorite } = this.props;
+    const { currentProduct, favoritedMain, handleAddMainAsFavorite } = this.props;
     const { styles, currentStyle, cart, listVisible } = this.state;
     return (
       <div className="product-detail">
-        <Cart items={cart} visible={listVisible}/>
-        <NavBar cart={cart} makeVisible={this.makeVisible}/>
+        <Cart items={cart} visible={listVisible} />
+        <NavBar cart={cart} makeVisible={this.makeVisible} />
+        <div className="product-title-mobible">
+          <h2>{currentProduct.name}</h2>
+        </div>
         <div className="product-detail-content">
           <div className="product-detail-col">
             <ImageGallery style={currentStyle} />
@@ -97,6 +100,23 @@ class ProductDetail extends React.Component {
             handleAddMainAsFavorite={handleAddMainAsFavorite}
           />
         </div>
+
+        <div className="product-detail-mobile">
+          <div>
+            <h4>{currentProduct.slogan}</h4>
+            <p>{currentProduct.description}</p>
+          </div>
+          <span></span>
+          <div>
+            <ul>
+              {currentProduct.features && currentProduct.features.map((feature) => {
+                return <li key={feature.value}>{feature.value}</li>
+              })}
+            </ul>
+          </div>
+        </div>
+
+
       </div>
     )
   }
