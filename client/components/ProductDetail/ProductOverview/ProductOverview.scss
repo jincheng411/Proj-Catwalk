@@ -129,7 +129,18 @@ $grey: #6d8194;
     color: red;
   }
 }
-
+.promo-box {
+  padding: 20px;
+  border: 1px solid grey;
+  width: 75%;
+  >i {
+    font-weight: 600;
+  }
+  >span {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
 .selector-add-to-cart {
   display: flex;
   flex-direction: column;

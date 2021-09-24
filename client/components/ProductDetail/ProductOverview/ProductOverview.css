@@ -156,6 +156,21 @@
   color: red;
 }
 
+.promo-box {
+  padding: 20px;
+  border: 1px solid grey;
+  width: 75%;
+}
+
+.promo-box > i {
+  font-weight: 600;
+}
+
+.promo-box > span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .selector-add-to-cart {
   display: -webkit-box;
   display: -ms-flexbox;

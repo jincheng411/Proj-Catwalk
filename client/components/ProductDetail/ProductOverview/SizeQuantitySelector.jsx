@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import _ from 'underscore';
 import SizeSelector from './SizeSelector';
 import QuantitySelector from './QuantitySelector';
@@ -24,7 +24,7 @@ function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite, curren
 
   function addToFav() {
     setIsFav(true)
-    console.log('log is fave' , isFav)
+    console.log('log is fave', isFav)
     handleAddMainAsFavorite(isFav)
   }
   // function checkFave () {
@@ -47,6 +47,9 @@ function SizeQuantitySelector({ style, addToBag, handleAddMainAsFavorite, curren
       <SizeSelector style={style} updateInventory={updateInventory} sizeWarning={sizeWarning} />
       {/* <QuantitySelector inventory={inventory} updateQuantity={updateQuantity}/> */}
       <div className="selector-add-to-cart">
+      <div className="promo-box">
+        4 interest-free payments of $50.00 with <i>Klarna</i>. <span>Learn more</span>
+      </div>
         <button
           onClick={handleOnClick}
           disabled={btnDisabled}
