@@ -18,3 +18,14 @@
     margin: 8px 20px;
   }
 }
+.product-detail-mobile {
+  display: none;
+}
+@media (max-width: 1000px) and (min-width: 300px) {
+  .product-detail-description{
+    display: none;
+  }
+  .product-detail-mobile {
+    display: block;
+  }
+}

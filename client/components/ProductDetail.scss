@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif, Helvetica, Arial;
 }
-.product-detail{
+.product-detail {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,30 @@ body {
   min-width: 500px;
 }
 .product-overview {
+  display: flex;
+  flex-direction: column;
   min-width: 350px;
   margin-left: 20px;
   width: 30%;
+}
+.product-title-mobible {
+  display: none;
+}
+
+@media (max-width: 1000px) and (min-width: 300px) {
+  .product-detail-content {
+    flex-direction: column;
+  }
+  .product-detail-col {
+    width: 100%;
+    min-width: 500px;
+  }
+  .product-overview {
+    width: 100%;
+    margin-left: 0;
+  }
+  .product-title-mobible {
+    display: block;
+  }
+
 }

@@ -266,4 +266,20 @@
             transform: rotate(880deg);
   }
 }
+
+@media (max-width: 1000px) and (min-width: 300px) {
+  .size-selector {
+    margin-left: 20px;
+  }
+  .product-overview > h2 {
+    display: none;
+  }
+  .product-overview > p {
+    display: none;
+  }
+  .style-selector img {
+    width: 100px;
+    height: 100px;
+  }
+}
 /*# sourceMappingURL=ProductOverview.css.map */

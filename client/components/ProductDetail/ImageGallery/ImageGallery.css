@@ -94,4 +94,12 @@
 .image-gallery > span:nth-child(4) {
   right: 40px;
 }
+
+@media (max-width: 1000px) and (min-width: 300px) {
+  .hide-thumbnail {
+    height: 35px !important;
+    -webkit-transition: height 0.2s linear !important;
+    transition: height 0.2s linear !important;
+  }
+}
 /*# sourceMappingURL=ImageGallery.css.map */

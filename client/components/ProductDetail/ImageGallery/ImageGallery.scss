@@ -72,3 +72,9 @@
   }
 }
 
+@media (max-width: 1000px) and (min-width: 300px) {
+  .hide-thumbnail {
+    height: 35px !important;
+    transition: height 0.2s linear !important;
+  }
+}

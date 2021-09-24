@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ThumbnailList from './ThumbnailList';
 import MainImg from './MainImg';
-import ImageZoom from './ImageZoom';
 import './ImageGallery.css';
 
 function ImageGallery({ style, setThumbnailShown }) {
@@ -20,7 +19,6 @@ function ImageGallery({ style, setThumbnailShown }) {
   return (
     <div className="image-gallery" onMouseEnter={() => setIsThumbnailShown(true)} onMouseLeave={() => setIsThumbnailShown(false)}>
       <MainImg index={imgIndex} style={style} defaultImg={style.name ? style.photos[0].url : ''} />
-      {/* <ImageZoom src={style.name ? style.photos[0].url : ''}/> */}
       <ThumbnailList currIndex={imgIndex} list={style.photos} changeCurrImg={changeCurrImg} isShown={isThumbnailShown} />
       <span onClick={() => changeIndex(-1)}><i className="fas fa-arrow-left"></i></span>
       <span onClick={() => changeIndex(1)}><i className="fas fa-arrow-right"></i></span>
