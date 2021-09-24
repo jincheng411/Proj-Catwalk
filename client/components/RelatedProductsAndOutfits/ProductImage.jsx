@@ -14,7 +14,6 @@ class ProductImage extends React.Component {
       var image = this.state.image;
       var dataResults = data.data.results;
       dataResults.forEach(style => {
-        //console.log(style)
         if (style['default?'] === true ) {
           image = style.photos[0].thumbnail_url;
         }

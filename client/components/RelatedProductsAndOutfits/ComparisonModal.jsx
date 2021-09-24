@@ -1,15 +1,4 @@
 import React from "react";
-
-/*
-PROPS
-currentProduct {id, name}
-currentProductFeatures: [{feature}, {feature}]
-hover: false
-myName: name of ProductCard
-myProductFeatures: features of product card ([{}, {}, {}])
-*/
-//? Current is product detail
-//? recent is relatedProduct Card
 class ComparisonModal extends React.Component {
   constructor(props) {
     super(props)
@@ -63,12 +52,14 @@ class ComparisonModal extends React.Component {
   render() {
     console.log(this.state)
     const {toggleModal} = this.state
-    const{currentProduct, currentProductFeatures, myName, myProductFeatures} = this.props
+    const{currentProduct, myName} = this.props
     return (
     <div>
       <div className={toggleModal}>
         <div className='comparison-main-pop-up'>
+          <div className='compare-head-wrap'>
           <span className='compare-head'>Comparing</span>
+          </div>
           <br></br>
           <span className='current-product-name-cm'>{currentProduct.name}</span>
 
