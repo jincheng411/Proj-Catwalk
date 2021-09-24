@@ -15,7 +15,7 @@ class ReviewsCore extends React.Component {
   }
 
   componentDidMount() {
-    console.log('is this working?')
+    ('is this working?')
     this.getReviewData()
   }
   componentDidUpdate(prevProps) {
@@ -35,7 +35,7 @@ class ReviewsCore extends React.Component {
   }
 
   getReviewData() {
-    console.log('allo?');
+    ('allo?');
     axios.get(`/api/reviews`, {
       params: {
         product_id: this.props.currentProductId
@@ -49,7 +49,7 @@ class ReviewsCore extends React.Component {
 
 
   render () {
-    console.log('array of reviews:', this.state.reviews);
+    ('array of reviews:', this.state.reviews);
     const {currentProductId} = this.props;
     return (
       <div className="reviews-core">

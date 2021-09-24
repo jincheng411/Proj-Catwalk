@@ -3,7 +3,7 @@ import React from 'react';
 const SingleReviewTile = (props) => {
   let currentProductId = props.currentProductId;
   let reviews = props.reviews;
-  console.log('hello', currentProductId, reviews);
+  ('hello', currentProductId, reviews);
 
   return (
     <div className="single-review-tile">

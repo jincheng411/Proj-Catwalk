@@ -13,7 +13,7 @@ app.use(morgan('dev'));
 
 app.get('/api/products/:id', (req, res) => {
   const {id} = req.params;
-  console.log('SERVER ID---> ', id)
+  ('SERVER ID---> ', id)
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}`,
   {headers: {Authorization: TOKEN}})
   .then(({data}) => {
@@ -52,7 +52,7 @@ app.get('/api/products/:id/related', (req, res) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${id}/related`,
   {headers: {Authorization: TOKEN}})
   .then(({data}) => {
-    console.log(data)
+    (data)
     res.json(data);
   })
   .catch(err => {
@@ -75,7 +75,7 @@ app.get('/api/reviews/:id', (req, res) => {
 // alright alright. Outfits. Put into session storage. boom.
 //? need to create a session id. How? RESEARCH.
 // app.put('/putInYourOutfit', (req, res) => {
-// console.log(req.body)
+// (req.body)
 // sessionStorage.setItem(req.body);
 // console.log(sessionStorage)
 // res.sendStatus(200);

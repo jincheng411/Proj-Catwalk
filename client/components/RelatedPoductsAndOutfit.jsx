@@ -94,23 +94,21 @@ class RelatedProductsAndOutfits extends React.Component {
       outfitList.unshift(toAddToOutfitStorage);
       sessionStorage.setItem(`yourOutfits`, outfitList);
       } else {
-        console.log('Product Already In your Outfits')
       }
       this.updateStateAndRender();
-      console.log('Updated Storage--> ', sessionStorage)
     } else {
       //! HANDLES CURRENT PRODUCT
-      console.log(100)
+      (100)
       var toAddToOutfitStorage = this.props.currentProductId
       var outfitList = this.state.yourOutfitList
       if (this.state.yourOutfitList.indexOf(this.props.currentProductId) === -1) {
         outfitList.unshift(toAddToOutfitStorage);
         sessionStorage.setItem(`yourOutfits`, outfitList);
       } else {
-        console.log('Product Already In your Outfits')
+        ('Product Already In your Outfits')
       }
       this.updateStateAndRender();
-      console.log('Updated Storage--> ', sessionStorage)
+      ('Updated Storage--> ', sessionStorage)
     }
   }
 
@@ -124,11 +122,11 @@ class RelatedProductsAndOutfits extends React.Component {
         yourOutfitList: outfitList,
       });
       sessionStorage.setItem('yourOutfits', outfitList);
-      console.log('Updated Storage--> ', sessionStorage)
+      ('Updated Storage--> ', sessionStorage)
       this.updateStateAndRender();
     } else {
       sessionStorage.clear();
-      console.log('sessionstorage post remove ', sessionStorage.getItem('yourOutfits'))
+      ('sessionstorage post remove ', sessionStorage.getItem('yourOutfits'))
       this.updateStateAndRender();
     }
   }

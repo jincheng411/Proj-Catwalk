@@ -50,7 +50,7 @@ class ComparisonModal extends React.Component {
 }
 
   render() {
-    console.log(this.state)
+    (this.state)
     const {toggleModal} = this.state
     const{currentProduct, myName} = this.props
     return (
